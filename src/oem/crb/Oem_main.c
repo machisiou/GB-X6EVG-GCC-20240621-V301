@@ -34,7 +34,7 @@ void oem_1ms_service(void)
 	}
 
 	static uint8_t i =0;
-	//Oem_SysPowerContrl();
+	Oem_SysPowerContrl();
 	if(i<10)
 	{
 		EventManager(i++);

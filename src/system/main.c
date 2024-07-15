@@ -141,6 +141,7 @@ int main(void)
 	SERVICEflag = 0;
 	__enable_irq();
 	/* Infinite loop */
+	SystemState = SYSTEM_G3;
 	while(1) {
 		Main_Service();
 	}
