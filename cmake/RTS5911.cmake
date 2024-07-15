@@ -60,6 +60,7 @@ set(RTK_SRC
     ${CMAKE_SOURCE_DIR}/src/oem/crb/Oem_timer.c
     ${CMAKE_SOURCE_DIR}/src/oem/crb/Oem_Peci.c
     ${CMAKE_SOURCE_DIR}/src/oem/crb/ScanTable.c
+    ${CMAKE_SOURCE_DIR}/src/oem/crb/Oem_Ver.c
     ${CMAKE_SOURCE_DIR}/src/chip/rts5911/core/ACPI.c
     ${CMAKE_SOURCE_DIR}/src/chip/rts5911/core/DIO.c
     ${CMAKE_SOURCE_DIR}/src/chip/rts5911/core/DMA.c

@@ -76,6 +76,7 @@
 #include "oem\crb\Oem_ACPI_Command.h"
 #include "oem\crb\Oem_KBC_Command.h"
 #include "oem\crb\Oem_UDPDFW_TI.h"
+#include "oem\crb\Oem_Ver.h"
 
 #include "system\ACPI_Command.h"
 #include "system\Debug.h"
