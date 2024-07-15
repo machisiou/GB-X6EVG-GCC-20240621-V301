@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="rtk.ide.managedbuild.cross.arm.toolchain.base.994053020">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="rtk.ide.managedbuild.cross.arm.toolchain.base.994053020" moduleId="org.eclipse.cdt.core.settings" name="Default">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration buildProperties="" id="rtk.ide.managedbuild.cross.arm.toolchain.base.994053020" name="Default" parent="org.eclipse.cdt.build.core.emptycfg">
+					<folderInfo id="rtk.ide.managedbuild.cross.arm.toolchain.base.994053020.1684611814" name="/" resourcePath="">
+						<toolChain id="rtk.ide.managedbuild.cross.arm.toolchain.base.1321423516" name="ASDK (ARM Cross GCC)" superClass="rtk.ide.managedbuild.cross.arm.toolchain.base">
+							<option id="rtk.ide.managedbuild.cross.arm.option.architecture.1124512949" name="Architecture" superClass="rtk.ide.managedbuild.cross.arm.option.architecture"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.command.prefix.1372632228" name="Prefix" superClass="rtk.ide.managedbuild.cross.arm.option.command.prefix"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.command.suffix.1163496930" name="Suffix" superClass="rtk.ide.managedbuild.cross.arm.option.command.suffix"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.command.c.2130355164" name="C compiler" superClass="rtk.ide.managedbuild.cross.arm.option.command.c"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.command.cpp.553665303" name="C++ compiler" superClass="rtk.ide.managedbuild.cross.arm.option.command.cpp"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.command.ar.986252582" name="Archiver" superClass="rtk.ide.managedbuild.cross.arm.option.command.ar"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.command.objcopy.1039370349" name="Hex/Bin converter" superClass="rtk.ide.managedbuild.cross.arm.option.command.objcopy"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.command.objdump.965425240" name="Listing generator" superClass="rtk.ide.managedbuild.cross.arm.option.command.objdump"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.command.size.1875514005" name="Size command" superClass="rtk.ide.managedbuild.cross.arm.option.command.size"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.command.make.1119524435" name="Build command" superClass="rtk.ide.managedbuild.cross.arm.option.command.make"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.command.rm.706326056" name="Remove command" superClass="rtk.ide.managedbuild.cross.arm.option.command.rm"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.addtools.createflash.304903426" name="Create flash image" superClass="rtk.ide.managedbuild.cross.arm.option.addtools.createflash"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.addtools.createlisting.2044220164" name="Create objdump file" superClass="rtk.ide.managedbuild.cross.arm.option.addtools.createlisting"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.addtools.printsize.86397964" name="Print size" superClass="rtk.ide.managedbuild.cross.arm.option.addtools.printsize"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.target.family.1966747974" name="ARM family (-mcpu)" superClass="rtk.ide.managedbuild.cross.arm.option.target.family"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.target.architecture.619387482" name="Architecture (-march)" superClass="rtk.ide.managedbuild.cross.arm.option.target.architecture"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.target.instructionset.1318091112" name="Instruction set" superClass="rtk.ide.managedbuild.cross.arm.option.target.instructionset"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.target.thumbinterwork.1878271120" name="Thumb interwork (-mthumb-interwork)" superClass="rtk.ide.managedbuild.cross.arm.option.target.thumbinterwork"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.target.endianness.816443850" name="Endianness" superClass="rtk.ide.managedbuild.cross.arm.option.target.endianness"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.target.fpu.abi.2115882852" name="Float ABI" superClass="rtk.ide.managedbuild.cross.arm.option.target.fpu.abi"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.target.fpu.unit.830199851" name="FPU Type" superClass="rtk.ide.managedbuild.cross.arm.option.target.fpu.unit"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.target.unalignedaccess.4911555" name="Unaligned access" superClass="rtk.ide.managedbuild.cross.arm.option.target.unalignedaccess"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.target.mcmse.900780499" name="TrustZone (-mcmse)" superClass="rtk.ide.managedbuild.cross.arm.option.target.mcmse"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.target.other.842941276" name="Other target flags" superClass="rtk.ide.managedbuild.cross.arm.option.target.other"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.optimization.level.194227850" name="Optimization Level" superClass="rtk.ide.managedbuild.cross.arm.option.optimization.level"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.optimization.messagelength.81706302" name="Message length (-fmessage-length=0)" superClass="rtk.ide.managedbuild.cross.arm.option.optimization.messagelength"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.optimization.signedchar.860650839" name="'char' is signed (-fsigned-char)" superClass="rtk.ide.managedbuild.cross.arm.option.optimization.signedchar"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.optimization.functionsections.1527211758" name="Function sections (-ffunction-sections)" superClass="rtk.ide.managedbuild.cross.arm.option.optimization.functionsections"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.optimization.datasections.1404296773" name="Data sections (-fdata-sections)" superClass="rtk.ide.managedbuild.cross.arm.option.optimization.datasections"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.optimization.nocommon.576730881" name="No common unitialized (-fno-common)" superClass="rtk.ide.managedbuild.cross.arm.option.optimization.nocommon"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.optimization.noinlinefunctions.471963272" name="Do not inline functions (-fno-inline-functions)" superClass="rtk.ide.managedbuild.cross.arm.option.optimization.noinlinefunctions"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.optimization.freestanding.102161177" name="Assume freestanding environment (-ffreestanding)" superClass="rtk.ide.managedbuild.cross.arm.option.optimization.freestanding"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.optimization.nobuiltin.429695920" name="Disable builtin (-fno-builtin)" superClass="rtk.ide.managedbuild.cross.arm.option.optimization.nobuiltin"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.optimization.spconstant.1432074184" name="Single precision constants (-fsingle-precision-constant)" superClass="rtk.ide.managedbuild.cross.arm.option.optimization.spconstant"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.optimization.PIC.1041276114" name="Position independent code (-fPIC)" superClass="rtk.ide.managedbuild.cross.arm.option.optimization.PIC"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.optimization.lto.491111513" name="Link-time optimizer (-flto)" superClass="rtk.ide.managedbuild.cross.arm.option.optimization.lto"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.optimization.nomoveloopinvariants.68259712" name="Disable loop invariant move (-fno-move-loop-invariants)" superClass="rtk.ide.managedbuild.cross.arm.option.optimization.nomoveloopinvariants"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.optimization.other.959174888" name="Other optimization flags" superClass="rtk.ide.managedbuild.cross.arm.option.optimization.other"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.toolchain.name.1137705254" superClass="rtk.ide.managedbuild.cross.arm.option.toolchain.name"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.toolchain.id.306038127" superClass="rtk.ide.managedbuild.cross.arm.option.toolchain.id"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.warnings.syntaxonly.1281075716" name="Check syntax only (-fsyntax-only)" superClass="rtk.ide.managedbuild.cross.arm.option.warnings.syntaxonly"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.warnings.pedantic.1289553816" name="Pedantic (-pedantic)" superClass="rtk.ide.managedbuild.cross.arm.option.warnings.pedantic"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.warnings.pedanticerrors.1037857746" name="Pedantic warnings as errors (-pedantic-errors)" superClass="rtk.ide.managedbuild.cross.arm.option.warnings.pedanticerrors"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.warnings.nowarn.1698232956" name="Inhibit all warnings (-w)" superClass="rtk.ide.managedbuild.cross.arm.option.warnings.nowarn"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.warnings.unused.2004733659" name="Warn on various unused elements (-Wunused)" superClass="rtk.ide.managedbuild.cross.arm.option.warnings.unused"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.warnings.uninitialized.583048175" name="Warn on uninitialized variables (-Wuninitialised)" superClass="rtk.ide.managedbuild.cross.arm.option.warnings.uninitialized"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.warnings.allwarn.107362757" name="Enable all common warnings (-Wall)" superClass="rtk.ide.managedbuild.cross.arm.option.warnings.allwarn"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.warnings.extrawarn.470095669" name="Enable extra warnings (-Wextra)" superClass="rtk.ide.managedbuild.cross.arm.option.warnings.extrawarn"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.warnings.missingdeclaration.1076416696" name="Warn on undeclared global function (-Wmissing-declaration)" superClass="rtk.ide.managedbuild.cross.arm.option.warnings.missingdeclaration"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.warnings.conversion.1877713106" name="Warn on implicit conversions (-Wconversion)" superClass="rtk.ide.managedbuild.cross.arm.option.warnings.conversion"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.warnings.pointerarith.2128566120" name="Warn if pointer arithmetic (-Wpointer-arith)" superClass="rtk.ide.managedbuild.cross.arm.option.warnings.pointerarith"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.warnings.padded.2109524547" name="Warn if padding is included (-Wpadded)" superClass="rtk.ide.managedbuild.cross.arm.option.warnings.padded"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.warnings.shadow.11045907" name="Warn if shadowed variable (-Wshadow)" superClass="rtk.ide.managedbuild.cross.arm.option.warnings.shadow"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.warnings.logicalop.5206378" name="Warn if suspicious logical ops (-Wlogical-op)" superClass="rtk.ide.managedbuild.cross.arm.option.warnings.logicalop"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.warnings.agreggatereturn.1069163872" name="Warn if struct is returned (-Wagreggate-return)" superClass="rtk.ide.managedbuild.cross.arm.option.warnings.agreggatereturn"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.warnings.floatequal.1693006948" name="Warn if floats are compared as equal (-Wfloat-equal)" superClass="rtk.ide.managedbuild.cross.arm.option.warnings.floatequal"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.warnings.toerrors.489345822" name="Generate errors instead of warnings (-Werror)" superClass="rtk.ide.managedbuild.cross.arm.option.warnings.toerrors"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.warnings.other.363897064" name="Other warning flags" superClass="rtk.ide.managedbuild.cross.arm.option.warnings.other"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.debugging.level.1355509392" name="Debug level" superClass="rtk.ide.managedbuild.cross.arm.option.debugging.level"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.debugging.format.1226887778" name="Debug format" superClass="rtk.ide.managedbuild.cross.arm.option.debugging.format"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.debugging.prof.1235897147" name="Generate prof information (-p)" superClass="rtk.ide.managedbuild.cross.arm.option.debugging.prof"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.debugging.gprof.526534888" name="Generate gprof information (-pg)" superClass="rtk.ide.managedbuild.cross.arm.option.debugging.gprof"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.debugging.other.1805103355" name="Other debugging flags" superClass="rtk.ide.managedbuild.cross.arm.option.debugging.other"/>
+							<option id="rtk.ide.managedbuild.cross.arm.option.showDevicesTab.762976773" name="showDevicesTab" superClass="rtk.ide.managedbuild.cross.arm.option.showDevicesTab"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="rtk.ide.managedbuild.cross.arm.targetPlatform.1309247797" isAbstract="false" osList="all" superClass="rtk.ide.managedbuild.cross.arm.targetPlatform"/>
+							<builder buildPath="${workspace_loc:/GB-X6EVG-GCC-20240621-V301}/Default" id="rtk.ide.managedbuild.cross.arm.internal.builder.1899466610" managedBuildOn="false" name="CDT Internal Builder.Default" superClass="rtk.ide.managedbuild.cross.arm.internal.builder"/>
+							<tool id="rtk.ide.managedbuild.cross.arm.tool.assembler.1899512559" name="GNU ARM Cross Assembler" superClass="rtk.ide.managedbuild.cross.arm.tool.assembler">
+								<option id="rtk.ide.managedbuild.cross.arm.option.assembler.usepreprocessor.180837509" superClass="rtk.ide.managedbuild.cross.arm.option.assembler.usepreprocessor" useByScannerDiscovery="false"/>
+								<inputType id="rtk.ide.managedbuild.cross.arm.tool.assembler.input.1846576081" superClass="rtk.ide.managedbuild.cross.arm.tool.assembler.input"/>
+							</tool>
+							<tool id="rtk.ide.managedbuild.cross.arm.tool.c.compiler.1420513578" name="GNU ARM Cross C Compiler" superClass="rtk.ide.managedbuild.cross.arm.tool.c.compiler">
+								<inputType id="rtk.ide.managedbuild.cross.arm.tool.c.compiler.input.1567204388" superClass="rtk.ide.managedbuild.cross.arm.tool.c.compiler.input"/>
+							</tool>
+							<tool id="rtk.ide.managedbuild.cross.arm.tool.cpp.compiler.126926507" name="GNU ARM Cross C++ Compiler" superClass="rtk.ide.managedbuild.cross.arm.tool.cpp.compiler">
+								<inputType id="rtk.ide.managedbuild.cross.arm.tool.cpp.compiler.input.1709086124" superClass="rtk.ide.managedbuild.cross.arm.tool.cpp.compiler.input"/>
+							</tool>
+							<tool id="rtk.ide.managedbuild.cross.arm.tool.c.linker.1440470856" name="GNU ARM Cross C Linker" superClass="rtk.ide.managedbuild.cross.arm.tool.c.linker">
+								<option id="rtk.ide.managedbuild.cross.arm.option.c.linker.gcsections.480015202" superClass="rtk.ide.managedbuild.cross.arm.option.c.linker.gcsections" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="rtk.ide.managedbuild.cross.arm.tool.cpp.linker.299543074" name="GNU ARM Cross C++ Linker" superClass="rtk.ide.managedbuild.cross.arm.tool.cpp.linker">
+								<option id="rtk.ide.managedbuild.cross.arm.option.cpp.linker.gcsections.486289510" superClass="rtk.ide.managedbuild.cross.arm.option.cpp.linker.gcsections" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<inputType id="rtk.ide.managedbuild.cross.arm.tool.cpp.linker.input.478654976" superClass="rtk.ide.managedbuild.cross.arm.tool.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="rtk.ide.managedbuild.cross.arm.tool.archiver.1625342782" name="GNU ARM Cross Archiver" superClass="rtk.ide.managedbuild.cross.arm.tool.archiver"/>
+							<tool id="rtk.ide.managedbuild.cross.arm.tool.createflash.193157315" name="GNU ARM Cross Create Flash Image" superClass="rtk.ide.managedbuild.cross.arm.tool.createflash"/>
+							<tool id="rtk.ide.managedbuild.cross.arm.tool.createlisting.1223286196" name="GNU ARM Cross Create Objdump File" superClass="rtk.ide.managedbuild.cross.arm.tool.createlisting">
+								<option id="rtk.ide.managedbuild.cross.arm.option.createlisting.source.1869026670" superClass="rtk.ide.managedbuild.cross.arm.option.createlisting.source" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="rtk.ide.managedbuild.cross.arm.option.createlisting.allheaders.1121098265" superClass="rtk.ide.managedbuild.cross.arm.option.createlisting.allheaders" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="rtk.ide.managedbuild.cross.arm.option.createlisting.demangle.1474998487" superClass="rtk.ide.managedbuild.cross.arm.option.createlisting.demangle" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="rtk.ide.managedbuild.cross.arm.option.createlisting.linenumbers.2042297113" superClass="rtk.ide.managedbuild.cross.arm.option.createlisting.linenumbers" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="rtk.ide.managedbuild.cross.arm.option.createlisting.wide.1967201096" superClass="rtk.ide.managedbuild.cross.arm.option.createlisting.wide" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="rtk.ide.managedbuild.cross.arm.tool.printsize.1706615523" name="GNU ARM Cross Print Size" superClass="rtk.ide.managedbuild.cross.arm.tool.printsize">
+								<option id="rtk.ide.managedbuild.cross.arm.option.printsize.format.450210082" superClass="rtk.ide.managedbuild.cross.arm.option.printsize.format" useByScannerDiscovery="false"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="GB-X6EVG-GCC-20240621-V301.null.906479855" name="GB-X6EVG-GCC-20240621-V301"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="rtk.ide.managedbuild.cross.arm.toolchain.base.702165291;rtk.ide.managedbuild.cross.arm.toolchain.base.702165291.1069582726;rtk.ide.managedbuild.cross.arm.tool.cpp.compiler.1879584859;rtk.ide.managedbuild.cross.arm.tool.cpp.compiler.input.1423046433">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="rtk.ide.managedbuild.cross.arm.toolchain.base.994053020;rtk.ide.managedbuild.cross.arm.toolchain.base.994053020.1684611814;rtk.ide.managedbuild.cross.arm.tool.c.compiler.1420513578;rtk.ide.managedbuild.cross.arm.tool.c.compiler.input.1567204388">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="rtk.ide.managedbuild.cross.arm.toolchain.base.702165291;rtk.ide.managedbuild.cross.arm.toolchain.base.702165291.1069582726;rtk.ide.managedbuild.cross.arm.tool.c.compiler.1738680600;rtk.ide.managedbuild.cross.arm.tool.c.compiler.input.492471899">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="rtk.ide.managedbuild.cross.arm.toolchain.base.994053020;rtk.ide.managedbuild.cross.arm.toolchain.base.994053020.1684611814;rtk.ide.managedbuild.cross.arm.tool.cpp.compiler.126926507;rtk.ide.managedbuild.cross.arm.tool.cpp.compiler.input.1709086124">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+</cproject>

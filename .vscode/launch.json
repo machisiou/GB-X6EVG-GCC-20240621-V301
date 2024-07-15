@@ -1,0 +1,29 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug with PyOCD",
+            "cwd": "${workspaceFolder}",
+            "executable": "./build/rts5911.elf",
+            "loadFiles": ["./build/rts5911.elf"],
+            "serverArgs": ["--frequency", "10m"],
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "pyocd",
+            "targetId": "rts5911",
+            "device": "rts5911",
+            "interface": "swd",
+            "armToolchainPath": "D:/jim.lai/Downloads/RIDE-win32-x86_64-1.8.7.x-fix/RIDE-win32-x86_64-1.8.7.x/realtek/asdk-10.2.0/mingw32/newlib/bin",
+            "svdFile": "./RTS591x.svd",
+            "svdPath": "./RTS591x.svd",
+            "showDevDebugOutput" : "raw",
+            "postLaunchCommands": [
+                "set $pc=*(uint32_t)(0x20000004)"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "d:/work/Customer/GB/GB-X6EVG-GCC-20240610-V301/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "mergeConfigurations": false,
+            "configurationProvider": "ms-vscode.cmake-tools",
+            "browse": {
+                "path": [
+                    "d:/work/Customer/GB/GB-X6EVG-GCC-20240610-V301/**",
+                    "d:/work/Customer/GB/GB-X6EVG-GCC-20240610-V301"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            }
+        }
+    ],
+    "version": 4
+}

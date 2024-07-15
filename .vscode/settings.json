@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "*.hpp": "cpp",
+        "include.h": "c",
+        "type.h": "c",
+        "cmsis_gcc.h": "c",
+        "stdint.h": "c",
+        "memory.h": "c",
+        "oem_power.h": "c",
+        "acpi.h": "c",
+        "system_rts5911.h": "c",
+        "rts5911.h": "c",
+        "rtk_include.h": "c",
+        "stdio.h": "c",
+        "adc.h": "c",
+        "project.h": "c"
+    }
+}
