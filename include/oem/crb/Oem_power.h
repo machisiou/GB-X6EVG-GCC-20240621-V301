@@ -37,68 +37,45 @@ extern void InitDevice(void);
 #define IMVP_VR_READY()			GPIO_Read(117)
 
 #define EC_BKLOUT               GPIO->GCR_b[84].OUTCTRL
-//#define EC_BKL_EN()				GPIO_Write(84,1)
-//#define EC_BKL_DIS()			GPIO_Write(84,0)
 
 #define USB_EN_EC               GPIO->GCR_b[121].OUTCTRL
-//#define USB_EN_EC_HIGH()		GPIO_Write(121,1)
-//#define USB_EN_EC_LOW()		GPIO_Write(121,0)
 
 #define USB_V5A_EN              GPIO->GCR_b[96].OUTCTRL
-//#define USB_V5A_EN_HIGH()		GPIO_Write(96,1)
-//#define USB_V5A_EN_LOW()		GPIO_Write(96,0)
 
 #define VCCIO_PWRGD()			1//GPIO_Read(1)
 
 #define RSMRST_L                GPIO->GCR_b[86].OUTCTRL
-//#define RSMRST_HIHG()			GPIO_Write(99,1)
-//#define RSMRST_LOW()			GPIO_Write(99,0)
 
 #define EC_CLR_LATCH            GPIO->GCR_b[87].OUTCTRL
-//#define EC_CLR_LATCH_HIGH()		GPIO_Write(87,1)
-//#define EC_CLR_LATCH_LOW()		GPIO_Write(87,0)
 
 #define EC_EN_V5A               GPIO->GCR_b[122].OUTCTRL
-//#define EC_EN_V5A_HIGH()		GPIO_Write(122,1)
-//#define EC_EN_V5A_LOW()			GPIO_Write(122,0)
 
 #define AC_PRESENT              GPIO->GCR_b[97].OUTCTRL
-//#define AC_PRESENT_HIGH()		GPIO_Write(97,1)
-//#define AC_PRESENT_LOW()		GPIO_Write(97,0)
 
 #define dGPU_HOLD_EC_RST_L      GPIO->GCR_b[105].OUTCTRL
-//#define dGPU_HOLD_EC_RST_HIGH()	GPIO_Write(105,1)
-//#define dGPU_HOLD_EC_RST_LOW()	GPIO_Write(105,0)
 
 #define AC_IN_L 				GPIO_Read(16)
 
 #define H_PROCHOT_L             GPIO->GCR_b[28].OUTCTRL
-//#define H_PROCHOT_HIGH			GPIO_Write(28,1)
-//#define H_PROCHOT_LOW			GPIO_Write(28,0)
 
 #define SMBSW_RST_HIGH			GPIO_Write(3,1)		//GPB6 SMBSW_RST_L
 #define SMBSW_RST_LOW			GPIO_Write(3,0)
 
 
 #define BAT_LED_L               GPIO->GCR_b[25].OUTCTRL
-//#define BAT_LED_HIGH			GPIO_Write(25,1)	//GPA2 BAT_LED_L
-//#define BAT_LED_LOW				GPIO_Write(25,0)
+
 
 #define PWR_LED2_L              GPIO->GCR_b[27].OUTCTRL
-//#define PWR_LED2_HIGH			GPIO_Write(27,1)	//GPA4 PWR_LED2
-//#define PWR_LED2_LOW			GPIO_Write(27,0)
+
 
 #define DDS_PANEL_RST           GPIO->GCR_b[102].OUTCTRL
-//#define DDS_PANEL_RST_HIGH	GPIO_Write(102,1)	//GPH3 DDS_PANEL_RST
-//#define DDS_PANEL_RST_LOW		GPIO_Write(102,0)
+
 
 #define EC_3A                   GPIO->GCR_b[0].OUTCTRL 
 
 #define PD_ADAPTER_IN			GPIO_Read(81)		//GPI7 PD_ADAPTER_IN
 
 #define EC_AMP_MUTE_L           GPIO->GCR_b[18].OUTCTRL
-//#define EC_AMP_MUTE_HIGH		GPIO_Write(18,1)	//GPE7 EC_AMP_MUTE_L
-//#define EC_AMP_MUTE_LOW			GPIO_Write(18,0)
 
 #define BAT_IN_L				GPIO_Read(113)
 
@@ -116,20 +93,16 @@ extern void InitDevice(void);
 #define HPD_EC_L				GPIO_Read(104)	//GPH5 GPIO104
 
 #define BT_EN                   GPIO->GCR_b[83].OUTCTRL
-//#define BT_EN_HIGH				GPIO_Write(83,1)//GPJ0 GPIO083
-//#define BT_EN_LOW				GPIO_Write(83,0)
+
 
 #define PD_POWER_ON             GPIO->GCR_b[130].OUTCTRL
-//#define PD_POWER_ON_HIGH		GPIO_Write(130,1)//GPJ6 GPIO130
-//#define PD_POWER_ON_LOW			GPIO_Write(130,0)
+
 
 #define WLAN_EN                 GPIO->GCR_b[82].OUTCTRL
-//#define WLAN_EN					GPIO_Write(82,1)	//GPJ2
-//#define WLAN_DIS_EN				GPIO_Write(82,0)
+
 
 #define CCD_EN                  GPIO->GCR_b[94].OUTCTRL
-//#define CCD_EN 					GPIO_Write(94,1)
-//#define CCD_DISEN 				GPIO_Write(94,0)
+
 
 
 #if RTK_FPGA_MODE
@@ -137,8 +110,6 @@ extern void InitDevice(void);
 #define EC_S3_DDR5_EN_LOW()		GPIO_Write(35,0)	//GPIO035 in FPGA mode
 #else
 #define EC_S3_DDR5_EN           GPIO->GCR_b[90].OUTCTRL
-//#define EC_S3_DDR5_EN_HIGH()	GPIO_Write(90,1)	//GPIO035 in FPGA mode
-//#define EC_S3_DDR5_EN_LOW()		GPIO_Write(90,0)	//GPIO035 in FPGA mode
 
 #define USB_KBD_PWR             GPIO->GCR_b[95].OUTCTRL
 #define TBT_POWER               GPIO->GCR_b[61].OUTCTRL
