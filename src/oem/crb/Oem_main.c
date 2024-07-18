@@ -257,6 +257,9 @@ void INIT_TM1650(void)
     I2C_WR_BUFFER[0] = 0x4F;
     I2C_Protocol(4, 0x6E, 1, 0, I2C_WR_BUFFER,NULL);
 	
+	Last_P81HDR = Port81_Get_Data();
+    Last_P80HDR = Port80_Get_Data();
+
 	SMBUS_RW_B(4, 3, 0x48 ,0x59 ,NULL);
 	SMBUS_RW_B(4, 3, 0x68 ,0x0F ,NULL);
 	SMBUS_RW_B(4, 3, 0x6A ,0x0F ,NULL);
@@ -286,15 +289,15 @@ uint8_t Check_PORT80(void)
 		uint8_t test_val[1] = {0x79};
 		
 	#if SUPPORT_DEBUG_CARD
-				Last_P81HDR = Port81_Get_Data();
-				Last_P80HDR = Port80_Get_Data();
-			if((Last_P81HDR != Pre_P81) || (Last_P80HDR != Pre_P80))
+				//Last_P81HDR = Port81_Get_Data();
+				//Last_P80HDR = Port80_Get_Data();
+			if((Last_P81HDR != Port81_Get_Data()) || (Last_P80HDR != Port80_Get_Data()))
 			{
 
 				/* Update TM1650 when debug code changed */
-				Pre_P81 = Last_P81HDR;
-				Pre_P80 = Last_P80HDR;
-				led = Pre_P80 =(uint8_t)(Pre_P80<<4)|(Pre_P80>>4); //981004-200812-A
+				Last_P81HDR = Pre_P81;
+				Last_P80HDR = Pre_P80;
+				led =(uint8_t)(Last_P80HDR<<4)|(Last_P80HDR>>4); //981004-200812-A
 				I2C_SMBusModProtocol(3,3,0x48,0,test_val,0);	 		
 				I2C_WR_BUFFER[0] = LED7s_TABLE[led & 0x0F]; //981004-200812-M
 				I2C_SMBusModProtocol(3,3,0x68,0,I2C_WR_BUFFER,0);
