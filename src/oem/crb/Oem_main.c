@@ -295,8 +295,8 @@ uint8_t Check_PORT80(void)
 			{
 
 				/* Update TM1650 when debug code changed */
-				Last_P81HDR = Pre_P81;
-				Last_P80HDR = Pre_P80;
+				Last_P81HDR = Port81_Get_Data();
+				Last_P80HDR = Port80_Get_Data();
 				led =(uint8_t)(Last_P80HDR<<4)|(Last_P80HDR>>4); //981004-200812-A
 				I2C_SMBusModProtocol(3,3,0x48,0,test_val,0);	 		
 				I2C_WR_BUFFER[0] = LED7s_TABLE[led & 0x0F]; //981004-200812-M
