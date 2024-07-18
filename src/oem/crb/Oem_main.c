@@ -183,7 +183,7 @@ void Oem_init(void)
 
 	I2C_Initial(0,0,0,0);
 	I2C_Initial(1,0,0,0);
-	I2C_Initial(3,0,0,0);
+	I2C_Initial(4,0,0,0);
 	
 	//uint8_t OEMRAM00;
 	//OEMRAM00[0] = *((uint8_t *)(ECOEMRAM1 + 0x0000));
@@ -247,21 +247,21 @@ void INIT_TM1650(void)
 	#endif
 	
 	I2C_WR_BUFFER[0] = 0x41;
-	I2C_Protocol(3, 0x48, 1, 0, I2C_WR_BUFFER,NULL);
+	I2C_Protocol(4, 0x48, 1, 0, I2C_WR_BUFFER,NULL);
 	I2C_WR_BUFFER[0] = 0x3F;
-	I2C_Protocol(3, 0x68, 1, 0, I2C_WR_BUFFER,NULL);	
+	I2C_Protocol(4, 0x68, 1, 0, I2C_WR_BUFFER,NULL);	
     I2C_WR_BUFFER[0] = 0x06;
-    I2C_Protocol(3, 0x6A, 1, 0, I2C_WR_BUFFER,NULL);
+    I2C_Protocol(4, 0x6A, 1, 0, I2C_WR_BUFFER,NULL);
     I2C_WR_BUFFER[0] = 0x5B;
-    I2C_Protocol(3, 0x6C, 1, 0, I2C_WR_BUFFER,NULL);
+    I2C_Protocol(4, 0x6C, 1, 0, I2C_WR_BUFFER,NULL);
     I2C_WR_BUFFER[0] = 0x4F;
-    I2C_Protocol(3, 0x6E, 1, 0, I2C_WR_BUFFER,NULL);
+    I2C_Protocol(4, 0x6E, 1, 0, I2C_WR_BUFFER,NULL);
 	
-	SMBUS_RW_B(3, 3, 0x48 ,0x59 ,NULL);
-	SMBUS_RW_B(3, 3, 0x68 ,0x0F ,NULL);
-	SMBUS_RW_B(3, 3, 0x6A ,0x0F ,NULL);
-	SMBUS_RW_B(3, 3, 0x6C ,0x0F ,NULL);
-	SMBUS_RW_B(3, 3, 0x6E ,0x0F ,NULL);
+	SMBUS_RW_B(4, 3, 0x48 ,0x59 ,NULL);
+	SMBUS_RW_B(4, 3, 0x68 ,0x0F ,NULL);
+	SMBUS_RW_B(4, 3, 0x6A ,0x0F ,NULL);
+	SMBUS_RW_B(4, 3, 0x6C ,0x0F ,NULL);
+	SMBUS_RW_B(4, 3, 0x6E ,0x0F ,NULL);
 }
 
 void PD_Adapter_setting(void)

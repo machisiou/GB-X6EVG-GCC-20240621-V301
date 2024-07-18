@@ -203,18 +203,13 @@ static const uint32_t G3_S5_PStbl[] =
 {
 //	pin num, delay time
 //	255,	1,			// delay 20ms
-	122,	0,			// on EC_EN_V5A
-	0,		0,			// on 3.3A_EN
+	87,		0,			// on EC_EN_V5A
+	122,	0,			// on 3.3A_EN
 	96,		0,			// on USB_V5A_EN
-	121,	0,			// on USB_EN_EC
-	97,		0,				//AC_Present
+	121,	1,			// on USB_EN_EC
+	114,	100,				//AC_Present
 	//38,0,				//dGPU_HOLD_EC_RST_L
-	87,		0,			// on EC_CLR_LATCH
-
-	114,	1,			// on PM_PWRBTN
-	255,	20,			// delay 20ms
-	86,		1,			// on RSMRST
-	//99,			1,		//RSMRST 
+	86,		0,			// on EC_CLR_LATCH
 	255,	100,			// delay 1ms
 };
 
@@ -222,7 +217,7 @@ void G3_S5_PS(void)
 {
 	uint8_t index;
 	debug0=0xFF;
-	//ESPI->ESPICFG = 0x0000000F;
+	ESPI->ESPICFG = 0x0000000F;
 
 	#if 1
 	//_Delay_1ms(85);
@@ -258,7 +253,6 @@ void G3_S5_PS(void)
 	// VW
 //	ESPI->EVSTS = 0x00003FFFA;
 #endif
-	ESPI->ESPICFG = 0x0000000F;
 	
 //	debug0=0x01;
 	// Check if VW Enable
@@ -889,7 +883,7 @@ void InitDevice(void)
     USB_KBD_PWR = 1; //981004-221014-A	
     	
 	//981004-210705-A-S
-	#if 1
+	#if 0
     LSCTRL = 0x02; //Active mode (EC RAM : 0x28F) 	
     //(bRWSMBus(SMbusChB, SMbusWB, LightSensorAddr, CONTROL, &LSCTRL, SMBus_NoPEC)); 
 	SMBUS_RW_B(1,WriteByte,LightSensorAddr, CONTROL, &LSCTRL);
@@ -913,7 +907,7 @@ void InitDevice(void)
     ///IER1 |= 0x08; // enable KSI interrupt
 	BIT_CLR(POWER_FLAG5, bios_cf9);
 
-	TI_FW_CHECK(); //981004-211119-A
+	//TI_FW_CHECK(); //981004-211119-A
 	//SET_TEMP_NCT7802(); //981004-220803-A
 	//Mode_SEL = 0x6A; //REG : 0x22 =>  Thermistor mode //981004-220803-M from 0x0A
     //bRWSMBus(SMbusCh1, SMbusWB, NCT7802YAddr, NCT_MODE_SEL, &Mode_SEL ,  SMBus_NoPEC);

@@ -1,6 +1,7 @@
 /*
  * Includes
  */
+#include "RTK_Include.h"
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
@@ -29,6 +30,7 @@
 #include "oem/crb/Oem_pmport2.h"
 #include "oem/crb/Oem_pmport3.h"
 #include "oem/crb/Project.h"
+
 
 /*
  * Defines
@@ -142,6 +144,7 @@ int main(void)
 	__enable_irq();
 	/* Infinite loop */
 	SystemState = SYSTEM_G3;
+	EC_3A = 1;
 	while(1) {
 		Main_Service();
 	}
@@ -343,6 +346,7 @@ static void system_init(void)
 	SYS_CLKPWR_I2CAUTO(enable);
 	Sys_I2cClkPwrEnable(I2C0_UNIT, enable, 0,0);
 	Sys_I2cClkPwrEnable(I2C2_UNIT, enable, 0,0);
+	Sys_I2cClkPwrEnable(I2C4_UNIT, enable, 0,0);
 
 	// ----- TACH power -----
 	SYS_CLKPWR_TACHO0(enable);
