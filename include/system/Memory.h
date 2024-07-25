@@ -301,6 +301,68 @@ extern uint16_t FAN_RPM;
 //extern uint8_t I2C_WR_BUFFER[];
 //#define BAT_STATUS2			(*((uint8_t *)(ECRAM+0x0000)))
 
+//-------------------------------------------------------------------------------
+//	0x100-0x1FF   OEM RAM 1  
+//-------------------------------------------------------------------------------
+#ifdef ECPowerDownModeSupport
+XBYTE g_ECPowerDownCurrentMode            _at_ (ECPowerDownCtrl+0x00);
+XBYTE g_KernelDelayPowerDownMode          _at_ (ECPowerDownCtrl+0x01);
+XBYTE g_ECPowerDownPeriodWakeUpTime       _at_ (ECPowerDownCtrl+0x02);
+XWORD g_OEMDelayPowerDownMode             _at_ (ECPowerDownCtrl+0x03);
+XBYTE g_ECPowerDownModeTest               _at_ (ECPowerDownCtrl+0x05);
+#endif
+#define SystemFlag1                      (*((uint8_t *)(OEMRAM1+0x17)))//  _at_ (OEMRAM1+0x17);
+#define SMB_PRTC                         (*((uint8_t *)(OEMRAM1+0x18)))//  _at_ (OEMRAM1+0x18);  // EC SMB1 Protocol register
+#define SMB_STS                          (*((uint8_t *)(OEMRAM1+0x19)))//  _at_ (OEMRAM1+0x19); 	// EC SMB1 Status register
+#define SMB_ADDR                         (*((uint8_t *)(OEMRAM1+0x1A)))//  _at_ (OEMRAM1+0x1A); 	// EC SMB1 Address register
+#define SMB_CMD                          (*((uint8_t *)(OEMRAM1+0x1B)))//  _at_ (OEMRAM1+0x1B); 	// EC SMB1 Command register
+#define SMB_DATA                         (*((uint8_t *)(OEMRAM1+0x1C)))//  _at_ (OEMRAM1+0x1C); 	// EC SMB1 Data register array (32 bytes)
+#define SMB_DATA1                        (*((uint8_t (*)[31])(OEMRAM1+0x1D)))//  _at_ (OEMRAM1+0x1D);
+#define SMB_BCNT                         (*((uint8_t *)(OEMRAM1+0x3C)))//  _at_ (OEMRAM1+0x3C); 	// EC SMB1 Block Count register
+#define SMB_ALRA                         (*((uint8_t *)(OEMRAM1+0x3D)))//  _at_ (OEMRAM1+0x3D); 	// EC SMB1 Alarm Address register
+#define SMB_ALRD0                        (*((uint8_t *)(OEMRAM1+0x3E)))//  _at_ (OEMRAM1+0x3E); 	// EC SMB1 Alarm Data register 0
+#define SMB_ALRD1                        (*((uint8_t *)(OEMRAM1+0x3F)))//  _at_ (OEMRAM1+0x3F); 	// EC SMB1 Alarm Data register 1
+#define ADCC_MemBase                0x0140
+#define wADC                             (*((uint16_t (*)[16])(ADCC_MemBase + 0x00))) //_at_ ADCC_MemBase + 0x00;
+#define xADC                             (*((uint8_t (*)[8])(ADCC_MemBase + 0x10))) //_at_ ADCC_MemBase + 0x10;
+#define xADC_ScanTimer                   (*((uint8_t *)(ADCC_MemBase + 0x18))) //_at_ ADCC_MemBase + 0x18;
+#define xADC_Count                       (*((uint8_t *)(ADCC_MemBase + 0x19))) //_at_ ADCC_MemBase + 0x19;
+#define xEC_T1_CNT                       (*((uint8_t *)(ADCC_MemBase + 0x1A))) //_at_ ADCC_MemBase + 0x1A;
+#define xEC_T2_CNT                       (*((uint8_t *)(ADCC_MemBase + 0x1B))) //_at_ ADCC_MemBase + 0x1B;
+#define xEC_T3_CNT                       (*((uint8_t *)(ADCC_MemBase + 0x1C))) //_at_ ADCC_MemBase + 0x1C;
+#define DPTF_MemBase                 0x0160
+#define xEC_T1_LoLimit                   (*((uint8_t *)(DPTF_MemBase + 0x00))) //_at_ DPTF_MemBase + 0x00;
+#define xEC_T1_HiLimit                   (*((uint8_t *)(DPTF_MemBase + 0x01))) //_at_ DPTF_MemBase + 0x01;
+#define xEC_T2_LoLimit                   (*((uint8_t *)(DPTF_MemBase + 0x02))) //_at_ DPTF_MemBase + 0x02;
+#define xEC_T2_HiLimit                   (*((uint8_t *)(DPTF_MemBase + 0x03))) //_at_ DPTF_MemBase + 0x03;
+#define xEC_T3_LoLimit                   (*((uint8_t *)(DPTF_MemBase + 0x04))) //_at_ DPTF_MemBase + 0x04;
+#define xEC_T3_HiLimit                   (*((uint8_t *)(DPTF_MemBase + 0x05))) //_at_ DPTF_MemBase + 0x05;
+#define xEC_T4_LoLimit                   (*((uint8_t *)(DPTF_MemBase + 0x06))) //_at_ DPTF_MemBase + 0x06; //BATT_T
+#define xEC_T4_HiLimit                   (*((uint8_t *)(DPTF_MemBase + 0x07))) //_at_ DPTF_MemBase + 0x07; //BATT_T
+
+#define xEC_T1_SendEvent                 (*((uint8_t *)(DPTF_MemBase + 0x08))) //_at_ DPTF_MemBase + 0x08;
+#define xEC_T1_THR                       (*((uint8_t *)(DPTF_MemBase + 0x09))) //_at_ DPTF_MemBase + 0x09;
+#define wEC_T1_THR_ACC                   (*((uint8_t *)(DPTF_MemBase + 0x0A))) //_at_ DPTF_MemBase + 0x0A;
+#define xEC_CPUT_EventTimer              (*((uint8_t *)(DPTF_MemBase + 0x0C))) //_at_ DPTF_MemBase + 0x0C;
+#define xEC_CPUT_SendEvent               (*((uint8_t *)(DPTF_MemBase + 0x0D))) //_at_ DPTF_MemBase + 0x0D;
+
+#define xEC_CPUT_HiLimit                 (*((uint8_t *)(DPTF_MemBase + 0x0E))) //_at_ DPTF_MemBase + 0x0E;
+#define xEC_CPUT_LoLimit                 (*((uint8_t *)(DPTF_MemBase + 0x0F))) //_at_ DPTF_MemBase + 0x0F;
+#define xEC_T1_AVG                       (*((uint8_t *)(DPTF_MemBase + 0x10))) //_at_ DPTF_MemBase + 0x10;
+#define xEC_T1_EventTimer                (*((uint8_t *)(DPTF_MemBase + 0x11))) //_at_ DPTF_MemBase + 0x11;
+#define xEC_T2_AVG                       (*((uint8_t *)(DPTF_MemBase + 0x12))) //_at_ DPTF_MemBase + 0x12;
+#define xEC_T2_EventTimer                (*((uint8_t *)(DPTF_MemBase + 0x13))) //_at_ DPTF_MemBase + 0x13;
+#define xEC_T3_AVG                       (*((uint8_t *)(DPTF_MemBase + 0x14))) //_at_ DPTF_MemBase + 0x14;
+#define xEC_T3_EventTimer                (*((uint8_t *)(DPTF_MemBase + 0x15))) //_at_ DPTF_MemBase + 0x15;
+#define xEC_T4_AVG                       (*((uint8_t *)(DPTF_MemBase + 0x16))) //_at_ DPTF_MemBase + 0x16;
+#define xEC_T4_SendEvent                 (*((uint8_t *)(DPTF_MemBase + 0x17))) //_at_ DPTF_MemBase + 0x17;
+#define xEC_T2_SendEvent                 (*((uint8_t *)(DPTF_MemBase + 0x18))) //_at_ DPTF_MemBase + 0x18;
+#define xEC_T2_THR                       (*((uint8_t *)(DPTF_MemBase + 0x19))) //_at_ DPTF_MemBase + 0x19;
+#define wEC_T2_THR_ACC                   (*((uint16_t *)(DPTF_MemBase + 0x1A))) //_at_ DPTF_MemBase + 0x1A;
+#define xEC_T3_SendEvent                 (*((uint8_t *)(DPTF_MemBase + 0x1C))) //_at_ DPTF_MemBase + 0x1C;
+#define xEC_T3_THR                       (*((uint8_t *)(DPTF_MemBase + 0x1D))) //_at_ DPTF_MemBase + 0x1D;
+#define wEC_T3_THR_ACC                   (*((uint16_t *)(DPTF_MemBase + 0x1E))) //_at_ DPTF_MemBase + 0x1E;
+
 #if PTRDEFRAM == 1
 #define BAT_STATUS			(*((uint8_t *)(ECRAM+0x0000)))
 #define POWER_FLAG1			(*((uint8_t *)(ECRAM+0x0001)))
