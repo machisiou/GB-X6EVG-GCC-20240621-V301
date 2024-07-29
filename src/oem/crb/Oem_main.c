@@ -184,13 +184,62 @@ void Oem_init(void)
 	I2C_Initial(0,0,0,0);
 	I2C_Initial(1,0,0,0);
 	I2C_Initial(4,0,0,0);
-	
+
+	SCI_Event_In_Index = 0;
+    SCI_Event_Out_Index = 0;
+	CLEAR_MASK(CustomFlags,ECCheckBurstMode);
 	//uint8_t OEMRAM00;
 	//OEMRAM00[0] = *((uint8_t *)(ECOEMRAM1 + 0x0000));
 	//OEMRAM00[1] = 0;
 	
 	//PWRBTN_WDT_Init(1, 0x7FFF,0,0x500,0xFF);
 	SystemState = SYSTEM_G3;
+
+
+	if (!DEBUG_CARD_L)
+	{
+	#if 1   /* Debug LED */
+    //Port80_Code = 0x00;
+    //Port81_Code = 0x00;
+    /* Load Debug Card 7 SEG. TM1650 LED Table */
+    LED7s_TABLE[0] = 0x3F;
+    LED7s_TABLE[1] = 0x06;
+    LED7s_TABLE[2] = 0x5B;
+    LED7s_TABLE[3] = 0x4F;
+    LED7s_TABLE[4] = 0x66;
+    LED7s_TABLE[5] = 0x6D;
+    LED7s_TABLE[6] = 0x7D;
+    LED7s_TABLE[7] = 0x07;
+    LED7s_TABLE[8] = 0x7F;
+    LED7s_TABLE[9] = 0x6F;
+    LED7s_TABLE[10] = 0x77;
+    LED7s_TABLE[11] = 0x7C;
+    LED7s_TABLE[12] = 0x39;
+    LED7s_TABLE[13] = 0x5E;
+    LED7s_TABLE[14] = 0x79;
+    LED7s_TABLE[15] = 0x71;
+    #else
+    //Port80_Code = 0x00;
+    //Port81_Code = 0x00;
+    /* Reserved for 7 SEG. TM1650 LED Dot Mode */
+    LED7s_TABLE[0] = 0xBF;
+    LED7s_TABLE[1] = 0x86;
+    LED7s_TABLE[2] = 0xDB;
+    LED7s_TABLE[3] = 0xCF;
+    LED7s_TABLE[4] = 0xE6;
+    LED7s_TABLE[5] = 0xED;
+    LED7s_TABLE[6] = 0xFD;
+    LED7s_TABLE[7] = 0x87;
+    LED7s_TABLE[8] = 0xFF;
+    LED7s_TABLE[9] = 0xDF;
+    LED7s_TABLE[10] = 0xF7;
+    LED7s_TABLE[11] = 0xFC;
+    LED7s_TABLE[12] = 0xB9;
+    LED7s_TABLE[13] = 0xDE;
+    LED7s_TABLE[14] = 0xF9;
+    LED7s_TABLE[15] = 0xF1;
+    #endif
+    }
 }
 
 void GETRPM1(void)

@@ -122,6 +122,8 @@ extern void InitDevice(void);
 
 #define BAT_FULL_L              GPIO->GCR_b[29].OUTCTRL
 
+#define DEBUG_CARD_L            GPIO_Read(60)
+
 #endif
 
 
