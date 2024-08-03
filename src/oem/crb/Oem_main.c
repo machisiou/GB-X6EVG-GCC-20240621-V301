@@ -41,6 +41,13 @@ void oem_1ms_service(void)
 	}
 	else
 	{i=0;}
+
+	if(IS_BIT_SET(ESPI->EVIDX7, IDX7_HOST_RST_WARN)) {
+		VW_Set_Index(0x06, 0x8F);
+        while(IS_BIT_SET(ESPI->EVIDX7, IDX7_HOST_RST_WARN)) {}
+		VW_Set_Index(0x06, 0x87);
+    }
+	ESPI->EVSTS_b.IDX7CHG = 1;
 }
 
 /******************************************************************************/
