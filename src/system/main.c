@@ -131,20 +131,15 @@ int main(void)
 	/* Oem function initialize*/
 	Oem_init();
 	SPIC_AutoMode();
-	//GPIO_Write(0,1);
-	//GPIO_Write(122,1);
-	//GPIO_Write(87,1);
+
 	_Delay_1ms(10);
-	//GPIO_Write(87,0);
-	//GPIO_Write(87,1);
-	//GPIO_Write(86,1);
-	//GPIO_Write(112,1);
+
 
 	SERVICEflag = 0;
 	__enable_irq();
 	/* Infinite loop */
 	SystemState = SYSTEM_G3;
-	EC_3A = 1;
+	//EC_3A = 1;
 	while(1) {
 		Main_Service();
 	}
@@ -345,7 +340,7 @@ static void system_init(void)
 	// ----- I2C power -----
 	SYS_CLKPWR_I2CAUTO(enable);
 	Sys_I2cClkPwrEnable(I2C0_UNIT, enable, 0,0);
-	Sys_I2cClkPwrEnable(I2C2_UNIT, enable, 0,0);
+	Sys_I2cClkPwrEnable(I2C1_UNIT, enable, 0,0);
 	Sys_I2cClkPwrEnable(I2C4_UNIT, enable, 0,0);
 
 	// ----- TACH power -----

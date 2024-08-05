@@ -329,9 +329,9 @@ void S5_S0_PS(void)
 	while(!GPIO_Read(117)) {}	// wait IMVP9P1_PWRGD
 			
 	GPIO_Write(19,1);
-	_Delay_1ms(1);
+	//_Delay_1ms(1);
 	//GPIO_Write(104,1);			// on PM_PWROK
-	_Delay_1ms(98);
+	_Delay_1ms(100);
 	//GPIO_Write(105,1);			// on PM_SYSPWROK
 	GPIO_Write(125,1);			// on PM_SYSPWROK
 	while(!GetPLTRST) {}		// wait VW PLTRST
@@ -646,6 +646,7 @@ void Oem_SysPowerContrl(void)
 	switch (SystemState)
     {
         case SYSTEM_S5S0:
+			G3_S5_PS();
             S5_S0_PS();
             break;
 
