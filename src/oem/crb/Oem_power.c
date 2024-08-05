@@ -646,6 +646,7 @@ void Oem_SysPowerContrl(void)
 	switch (SystemState)
     {
         case SYSTEM_S5S0:
+			G3_S5_PS();
             S5_S0_PS();
             break;
 
