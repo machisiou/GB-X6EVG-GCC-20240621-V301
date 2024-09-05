@@ -209,3 +209,13 @@ void GPIO_ClrIntr(uint32_t GPIOnum)
 {
 	GPIO->GCR_b[GPIOnum].INTSTS = 1;
 }
+
+/******************************************************************************/
+/** Read GPIO Inout/Output Type
+ * GPIOnum - GPIO number
+ * return 0:Input, 1:Output                                                  
+*******************************************************************************/
+uint8_t GPIO_ReadIOType(uint32_t GPIOnum)
+{
+	return GPIO->GCR_b[GPIOnum].DIR;
+}

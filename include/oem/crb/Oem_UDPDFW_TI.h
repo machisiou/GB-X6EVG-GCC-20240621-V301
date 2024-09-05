@@ -160,6 +160,9 @@ extern uint8_t pd1_ti_check_app_mode(void);
 extern uint8_t pd_ti_check_CMD1(void);
 
 extern uint8_t I2C_Protocol_SMART_AMP(uint8_t Channel, uint8_t Addr, uint8_t WDatCnt, uint8_t RDatCnt, uint8_t *WDatBuf, uint8_t *RDatBuf);
+extern void Clear_Ti_SmartAmp(void);
+extern void Init_Ti_SmartAmp(void);
+extern void Read_Ti_SmartAmp(void);
 /*-----------------------------------------------------------------------------
  * For TI PD Function Call Prototype
  *---------------------------------------------------------------------------*/

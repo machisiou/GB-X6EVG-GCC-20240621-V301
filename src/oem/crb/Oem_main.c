@@ -48,6 +48,8 @@ void oem_1ms_service(void)
 		VW_Set_Index(0x06, 0x87);
     }
 	ESPI->EVSTS_b.IDX7CHG = 1;
+
+
 }
 
 /******************************************************************************/
@@ -94,6 +96,11 @@ void oem_50msB_service(void)
 *******************************************************************************/
 void oem_100msA_service(void)
 {
+	if (SystemIsS0)
+	{
+		Check_PORT80();
+	}
+		
 }
 
 /******************************************************************************/
@@ -208,10 +215,10 @@ void GETRPM1(void)
 
 	
 }
-
+#if 0
 void INIT_TM1650(void)
 {
-	#if 0
+	
 	uint8_t test_val[1] = {0x59};
     I2C_WR_BUFFER[0] = 0x41;    //Brightness = 4,
     //I2C_WriteStream(SMbusCh4, 0x48, &I2C_WR_BUFFER[0], 1);
@@ -251,7 +258,7 @@ void INIT_TM1650(void)
 //    bRWSMBus(SMbusCh4, SMbusSBC, 0x6E,
 //                I2C_WR_BUFFER[0], &I2C_WR_BUFFER[0], 0);
 	I2C_SMBusModProtocol(3,3,0x6E,NULL,I2C_WR_BUFFER,NULL);
-	#endif
+	
 	
 	I2C_WR_BUFFER[0] = 0x41;
 	I2C_Protocol(4, 0x48, 1, 0, I2C_WR_BUFFER,NULL);
@@ -273,7 +280,7 @@ void INIT_TM1650(void)
 	SMBUS_RW_B(4, 3, 0x6C ,0x0F ,NULL);
 	SMBUS_RW_B(4, 3, 0x6E ,0x0F ,NULL);
 }
-
+#endif
 void PD_Adapter_setting(void)
 {
 	 if (IS_BIT_CLR(POWER_FLAG10, ac_current_180w)) //i7 CPU
@@ -305,18 +312,153 @@ uint8_t Check_PORT80(void)
 				Last_P81HDR = Port81_Get_Data();
 				Last_P80HDR = Port80_Get_Data();
 				led =(uint8_t)(Last_P80HDR<<4)|(Last_P80HDR>>4); //981004-200812-A
-				I2C_SMBusModProtocol(3,3,0x48,0,test_val,0);	 		
+				I2C_SMBusModProtocol(4,SendByte,0x48,0,test_val,0);	 		
 				I2C_WR_BUFFER[0] = LED7s_TABLE[led & 0x0F]; //981004-200812-M
-				I2C_SMBusModProtocol(3,3,0x68,0,I2C_WR_BUFFER,0);
+				I2C_SMBusModProtocol(4,SendByte,0x68,0,I2C_WR_BUFFER,0);
 				I2C_WR_BUFFER[0] = LED7s_TABLE[(led >> 4) & 0x0F]; //981004-200812-M
-				I2C_SMBusModProtocol(3,3,0x6A,0,I2C_WR_BUFFER,0);
+				I2C_SMBusModProtocol(4,SendByte,0x6A,0,I2C_WR_BUFFER,0);
 				led = (uint8_t)(Last_P81HDR<<4)|(Last_P81HDR>>4); //981004-200812-A
 				I2C_WR_BUFFER[0] = LED7s_TABLE[led & 0x0F]; //981004-200812-M		
-				I2C_SMBusModProtocol(3,3,0x6C,0,I2C_WR_BUFFER,0);
+				I2C_SMBusModProtocol(4,SendByte,0x6C,0,I2C_WR_BUFFER,0);
 				I2C_WR_BUFFER[0] = LED7s_TABLE[(led >> 4) & 0x0F]; //981004-200812-M 		
-				I2C_SMBusModProtocol(3,3,0x6E,0,I2C_WR_BUFFER,0);
+				I2C_SMBusModProtocol(4,SendByte,0x6E,0,I2C_WR_BUFFER,0);
 				
 			}
 		
 		#endif
+}
+
+void EC_ACK_eSPI_SUS_WARN(void)
+{
+#if 0
+    /* Use internal registers */
+    if (IS_MASK_SET(REG_32A6, BIT3))
+    {
+        VWIDX40 |= (F_IDX40_VALID + F_IDX40_SUSACK);
+        REG_32A6 = 0x0F;
+    }
+#else
+    /* Use formal registers */
+    if (IS_MASK_SET(ESPI->EVIDX41, IDX41_SUS_WARN) &&
+        IS_MASK_SET(ESPI->EVIDX41, IDX41_SUS_WARN_VALID))
+    {
+        //ESPI->EVIDX40 |= (IDX40_SUSACK + IDX40_SUSACK_VALID);
+		VW_Set_Index(0x40,IDX40_SUSACK + IDX40_SUSACK_VALID);
+    }
+    if (IS_MASK_CLEAR(ESPI->EVIDX41, IDX41_SUS_WARN) &&
+        IS_MASK_SET(ESPI->EVIDX41, IDX41_SUS_WARN_VALID))
+    {
+       // ESPI->EVIDX40 &= ~(IDX40_SUSACK);
+       // ESPI->EVIDX40 |= IDX40_SUSACK_VALID;
+		VW_Set_Index(0x40,0x10);
+    }
+#endif
+}
+
+void EC_ACK_eSPI_Boot_Ready(void)
+{
+#if SUPPORT_EN_VW_ACK_BOOT_LOAD
+    //if (IS_MASK_SET(REG_310F, F_VW_CHN_ENABLE))
+    {
+        //if (IS_MASK_SET(REG_310F, F_VW_CHN_READY))
+		if(GetVWEnable)
+        {
+            // VWIDX5 = (F_IDX5_SLAVE_BOOT_LOAD_STATUS_VALID +
+            //           F_IDX5_SLAVE_BOOT_LOAD_DONE_VALID +
+            //           F_IDX5_SLAVE_BOOT_LOAD_STATUS +
+            //           F_IDX5_SLAVE_BOOT_LOAD_DONE);
+			VW_Set_Index(0x05,0x99);
+        }
+    }
+#else    
+    if (IS_MASK_SET(REG_3117, F_FLASH_CHN_ENABLE))
+    {
+        if (IS_MASK_SET(REG_3117, F_FLASH_CHN_READY))
+        {            
+            VWIDX5 = (F_IDX5_SLAVE_BOOT_LOAD_STATUS_VALID +
+                      F_IDX5_SLAVE_BOOT_LOAD_DONE_VALID +
+                      F_IDX5_SLAVE_BOOT_LOAD_STATUS +
+                      F_IDX5_SLAVE_BOOT_LOAD_DONE);
+        }
+    }
+#endif
+}
+
+void EC_ACK_eSPI_Reset(void)
+{
+    if (IS_MASK_SET(ESPI->EVIDX7 , IDX7_HOST_RST_WARN))
+    {
+        // VWIDX6 = (F_IDX6_HOST_RST_ACK_VALID +
+        //           F_IDX6_HOST_RST_ACK +
+        //           F_IDX6_RCIN +
+        //           F_IDX6_SMI +
+        //           F_IDX6_SCI);
+		VW_Set_Index(0x06,0x7F);
+        ITempW01 = 60000;
+        while (IS_MASK_SET(ESPI->EVIDX7 , IDX7_HOST_RST_WARN))
+        {
+            ITempW01--;
+#if 1   /* Timeout if need */
+            if (ITempW01 == 0)
+            {
+                break;
+            }
+#endif
+        }
+        // VWIDX6 = (F_IDX6_HOST_RST_ACK_VALID +
+        //           F_IDX6_RCIN +
+        //           F_IDX6_SMI +
+        //           F_IDX6_SCI);
+		VW_Set_Index(0x06,0x77);
+        //Hook_EC_ACK_eSPI_Reset();
+    }
+    if (IS_MASK_SET(ESPI->EVIDX3, IDX3_OOB_RST_WARN))
+    {
+        //ESPI->EVIDX4 |= (IDX3_OOB_RST_WARN_VALID + IDX3_OOB_RST_WARN);
+		VW_Set_Index(0x04,0x11);
+        ITempW01 = 60000;
+        while (IS_MASK_SET(ESPI->EVIDX3, IDX3_OOB_RST_WARN))
+        {
+            ITempW01--;
+#if 1   /* Timeout if need */
+            if (ITempW01 == 0)
+            {
+                break;
+            }
+#endif
+        }
+        //ITempB01 = (VWIDX4 | F_IDX4_OOB_RST_ACK_VALID);
+        //ITempB01 &= (~F_IDX4_OOB_RST_ACK_VALID);
+        //VWIDX4 = ITempB01;  //(F_IDX4_OOB_RST_ACK_VALID);
+    }
+}
+
+void service_eSPI_handshake(void)
+{
+    //-----------------------------------
+    // eSPI Interface Control
+    //-----------------------------------
+    if (1)
+    {
+        // if (VWIDX5 == (F_IDX5_SLAVE_BOOT_LOAD_STATUS_VALID +
+        //                 F_IDX5_SLAVE_BOOT_LOAD_DONE_VALID +
+        //                 F_IDX5_SLAVE_BOOT_LOAD_STATUS +
+        //                 F_IDX5_SLAVE_BOOT_LOAD_DONE))
+		if(ESPI->EVTXDAT == 0x0599)
+        {
+            EC_ACK_eSPI_SUS_WARN();
+            EC_ACK_eSPI_Reset();
+#if SUPPORT_HOOK_WARMBOOT
+            if (eSPI_PLTRST_TAG == F_PLTRST_DETECTED)
+            {
+                eSPI_PLTRST_TAG = F_PLTRST_HI_LEVEL;
+                SystemWarmBoot();
+            }
+#endif
+        }
+        else
+        {
+            EC_ACK_eSPI_Boot_Ready();
+        }
+    }
 }

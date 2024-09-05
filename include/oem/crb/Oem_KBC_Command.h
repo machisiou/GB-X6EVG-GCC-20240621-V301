@@ -17,3 +17,5 @@ extern void KBC_80DATA(void);
 extern void KBC_81DATA(void);
 extern void KBC_D9DATA(void);
 extern void KBC_B0DATA(void);
+
+extern void OEM_Cmd_B0(void);

@@ -38,5 +38,5 @@ extern void oem_set_acpi_event_pending(void);
 extern void oem_clr_acpi_event_pending(void);
 
 extern void ACPI_SMBusCmd(void);
-
+extern void ResetSCIEvent(void);
 #endif

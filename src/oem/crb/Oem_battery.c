@@ -1,14 +1,3 @@
-/**
- * @file Oem_battery.c
- * @author Jim Lai (jim.lai@realtek.com)
- * @brief 
- * @version 0.1
- * @date 2024-03-08
- * 
- * @copyright Copyright (c) 2024
- * 
- */
-
 #include "RTK_Include.h"
 
 #if 1
@@ -42,7 +31,11 @@ void Fix_Battery_Abnormal(void)//Note: shipmode wake-up possibility no charge cu
 	      if (IS_BIT_CLR(POWER_FLAG4, bat_custom_end))		
           {
              BAT_OPTION = 0x4CF9;
-			 BAT_LED_L = 0;	//981004-240425-A              			 
+			 if (IS_MASK_CLEAR(POWER_FLAG8, ALL_LED_OFF)) //EC RAM 0x208 bit3 //981004-240529-A
+			 {
+				BAT_LED_L = 0;	//981004-240425-A 
+			 }
+			              			 
           }
           else
           {
@@ -78,8 +71,11 @@ uint8_t BAT_CUSTOMIZE_CHECK(int sel_item)
     else //981004-240425-A-S
 	{	
       if (IS_MASK_CLEAR(POWER_FLAG4, bat_custom_end))		
-      {             
-          BAT_LED_L = 0;	  
+      { 
+		  if (IS_MASK_CLEAR(POWER_FLAG8, ALL_LED_OFF)) //EC RAM 0x208 bit3 //981004-240529-A
+	      {              
+         	 BAT_LED_L = 0;
+		  }	  
       }
       else
       {           
@@ -111,7 +107,7 @@ uint8_t BAT_CUSTOMIZE_CHECK(int sel_item)
 						if ((IS_BIT_SET(POWER_FLAG12, bat_full)) && (RMCAP_TEMP >= BATCAP98))               
 						{			        
 							//if (IS_BIT_SET(POWER_FLAG1, adapter_in))
-							if ((IS_BIT_SET(POWER_FLAG1, adapter_in)) || (IS_BIT_SET(POWER_FLAG11, pd_ac_over65w)))	
+							if ((IS_MASK_SET(POWER_FLAG1, adapter_in)) || (IS_MASK_SET(POWER_FLAG11, pd_ac_over65w)) || (IS_MASK_SET(POWER_FLAG8, pd_ac_over65w2)))	
 							{
 								BAT_RMCAP = BAT_LFCCAP;
 								RMCAP_TEMP = LFCCAP_TEMP;						 
@@ -122,7 +118,7 @@ uint8_t BAT_CUSTOMIZE_CHECK(int sel_item)
 					{ 													 		     	
 						//if (IS_BIT_SET(POWER_FLAG1, adapter_in))
 						EC_S3_DDR5_EN = 1;
-                        if ((IS_BIT_SET(POWER_FLAG1, adapter_in)) || (IS_BIT_SET(POWER_FLAG11, pd_ac_over65w)))						
+                        if ((IS_MASK_SET(POWER_FLAG1, adapter_in)) || (IS_MASK_SET(POWER_FLAG11, pd_ac_over65w)) || (IS_MASK_SET(POWER_FLAG8, pd_ac_over65w2)))					
 						    BatPollingStep++;   		
 						//else if (IS_BIT_CLR(POWER_FLAG1, usb_charge_s3)) //981004-180717-R
 						    //BatPollingStep++;   														
@@ -214,7 +210,7 @@ uint8_t BAT_CUSTOMIZE_CHECK(int sel_item)
 						if ((IS_BIT_SET(POWER_FLAG12, bat_full)) && (RMCAP_TEMP >= BATCAP98))               
 						{			        
 							//if (IS_BIT_SET(POWER_FLAG1, adapter_in))
-							if ((IS_BIT_SET(POWER_FLAG1, adapter_in)) || (IS_BIT_SET(POWER_FLAG11, pd_ac_over65w)))	
+							if ((IS_MASK_SET(POWER_FLAG1, adapter_in)) || (IS_MASK_SET(POWER_FLAG11, pd_ac_over65w)) || (IS_MASK_SET(POWER_FLAG8, pd_ac_over65w2)))	
 							{
 								BAT_RMCAP = BAT_LFCCAP;
 								RMCAP_TEMP = LFCCAP_TEMP;						 
@@ -225,7 +221,7 @@ uint8_t BAT_CUSTOMIZE_CHECK(int sel_item)
 					{ 													 		     	
 						//if (IS_BIT_SET(POWER_FLAG1, adapter_in))
 						EC_S3_DDR5_EN = 1;					
-                        if ((IS_BIT_SET(POWER_FLAG1, adapter_in)) || (IS_BIT_SET(POWER_FLAG11, pd_ac_over65w)))						
+                        if ((IS_MASK_SET(POWER_FLAG1, adapter_in)) || (IS_MASK_SET(POWER_FLAG11, pd_ac_over65w)) || (IS_MASK_SET(POWER_FLAG8, pd_ac_over65w2)))					
 						    BatPollingStep++;   		
 						//else if (IS_BIT_CLR(POWER_FLAG1, usb_charge_s3)) //981004-180717-R
 						    //BatPollingStep++;   														
@@ -377,14 +373,14 @@ void BatLfcCapCal(void)
 	
 	//bRSMBusBlock(SMbusCh1, SMbusRBK, SmartBat_Addr, C_Dname , &BAT_NEWDEVNAME); //981004-130819-A 
 
-	SMBUS_RW_BLK(0,ReadBlock,SmartBat_Addr,C_Dname, &BAT_NEWDEVNAME);
+	//SMBUS_RW_BLK(0,ReadBlock,SmartBat_Addr,C_Dname, &BAT_NEWDEVNAME);
 		
-	if ((New_DSNCAP != BAT_DSNCAP) || (BAT_NEWDEVNAME != BAT_DEVNAME)) //981004-130819-M
-	//if (New_DSNCAP != BAT_DSNCAP)
+	//if ((New_DSNCAP != BAT_DSNCAP) || (BAT_NEWDEVNAME != BAT_DEVNAME)) //981004-130819-M
+	if (New_DSNCAP != BAT_DSNCAP)
     {	
 		BAT_DSNCAP = New_DSNCAP;
 		BAT_DEVNAME = BAT_NEWDEVNAME; 
-		
+		test05++;
 		//bRWSMBus(SMbusCh1, SMbusRW, SmartBat_Addr, BATCmd_DVolt, &BAT_DSNVTG, SMBus_NoPEC);
 		SMBUS_RW_W(0,ReadWord,SmartBat_Addr,BATCmd_DVolt,&BAT_DSNVTG);
 		//bRWSMBus(SMbusCh1, SMbusRW, SmartBat_Addr, BATCmd_RCalarm, &BAT_DSNCAPWN, SMBus_NoPEC);
@@ -456,7 +452,7 @@ void PollingBatteryData(void)
 			
             CheckChargerSetting(); //981004-171107-A
 						
-			if ((!AC_IN_L) || ((IS_BIT_SET(POWER_FLAG11, pd_ac_over65w))))
+			if ((!AC_IN_L) || ((IS_MASK_SET(POWER_FLAG11, pd_ac_over65w))) || ((IS_MASK_SET(POWER_FLAG8, pd_ac_over65w2))))
 			{			    		        		
 				if (IS_BIT_CLR(POWER_FLAG12, bat_full))
 			    {
@@ -541,7 +537,7 @@ void PollingBatteryData(void)
 		    //bRWSMBus(SMbusCh1, SMbusWW, Charger_Addr, CHGCmd_Option,  &BAT_OPTION ,  SMBus_NoPEC);
 			SMBUS_RW_W(0,WriteWord,Charger_Addr,CHGCmd_Option,&BAT_OPTION);		
 		    
-			if ((!AC_IN_L) || ((IS_BIT_SET(POWER_FLAG11, pd_ac_over65w))))
+			if ((!AC_IN_L) || ((IS_MASK_SET(POWER_FLAG11, pd_ac_over65w))) || ((IS_MASK_SET(POWER_FLAG8, pd_ac_over65w2))))
 			{
 			if (!AC_IN_L)		
             {
@@ -576,13 +572,13 @@ void PollingBatteryData(void)
 					    //981004-190530-M-S
                         if (IS_BIT_CLR(POWER_FLAG10, ac_current_180w))
 				        {
-				            WTDP = 157;
+				            WTDP = 110;
 			                WTDP2 = 157;
 			                WTDP4 = 246; //i7 CPU; //i7 CPU
 				        }
 				        else
 				        {
-                            WTDP = 157;
+                            WTDP = 110;
 			                WTDP2 = 157;
 			                WTDP4 = 246; //i9 CPU
                         }			
@@ -599,7 +595,7 @@ void PollingBatteryData(void)
 				   {
 					 if  ((IS_MASK_CLEAR(EC_Flag4, GPU_temp_75)) && (NVDeventStatus2 == 0)) //981004-221228-M
 					 {	 
-				       WTDP = 157;
+				       WTDP = 110;
 					 }  
 	                   WTDP2 = 157;
 	                   WTDP4 = 246; //i7 CPU
@@ -608,7 +604,7 @@ void PollingBatteryData(void)
 				   {
                        if  ((IS_MASK_CLEAR(EC_Flag4, GPU_temp_75)) && (NVDeventStatus2 == 0)) //981004-221228-M
 					   {	 
-				         WTDP = 157;
+				         WTDP = 110;
 					   }  
 	                   WTDP2 = 157;
 	                   WTDP4 = 246; //i9 CPU
@@ -719,7 +715,7 @@ void PollingBatteryData(void)
 			   }				 
                 //981004-200210-A-E
 			 #if 1	
-			 if ((!AC_IN_L) || ((IS_BIT_SET(POWER_FLAG11, pd_ac_over65w))))
+			 if ((!AC_IN_L) || ((IS_MASK_SET(POWER_FLAG11, pd_ac_over65w))) || ((IS_MASK_SET(POWER_FLAG8, pd_ac_over65w2))))
 			 {	
 			    if (IS_BIT_SET(BAT_STATUS, CHARGE))
 			    {
@@ -728,7 +724,10 @@ void PollingBatteryData(void)
                   {				  
 					if (IS_BIT_CLR(POWER_FLAG7, bat_cap97)) 
                     {
-                        BAT_LED_L = 0;
+						if (IS_MASK_CLEAR(POWER_FLAG8, ALL_LED_OFF)) //EC RAM 0x208 bit3 //981004-240529-A
+	                    { 
+                            BAT_LED_L = 0;
+						}
 						//GPIO_Write(25,0);
                     }
 					else
@@ -756,7 +755,7 @@ void PollingBatteryData(void)
 			 #if 0            		
 			if (IS_MASK_CLEAR(POWER_FLAG2, LED_TEST_ON)) 
             {               				
-               if (((!AC_IN_L) || ((IS_MASK_SET(POWER_FLAG11, pd_ac_over65w)))) && (RMCAP_TEMP < BATCAP95))
+                if (((!AC_IN_L) || ((IS_MASK_SET(POWER_FLAG11, pd_ac_over65w))) || ((IS_MASK_SET(POWER_FLAG8, pd_ac_over65w2)))) && (RMCAP_TEMP < BATCAP95))
 			   {
                    BAT_LED_L = 0;				   
                }
@@ -767,7 +766,7 @@ void PollingBatteryData(void)
    			}
 			#endif	
 			#if 0
-			else if (IS_BIT_SET(POWER_FLAG11, pd_ac_over65w))
+			else if ((IS_MASK_SET(POWER_FLAG11, pd_ac_over65w)) || ((IS_MASK_SET(POWER_FLAG8, pd_ac_over65w2))))
 			{
                if (IS_BIT_CLR(POWER_FLAG10, ac_current_180w)) //i7 CPU
 	           {	 
@@ -799,7 +798,7 @@ void PollingBatteryData(void)
 			SMBUS_RW_W(0,ReadWord,SmBat_Addr,C_current,&BAT_RATETEMP);
 			
             //if (IS_BIT_SET(POWER_FLAG1, adapter_in))
-			if ((IS_BIT_SET(POWER_FLAG1, adapter_in)) || (IS_BIT_SET(POWER_FLAG11, pd_ac_over65w)))	
+			if ((IS_MASK_SET(POWER_FLAG1, adapter_in)) || (IS_MASK_SET(POWER_FLAG11, pd_ac_over65w)) || (IS_MASK_SET(POWER_FLAG8, pd_ac_over65w2)))	
 			{
             	if ((BAT_RATETEMP & 0x0080) == 0)
                 {                   
@@ -880,6 +879,7 @@ void PollingBatteryData(void)
 			if(!SMBUS_RW_W(0, ReadWord, SmartBat_Addr, BATCmd_RMcap, &BAT_RMCAP))
 			{			  
 			   BatPollingStep = 0;   
+			   test00++;
                return;
 			} 
             //981004-171106-M-E			
@@ -902,11 +902,18 @@ void PollingBatteryData(void)
         //981004-231218-M-S 
 			if (IS_MASK_CLEAR(POWER_FLAG2, LED_TEST_ON)) 
             {	     
-              if ((AC_IN_L) && (IS_MASK_CLEAR(POWER_FLAG11, pd_ac_over65w))) //battery mode
+              if ((AC_IN_L) && (IS_MASK_CLEAR(POWER_FLAG11, pd_ac_over65w)) && (IS_MASK_CLEAR(POWER_FLAG8, pd_ac_over65w2))) //battery mode
               {				
                 if ((RMCAP_TEMP <= BATCAP20))
 			    {
-                    BAT_LED_L = ~BAT_LED_L;
+                    if (IS_MASK_CLEAR(POWER_FLAG8, ALL_LED_OFF)) //EC RAM 0x208 bit3 //981004-240529-A
+	                {
+                         BAT_LED_L = ~BAT_LED_L;
+					}
+                    else
+                    {
+						 BAT_LED_L = 1;
+					}
                 }
 				else //981004-231221-A
 				{	
@@ -944,7 +951,7 @@ void PollingBatteryData(void)
             CheckChargerSetting(); //981004-171107-A
 			//981004-230825-A-S
 			#if 0 //981004-231218-R-S
-			if (((!AC_IN_L) || ((IS_MASK_SET(POWER_FLAG11, pd_ac_over65w)))) && (RMCAP_TEMP >= BATCAP95))
+			if (((!AC_IN_L) || ((IS_MASK_SET(POWER_FLAG11, pd_ac_over65w))) || ((IS_MASK_SET(POWER_FLAG8, pd_ac_over65w)2))) && (RMCAP_TEMP >= BATCAP95))
 			{
                 BAT_FULL_L = 0;
             }
@@ -955,7 +962,7 @@ void PollingBatteryData(void)
             #endif //981004-231218-R-E			
             //981004-230825-A-E
 
-			if ((!AC_IN_L) || ((IS_BIT_SET(POWER_FLAG11, pd_ac_over65w))))
+			if ((!AC_IN_L) || ((IS_MASK_SET(POWER_FLAG11, pd_ac_over65w))) || ((IS_MASK_SET(POWER_FLAG8, pd_ac_over65w2))))
 			{			    		        		
 				if (IS_BIT_CLR(POWER_FLAG12, bat_full))
 			    {
@@ -1080,13 +1087,13 @@ void PollingBatteryData(void)
 					    //981004-190530-M-S
                         if (IS_BIT_CLR(POWER_FLAG10, ac_current_180w))
 				        {
-				            WTDP = 157;
+				            WTDP = 110;
 			                WTDP2 = 157;
 			                WTDP4 = 246; //i7 CPU; //i7 CPU
 				        }
 				        else
 				        {
-                            WTDP = 157;
+                            WTDP = 110;
 			                WTDP2 = 157;
 			                WTDP4 = 246; //i9 CPU
                         }			
@@ -1103,7 +1110,7 @@ void PollingBatteryData(void)
 				   {
 					   if((IS_BIT_CLR(EC_Flag4, GPU_temp_75)) && (NVDeventStatus2 == 0)) //981004-221123-A
 					   {	   
-				          WTDP = 157;
+				          WTDP = 110;
 					   }	  
 	                   WTDP2 = 157;
 	                   WTDP4 = 246; //i7 CPU
@@ -1112,7 +1119,7 @@ void PollingBatteryData(void)
 				   {
 					   if  (NVDeventStatus2 == 0) 
 					   {
-                          WTDP = 157;
+                          WTDP = 110;
 					   }	  
 	                   WTDP2 = 157;
 	                   WTDP4 = 246; //i9 CPU
@@ -1146,12 +1153,15 @@ void PollingBatteryData(void)
 			//981004-231218-M-S
 			if ((IS_MASK_CLEAR(POWER_FLAG2, LED_TEST_ON)) && (IS_MASK_CLEAR(POWER_FLAG15, BAT_CUSTOM))) //981004-240425-M 
             { 	
-			 if ((!AC_IN_L) || ((IS_BIT_SET(POWER_FLAG11, pd_ac_over65w))))
+			 if ((!AC_IN_L) || ((IS_MASK_SET(POWER_FLAG11, pd_ac_over65w))) || ((IS_MASK_SET(POWER_FLAG8, pd_ac_over65w2))))
 			 {
 				 if ((RMCAP_TEMP >= BATCAP95))
 			     {
                      BAT_LED_L = 1;
-					 BAT_FULL_L = 0;                     					 
+					 if (IS_MASK_CLEAR(POWER_FLAG8, ALL_LED_OFF)) //EC RAM 0x208 bit3 //981004-240529-A
+	                 {
+					    BAT_FULL_L = 0; 
+                     }                     					 
 					 if (RMCAP_TEMP >= BATCAP99)
 					 {
 						BAT_FULL_L = 1;                         						
@@ -1159,7 +1169,10 @@ void PollingBatteryData(void)
                  }
                  else
                  {
-				    BAT_LED_L = 0;
+				    if (IS_MASK_CLEAR(POWER_FLAG8, ALL_LED_OFF)) //EC RAM 0x208 bit3 //981004-240529-A
+	                { 
+				       BAT_LED_L = 0;
+					}
 					BAT_FULL_L = 1;                    					
 			     }
 
@@ -1201,7 +1214,14 @@ void PollingBatteryData(void)
 			 {
 				 if ((RMCAP_TEMP <= BATCAP20))
 			     {
-                     BAT_LED_L = ~BAT_LED_L;
+                     if (IS_MASK_CLEAR(POWER_FLAG8, ALL_LED_OFF)) //EC RAM 0x208 bit3 //981004-240529-A
+	                 {
+                        BAT_LED_L = ~BAT_LED_L;
+					 }
+                     else
+                     {
+						BAT_LED_L = 1; 
+					 }
                  }
 				 else //981004-231221-A
 				 {
@@ -1211,7 +1231,7 @@ void PollingBatteryData(void)
 			 }
 			}	
 			#if 0
-			else if (IS_BIT_SET(POWER_FLAG11, pd_ac_over65w))
+			else if ((IS_MASK_SET(POWER_FLAG11, pd_ac_over65w)) || (IS_MASK_SET(POWER_FLAG8, pd_ac_over65w2)))
 			{
                if (IS_BIT_CLR(POWER_FLAG10, ac_current_180w)) //i7 CPU
 	           {	 
@@ -1243,7 +1263,7 @@ void PollingBatteryData(void)
 			SMBUS_RW_W(0,ReadWord,Charger_Addr,C_current,&BAT_RATETEMP);
 			
             //if (IS_BIT_SET(POWER_FLAG1, adapter_in))
-			if ((IS_BIT_SET(POWER_FLAG1, adapter_in)) || (IS_BIT_SET(POWER_FLAG11, pd_ac_over65w)))	
+			if ((IS_MASK_SET(POWER_FLAG1, adapter_in)) || (IS_MASK_SET(POWER_FLAG11, pd_ac_over65w)) || (IS_MASK_SET(POWER_FLAG8, pd_ac_over65w2)))
 			{
             	if ((BAT_RATETEMP & 0x0080) == 0)
                 {                   
@@ -1313,7 +1333,14 @@ void PollingBatteryData(void)
             FCC_PERCENTAGE(); //981004-230605-A			
 			
             if ((BAT_ALARM1) && (!BAT_DSNCAP)) //992022-130530-A Fix Bat. led not on after ship mode then AC in
+            {
                 ConfigBatIn(); //992022-130530-A Fix Bat. led not on after ship mode then AC in
+				test03++;
+			}
+            else
+            {
+				test04++;
+			}
             break;    
     }    
    }	   
@@ -1331,7 +1358,14 @@ void ConfigBatIn(void)
          return;
     }
     //bRSMBusBlock(SMbusCh1, SMbusRBK, SmartBat_Addr, C_Dname , &BAT_DEVNAME);
-	SMBUS_RW_BLK(0,ReadBlock,SmartBat_Addr,C_Dname,&BAT_DEVNAME);
+	if(SMBUS_RW_BLK(0,ReadBlock,SmartBat_Addr,C_Dname,&BAT_DEVNAME))
+	{
+		test01++;
+	}
+	else
+	{
+		test02++;
+	}
 	#if 0	
 	if (((BAT_DEVNAME == 0x2D474147) /*&& (BAT_DEVNAME2== 0x2D47)*/)) //4 Cell => 0x4741472D //Old 99Watt //981004-230505-A //0X47414B34 => New battery
     {	    
@@ -1513,7 +1547,7 @@ void ProcessDischarge(void)
          return;
     }	
   
- if ((IS_BIT_CLR(POWER_FLAG1, adapter_in)) && (IS_BIT_SET(BAT_STATUS, BAT_IN)) && (IS_BIT_CLR(POWER_FLAG11, pd_ac_over65w)))  
+ if ((IS_MASK_CLEAR(POWER_FLAG1, adapter_in)) && (IS_MASK_SET(BAT_STATUS, BAT_IN)) && (IS_MASK_CLEAR(POWER_FLAG11, pd_ac_over65w)) && (IS_MASK_CLEAR(POWER_FLAG8, pd_ac_over65w2)))  
  {     
       //Ship mode
       if (RMCAP_TEMP < 75) //7640 * 0.01 = 75 //981004-230510-M from 0x75
@@ -1587,7 +1621,7 @@ void ProcessDischarge(void)
                 }				
                 if (ProcsH_cnt == 3)  // sec.3 
                 {
-			       if (PD_ADAPTER_IN) //981004-221005-M
+			       if ((PD_ADAPTER_IN) && (PD_ADAPTER_IN2)) //981004-221005-M
 				   {	
 					  H_PROCHOT_L = 1; //Normal 
 				   }
@@ -1598,7 +1632,7 @@ void ProcessDischarge(void)
                 }
 				if (ProcsH_cnt >= 5)  // sec.5 
                 {	
-                    if (PD_ADAPTER_IN) //981004-221005-M
+                    if ((PD_ADAPTER_IN) && (PD_ADAPTER_IN2)) //981004-221005-M
 					{				
 					    dGPU_HOLD_EC_RST_L = 0;//Normal 
                     }
@@ -1643,7 +1677,7 @@ void ProcessDischarge(void)
                  { 
                     if (RMCAP_TEMP <= BATCAP25)
                     {
-                     	if (PD_ADAPTER_IN)
+                     	if ((PD_ADAPTER_IN) && (PD_ADAPTER_IN2))
 					    {
                             H_PROCHOT_L = 0; //dCPU //981004-220928-M 
                             dGPU_HOLD_EC_RST_L = 1; //dGPU
@@ -1765,7 +1799,7 @@ void ProcessDischarge(void)
               if ((TEMPER_TEMP > 3280) && IS_BIT_CLR(POWER_FLAG4, pstate_off) ) //50 degree //981004-190308-M from 3180(45 degree)
               { 
  					SET_MASK(POWER_FLAG4, pstate_off);
-                  	if (PD_ADAPTER_IN) //981004-221005-M
+                  	if ((PD_ADAPTER_IN) && (PD_ADAPTER_IN2))
 			      	{
                      	H_PROCHOT_L = 0; //dCPU 
                       	dGPU_HOLD_EC_RST_L = 1; //dGPU
@@ -1793,7 +1827,7 @@ void ProcessDischarge(void)
               if ((TEMPER_TEMP < 3260) && IS_MASK_SET(POWER_FLAG4, pstate_off) ) //53 degree //981004-230831-M from 47
               {                  
                   CLEAR_MASK(POWER_FLAG4, pstate_off);
-                  if (PD_ADAPTER_IN) //981004-221005-M
+                  if ((PD_ADAPTER_IN) && (PD_ADAPTER_IN2))
 			      {
                       H_PROCHOT_L = 1; //Normal 
                       dGPU_HOLD_EC_RST_L = 0; //Normal
@@ -1814,7 +1848,7 @@ void ProcessDischarge(void)
               AmpHighcnt++;			 
               if (AmpHighcnt >= 0x02) 
               {
-                  if (PD_ADAPTER_IN) //981004-221005-M
+                 if ((PD_ADAPTER_IN) && (PD_ADAPTER_IN2))
 			      {
                       H_PROCHOT_L = 1; //Normal 
                       dGPU_HOLD_EC_RST_L = 0; //Normal
@@ -1928,7 +1962,7 @@ void ProcessCharge(void)
     {
          return;
     }	
-    if (((IS_BIT_SET(POWER_FLAG1, adapter_in)) && (IS_BIT_SET(BAT_STATUS, BAT_IN))) || (((IS_BIT_SET(POWER_FLAG11, pd_ac_over65w)) && (IS_BIT_SET(BAT_STATUS, BAT_IN)))))
+     if ((IS_MASK_SET(POWER_FLAG1, adapter_in)) && (IS_MASK_SET(BAT_STATUS, BAT_IN)) || ((IS_MASK_SET(POWER_FLAG11, pd_ac_over65w)) && (IS_MASK_SET(BAT_STATUS, BAT_IN))) || ((IS_MASK_SET(POWER_FLAG8, pd_ac_over65w2)) && (IS_MASK_SET(BAT_STATUS, BAT_IN))))
     {
       if (IS_BIT_SET(EC_Flag4, old_99w)) //981004-230510-A
 	  {		
@@ -2344,7 +2378,7 @@ void ConfigACLIMIT(void)
     }
     else
     {
-       if (IS_BIT_CLR(POWER_FLAG11, pd_ac_over65w))   
+       if ((IS_MASK_CLEAR(POWER_FLAG11, pd_ac_over65w)) && (IS_MASK_CLEAR(POWER_FLAG8, pd_ac_over65w2)))   
        {
 		  BAT_INCURR = 0x0004; //1.024 => 2.048A (1.024*2 = 2.048A) //40 Watt //981004-230707-M from 0x0008  
 		 //BAT_INCURR = 0x8006; //1.024+0.512+0.128 = 1.664A (1.664*2 = 3.328A) //60 Watt

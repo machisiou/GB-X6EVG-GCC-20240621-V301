@@ -38,6 +38,7 @@ extern uint8_t OOBNum;
 #define OEMRAM9				0x20050900
 #define OEMRAMA				0x20050A00
 #define OEMRAMB				0x20050B00
+#define OEMRAMC				0x20050C00
 #define OEMRAMD				0x20050D00
 
 #define KERNEL_DEBUG_RAM	0x20055000
@@ -46,9 +47,9 @@ extern uint8_t OOBNum;
 
 #define SYSTEM_G3		0x99
 #define SYSTEM_S5		0x05
-#define SYSTEM_S4		0x04
-#define SYSTEM_S3		0x03
-#define SYSTEM_S0		0x00
+///#define SYSTEM_S4		0x04
+///#define SYSTEM_S3		0x03
+///#define SYSTEM_S0		0x00
 #define SYSTEM_G3S5		0x95
 #define SYSTEM_S5S0		0x50
 #define SYSTEM_S0S5		0x55
@@ -265,12 +266,12 @@ extern uint8_t OOBNum;
 
 extern uint8_t BAT_bInfor_Count;
 #define PTRDEFRAM 1
-extern uint8_t SystemState;
+//extern uint8_t SystemState;
 #define SYSTEM_G3		0x99
 #define SYSTEM_S5		0x05
-#define SYSTEM_S4		0x04
-#define SYSTEM_S3		0x03
-#define SYSTEM_S0		0x00
+///#define SYSTEM_S4		0x04
+///#define SYSTEM_S3		0x03
+///#define SYSTEM_S0		0x00
 #define SYSTEM_G3S5		0x95
 #define SYSTEM_S5S0		0x50
 #define SYSTEM_S0S5		0x55
@@ -278,7 +279,7 @@ extern uint8_t SystemState;
 extern uint8_t PwrSwDelay;
 extern uint8_t PwrSequStep;
 extern uint8_t PwrSequDly;
-
+extern uint8_t RSTStatus;
 // extern uint8_t BAT1VoltL;
 // extern uint8_t BAT1VoltH;
 // extern uint8_t BAT1RemainingCapaL;
@@ -421,7 +422,7 @@ XBYTE g_ECPowerDownModeTest               _at_ (ECPowerDownCtrl+0x05);
 #define FanDACLevel			(*((uint8_t *)(ECRAM+0x0068)))
 #define USB_CHARGE			(*((uint8_t *)(ECRAM+0x0069)))
 #define BR_Level			(*((uint8_t *)(ECRAM+0x006A)))
-#define X6EVG_EC_VER			(*((uint8_t *)(ECRAM+0x006B)))
+#define X6LVH_EC_VER			(*((uint8_t *)(ECRAM+0x006B)))
 
 #define BATMODE			(*((uint16_t *)(ECRAM+0x006C)))
 #define RMCAP_TEMP			(*((uint16_t *)(ECRAM+0x006E)))
@@ -595,16 +596,22 @@ XBYTE g_ECPowerDownModeTest               _at_ (ECPowerDownCtrl+0x05);
 #define dgpu_9Aon            BIT4 
 #define bat_100hrs           BIT5 //981004-191122-A
 //extern ACPI_AREA uint8_t POWER_FLAG8;			// 0x08
-//#define f2_press         	BIT0 
-//#define f9_press         	BIT1 
-//#define f12_press        	BIT2 
-//#define f10_press        	BIT3 
-//#define no_GPU_smbus     	BIT4 //981004-200923-R
-#define DDS_reset        	BIT4   //981004-201007-A
-#define D7_flag_for_bios 	BIT5 
-//#define fnesc_press      	BIT5 
-#define smart_cooling_on 	BIT6 
-#define AI_ON            	BIT7 //981004-190419-A
+//#define f2_press         BIT0 //981004-231121-R
+//#define f9_press         BIT1 //981004-231121-R
+//#define f12_press        BIT2 //981004-231121-R
+//#define f10_press        BIT3 //981004-231121-R
+//#define no_GPU_smbus     BIT4 //981004-200923-R
+#define check_pd_ac_chg2     BIT0 //981004-240617-A
+#define pd_ac_over65w2       BIT1 //981004-240617-A
+#define dual_ac2             BIT2 //981004-240617-A
+#define pd_adapter_in2       BIT7 //981004-240617-A
+//#define pd_chargable        BIT7 //981004-211021-A
+#define ALL_LED_OFF       BIT3 //981004-240529-A
+#define DDS_reset        BIT4   //981004-201007-A
+#define D7_flag_for_bios BIT5 
+//#define fnesc_press      BIT5 
+#define smart_cooling_on BIT6 
+//#define AI_ON            BIT7 //981004-190419-A
 //extern ACPI_AREA uint8_t POWER_FLAG9;			// 0x09
 #define super_quiet      BIT0 //981004-190731-A for new fan policy
 #define fn_bright_press  BIT1 
@@ -678,6 +685,10 @@ XBYTE g_ECPowerDownModeTest               _at_ (ECPowerDownCtrl+0x05);
 #define ThrottlingCnt6_2 (*((uint8_t *)(OEMRAM3+0x0033)))
 #define EC_Flag6		(*((uint8_t *)(OEMRAM3+0x0038)))		// 0x38 
 #define EC_Flag7		(*((uint8_t *)(OEMRAM3+0x0039)))		// 0x39
+#define CMOS_BOOT          BIT0 //981004-231123-A
+#define PD_COMPARE         BIT1
+#define PD1_CHARGE         BIT2
+#define PD2_CHARGE         BIT3
 #define Last_P81HDR		(*((uint8_t *)(OEMRAM3+0x003A)))        // 0x3A  _at_ (OEMRAM3+0x3A); //981004-180104-M from 0x1C
 #define Last_P80HDR		(*((uint8_t *)(OEMRAM3+0x003B)))        // 0x3B  _at_ (OEMRAM3+0x3B); //981004-180104-M from 0x1D
 
@@ -1063,7 +1074,7 @@ XBYTE g_ECPowerDownModeTest               _at_ (ECPowerDownCtrl+0x05);
 // OEMRAM4 Offset 0x00 ~ 0x0F   Power sequnce control 
 #define PowerSequnceRAM     OEMRAM4+0x00
 
-#define SysPowState				(*((uint8_t *)(PowerSequnceRAM+0x0000)))//(PowerSequnceRAM+0x00)    //(byte)
+#define SystemState				(*((uint8_t *)(PowerSequnceRAM+0x0000)))//(PowerSequnceRAM+0x00)    //(byte)
 #define PWSeqStep			    (*((uint8_t *)(PowerSequnceRAM+0x0001)))//(PowerSequnceRAM+0x01)    //(byte)
 #define DeepSleepCunt		    (*((uint8_t *)(PowerSequnceRAM+0x0002)))//(PowerSequnceRAM+0x02)    //(byte)
 #define DelayDoPowerSeq			(*((uint8_t *)(PowerSequnceRAM+0x0003)))//(PowerSequnceRAM+0x03)    //(word)
@@ -1132,6 +1143,7 @@ XBYTE g_ECPowerDownModeTest               _at_ (ECPowerDownCtrl+0x05);
 #define ADCDyTable2Index		(*((uint8_t *)(ADCRAM+0x0011)))       //(ADCRAM+0x11) //(byte)
 
 #define LED_TEST_CNT            (*((uint8_t *)(OEMRAM4+0x0042)))
+#define pd_ac_in_cnt2           (*((uint8_t *)(OEMRAM4+0x0043)))           // _at_ (OEMRAM4+0x43);
 //Reserved offset 0x12 ~ 0x1F
 //===============================================================================
 
@@ -1689,35 +1701,36 @@ extern uint8_t	DebugFan1RPMT;			// FanCtrlRAM+0x3F
 #define on                     BIT1
 #define off                    BIT2
 //======================================
+#define xTIPD1_pd_watt2             (*((uint8_t *)(OEMRAMA+0x0024)))        //0x422
 //981004-121122-A-S
-#define eEDPDATA00					(*((uint16_t *)(OEMRAMA+0x0030)))
-#define eEDPDATA01					(*((uint16_t *)(OEMRAMA+0x0031)))
-#define eEDPDATA03					(*((uint16_t *)(OEMRAMA+0x0032)))
-#define eEDPDATA04					(*((uint16_t *)(OEMRAMA+0x0033)))
-#define eEDPDATA06					(*((uint16_t *)(OEMRAMA+0x0034)))
-#define eEDPDATA07					(*((uint16_t *)(OEMRAMA+0x0035)))
-#define eEDPDATA08					(*((uint16_t *)(OEMRAMA+0x0036)))
-#define eEDPDATA0C					(*((uint16_t *)(OEMRAMA+0x0037)))
-#define eEDPDATA10					(*((uint16_t *)(OEMRAMA+0x0038)))
-#define eEDPDATA12					(*((uint16_t *)(OEMRAMA+0x0039)))
-#define eEDPDATA14					(*((uint16_t *)(OEMRAMA+0x003A)))
-#define eEDPDATA1C					(*((uint16_t *)(OEMRAMA+0x003B)))
-#define eEDPDATA20					(*((uint16_t *)(OEMRAMA+0x003C)))
-#define eEDPDATA2D					(*((uint16_t *)(OEMRAMA+0x003D)))
-#define eEDPDATA32					(*((uint16_t *)(OEMRAMA+0x003E)))
-#define eEDPDATA35					(*((uint16_t *)(OEMRAMA+0x003F)))
-#define eEDPDATA40					(*((uint16_t *)(OEMRAMA+0x0040)))
-#define eEDPDATA41					(*((uint16_t *)(OEMRAMA+0x0041)))
-#define eEDPDATA44					(*((uint16_t *)(OEMRAMA+0x0042)))
-#define eEDPDATA4C					(*((uint16_t *)(OEMRAMA+0x0043)))
-#define eEDPDATA56					(*((uint16_t *)(OEMRAMA+0x0044)))
-#define eEDPDATA60					(*((uint16_t *)(OEMRAMA+0x0045)))
-#define eEDPDATA80					(*((uint16_t *)(OEMRAMA+0x0046)))
-#define eEDPDATA91					(*((uint16_t *)(OEMRAMA+0x0047)))
-#define eEDPDATA92					(*((uint16_t *)(OEMRAMA+0x0048)))
-#define eEDPDATAB0					(*((uint16_t *)(OEMRAMA+0x0049)))
-#define eEDPDATAF8					(*((uint16_t *)(OEMRAMA+0x004A)))
-#define eEDPDATAFD					(*((uint16_t *)(OEMRAMA+0x004B)))
+#define eEDPDATA00					(*((uint8_t *)(OEMRAMA+0x0030)))
+#define eEDPDATA01					(*((uint8_t *)(OEMRAMA+0x0031)))
+#define eEDPDATA03					(*((uint8_t *)(OEMRAMA+0x0032)))
+#define eEDPDATA04					(*((uint8_t *)(OEMRAMA+0x0033)))
+#define eEDPDATA06					(*((uint8_t *)(OEMRAMA+0x0034)))
+#define eEDPDATA07					(*((uint8_t *)(OEMRAMA+0x0035)))
+#define eEDPDATA08					(*((uint8_t *)(OEMRAMA+0x0036)))
+#define eEDPDATA0C					(*((uint8_t *)(OEMRAMA+0x0037)))
+#define eEDPDATA10					(*((uint8_t *)(OEMRAMA+0x0038)))
+#define eEDPDATA12					(*((uint8_t *)(OEMRAMA+0x0039)))
+#define eEDPDATA14					(*((uint8_t *)(OEMRAMA+0x003A)))
+#define eEDPDATA1C					(*((uint8_t *)(OEMRAMA+0x003B)))
+#define eEDPDATA20					(*((uint8_t *)(OEMRAMA+0x003C)))
+#define eEDPDATA2D					(*((uint8_t *)(OEMRAMA+0x003D)))
+#define eEDPDATA32					(*((uint8_t *)(OEMRAMA+0x003E)))
+#define eEDPDATA35					(*((uint8_t *)(OEMRAMA+0x003F)))
+#define eEDPDATA40					(*((uint8_t *)(OEMRAMA+0x0040)))
+#define eEDPDATA41					(*((uint8_t *)(OEMRAMA+0x0041)))
+#define eEDPDATA44					(*((uint8_t *)(OEMRAMA+0x0042)))
+#define eEDPDATA4C					(*((uint8_t *)(OEMRAMA+0x0043)))
+#define eEDPDATA56					(*((uint8_t *)(OEMRAMA+0x0044)))
+#define eEDPDATA60					(*((uint8_t *)(OEMRAMA+0x0045)))
+#define eEDPDATA80					(*((uint8_t *)(OEMRAMA+0x0046)))
+#define eEDPDATA91					(*((uint8_t *)(OEMRAMA+0x0047)))
+#define eEDPDATA92					(*((uint8_t *)(OEMRAMA+0x0048)))
+#define eEDPDATAB0					(*((uint8_t *)(OEMRAMA+0x0049)))
+#define eEDPDATAF8					(*((uint8_t *)(OEMRAMA+0x004A)))
+#define eEDPDATAFD					(*((uint8_t *)(OEMRAMA+0x004B)))
 //981004-121122-A-E
 
 

@@ -34,5 +34,5 @@ extern void GPIO_Set_Driving(uint32_t GPIOnum, uint8_t Driv);
 extern void GPIO_Set_Slew(uint32_t GPIOnum, uint8_t Slew);
 extern void GPIO_Intr_Config(uint32_t GPIOnum, uint8_t Intr, uint8_t IntrTrigger);
 extern void GPIO_ClrIntr(uint32_t GPIOnum);
-
+extern uint8_t GPIO_ReadIOType(uint32_t GPIOnum);
 #endif

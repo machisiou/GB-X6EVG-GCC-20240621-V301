@@ -30,5 +30,5 @@ extern uint8_t SMBus26ms_check(void);
 extern uint8_t _Delay_1ms(uint16_t ms);
 extern void PWRBTN_WDT_Setting(uint8_t dTIME, uint8_t TrigMode);
 extern void WDT_NOW(void);
-
+extern void InternalWDTNow(void);
 #endif

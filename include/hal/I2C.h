@@ -56,6 +56,8 @@ extern uint8_t I2C_ProtocolFIFO_R(uint8_t Channel, uint8_t Addr, uint8_t RDatCnt
 extern uint8_t SMBUS_RW_W(uint8_t Channel, uint8_t Protocol, uint8_t Addr ,uint8_t Cmd,uint16_t *var);
 extern uint8_t SMBUS_RW_B(uint8_t Channel, uint8_t Protocol, uint8_t Addr ,uint8_t Cmd,uint8_t *var);
 extern uint8_t SMBUS_RW_BLK(uint8_t Channel, uint8_t Protocol, uint8_t Addr ,uint8_t Cmd,uint32_t *var);
-
+extern uint8_t bRWSMBus(uint8_t Channel, uint8_t Protocol, uint8_t Addr ,uint8_t Cmd,uint8_t *var, uint8_t PECSupport);
+extern uint8_t bWSMBusBlock(uint8_t Channel, uint8_t Protocol, uint8_t Addr ,uint8_t Cmd,uint8_t *var, uint8_t PECSupport);
+extern uint8_t bRSMBusBlock(uint8_t Channel, uint8_t Protocol, uint8_t Addr ,uint8_t Cmd,uint8_t *var, uint8_t PECSupport);
 
 #endif

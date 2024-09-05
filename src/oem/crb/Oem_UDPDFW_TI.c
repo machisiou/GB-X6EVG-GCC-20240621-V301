@@ -826,12 +826,13 @@ uint8_t pd1_ti_check_version(void)
 	//981004-220310-R-E
 	
     xUCSI_I2C_WR_BUFF[0] = _TIPD_VERSION;
-    if (TI_PD_WrToRdStream(TI6599x_ADDR1,
-                           &xUCSI_I2C_WR_BUFF[0],
-                           1,
-                           0,
-                           &xUCSI_I2C_RD_BUFF[0],
-                           5))
+    // if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+    //                        &xUCSI_I2C_WR_BUFF[0],
+    //                        1,
+    //                        0,
+    //                        &xUCSI_I2C_RD_BUFF[0],
+    //                        5))
+	if(I2C_Protocol_PD(3,TI6599x_ADDR1,1,5,&xUCSI_I2C_WR_BUFF[0],&xUCSI_I2C_RD_BUFF[0]))
     {
         for (Count = 0; Count<4 ; Count++)
     	{
@@ -847,12 +848,13 @@ uint8_t pd1_ti_check_version(void)
 	#if 1
 	pd_i2c_buffer_clear();
     xUCSI_I2C_WR_BUFF[0] = 0x0D;
-    if (TI_PD_WrToRdStream(TI6599x_ADDR1,
-                           &xUCSI_I2C_WR_BUFF[0],
-                           1,
-                           0,
-                           &xUCSI_I2C_RD_BUFF[0],
-                           5))
+    // if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+    //                        &xUCSI_I2C_WR_BUFF[0],
+    //                        1,
+    //                        0,
+    //                        &xUCSI_I2C_RD_BUFF[0],
+    //                        5))
+	if(I2C_Protocol_PD(3,TI6599x_ADDR1,1,5,&xUCSI_I2C_WR_BUFF[0],&xUCSI_I2C_RD_BUFF[0]))
     {
         for (Count = 0; Count<4 ; Count++)
     	{

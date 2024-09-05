@@ -43,7 +43,6 @@ set(RTK_SRC
     ${CMAKE_SOURCE_DIR}/src/system/main.c
     ${CMAKE_SOURCE_DIR}/src/system/Memory.c
     ${CMAKE_BINARY_DIR}/generated/system/Ver.c
-    ${CMAKE_SOURCE_DIR}/src/oem/crb/CRB.c
     ${CMAKE_SOURCE_DIR}/src/oem/crb/Oem_fan.c
     ${CMAKE_SOURCE_DIR}/src/oem/crb/Oem_battery.c
     ${CMAKE_SOURCE_DIR}/src/oem/crb/Oem_gpio.c
@@ -55,6 +54,7 @@ set(RTK_SRC
     ${CMAKE_SOURCE_DIR}/src/oem/crb/Oem_pmport3.c
     ${CMAKE_SOURCE_DIR}/src/oem/crb/Oem_power.c
     ${CMAKE_SOURCE_DIR}/src/oem/crb/Oem_KBC_Command.c
+    ${CMAKE_SOURCE_DIR}/src/oem/crb/Oem_ACPI_Command.c
     ${CMAKE_SOURCE_DIR}/src/oem/crb/Oem_UDPDFW_TI.c
     ${CMAKE_SOURCE_DIR}/src/oem/crb/Oem_scan.c
     ${CMAKE_SOURCE_DIR}/src/oem/crb/Oem_timer.c

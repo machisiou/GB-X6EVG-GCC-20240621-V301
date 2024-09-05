@@ -145,7 +145,7 @@ void KBC_B0CMD(void)
 	//GPCRD4 = INPUT;
 	//GPIO_Set_IO(13,0);
    //981004-131030-A-S always pstate when discharging
-    if ((IS_BIT_SET(POWER_FLAG1, adapter_in)) || (IS_BIT_SET(POWER_FLAG11, pd_ac_over65w)))
+     if ((IS_MASK_SET(POWER_FLAG1, adapter_in)) || (IS_MASK_SET(POWER_FLAG11, pd_ac_over65w)) || (IS_MASK_SET(POWER_FLAG8, pd_ac_over65w2)))
 	{
         BIT_CLR(POWER_FLAG4, bat30_on);
 	}	
@@ -187,7 +187,7 @@ void KBC_B0CMD(void)
 	}
 	else
 	{	  
-      if (PD_ADAPTER_IN) //981004-221005-M
+      if ((PD_ADAPTER_IN) && (PD_ADAPTER_IN2)) //981004-221005-M
         {
 		    if ((IS_BIT_CLR(POWER_FLAG10, gtx970_bat_low)) && (IS_BIT_CLR(POWER_FLAG4, pstate_off)) && (IS_BIT_CLR(AmpHigh_flag, AmpHigh)) )
 			{	
@@ -208,7 +208,7 @@ void KBC_B0CMD(void)
         }
         else
 		{
-			if (IS_BIT_SET(POWER_FLAG11, pd_ac_over65w)) //EC RAM 0x211 bit4
+			if (IS_MASK_SET(POWER_FLAG11, pd_ac_over65w) || (IS_MASK_SET(POWER_FLAG8, pd_ac_over65w2))) //EC RAM 0x211 bit4
 	        {
 				//H_PROCHOT_LOW; 
 				H_PROCHOT_L = 0; //Normal

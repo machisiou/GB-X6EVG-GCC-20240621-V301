@@ -224,3 +224,12 @@ void WDT_NOW(void)
 	WDT_Init(1, 1);
 }
 
+void InternalWDTNow(void)
+{
+	Initial_GPIO();
+	WDT_Enable_Rst();
+	WDT_Set_Divider(1);
+	WDT_Set_LoadValue(1);
+	WDT_Enable();
+}
+

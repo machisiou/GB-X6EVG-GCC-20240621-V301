@@ -139,6 +139,8 @@ int main(void)
 	__enable_irq();
 	/* Infinite loop */
 	SystemState = SYSTEM_G3;
+	X6LVH_EC_VER = SET_EC_VER;          //0x02; // Location : 26B)(OEM_PROJECT.H)
+    RELEASE_TYPE = SET_RELEASE_TYPE;    //0x02; // (Location : 263)(OEM_PROJECT.H)
 	//EC_3A = 1;
 	while(1) {
 		Main_Service();
@@ -311,7 +313,7 @@ static void system_init(void)
 	SYS_CLKPWR_EMI7(enable);
 
 	// ----- KBM power -----
-	SYS_CLKPWR_KBM(enable);
+	//SYS_CLKPWR_KBM(enable);
 
 	// ----- P8081 power -----
 	SYS_CLKPWR_PORT80(enable);
@@ -499,8 +501,8 @@ static void Kernel_init(void)
 	PMPORT3_IB_EnableIRQ();
 #endif
 
-	IniKBM();
-	KBM_EnableIRQ();
+	//IniKBM();
+	//KBM_EnableIRQ();
 }
 
 void Kernel_RAM_init(void)

@@ -6,6 +6,7 @@
 #define AOBF			BIT5
 #define KEYL			BIT4
 #define SYSF			BIT2
+#define P_IBF			BIT1
 
 extern void KBC_Process(void);
 extern void Service_KBC_OBF(void);

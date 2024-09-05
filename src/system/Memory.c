@@ -115,7 +115,7 @@ uint8_t CPUTDP6;
 uint8_t CPUTDP7;
 uint16_t FAN_RPM;
 uint8_t BAT_bInfor_Count=0;
-uint8_t SystemState;
+//uint8_t SystemState;
 uint8_t PwrSwDelay;
 uint8_t PwrSequStep=0;
 uint8_t PwrSequDly;
@@ -135,7 +135,7 @@ uint8_t BAT1DesignCapaL;
 uint8_t BAT1DesignCapaH;
 uint8_t BAT1DesignVoltL;
 uint8_t BAT1DesignVoltH;
-
+uint8_t RSTStatus;
 void RAM_debug(uint8_t num)
 {
 	DebugPage[DebugPtr++] = num;

@@ -1,0 +1,494 @@
+[
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\system\\ACPI_Command.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\system\\ACPI_Command.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\system\\ACPI_Command.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\system\\ACPI_Command.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\system\\Debug.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\system\\Debug.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\system\\Debug.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\system\\Debug.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\system\\Flashtool.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\system\\Flashtool.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\system\\Flashtool.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\system\\Flashtool.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\system\\KBC_Command.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\system\\KBC_Command.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\system\\KBC_Command.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\system\\KBC_Command.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\system\\main.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\system\\main.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\system\\main.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\system\\main.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\system\\Memory.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\system\\Memory.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\system\\Memory.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\system\\Memory.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\generated\\system\\Ver.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\build\\generated\\system\\Ver.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\build\\generated\\system\\Ver.c",
+  "output": "CMakeFiles\\rts5911.dir\\generated\\system\\Ver.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\oem\\crb\\CRB.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\CRB.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\CRB.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\oem\\crb\\CRB.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_fan.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_fan.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_fan.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_fan.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_battery.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_battery.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_battery.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_battery.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_gpio.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_gpio.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_gpio.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_gpio.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_main.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_main.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_main.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_main.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_event.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_event.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_event.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_event.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_pmport0.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_pmport0.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_pmport0.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_pmport0.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_pmport1.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_pmport1.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_pmport1.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_pmport1.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_pmport2.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_pmport2.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_pmport2.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_pmport2.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_pmport3.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_pmport3.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_pmport3.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_pmport3.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_power.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_power.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_power.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_power.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_KBC_Command.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_KBC_Command.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_KBC_Command.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_KBC_Command.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_UDPDFW_TI.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_UDPDFW_TI.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_UDPDFW_TI.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_UDPDFW_TI.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_scan.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_scan.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_scan.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_scan.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_timer.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_timer.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_timer.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_timer.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_Peci.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_Peci.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_Peci.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_Peci.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\oem\\crb\\ScanTable.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\ScanTable.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\ScanTable.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\oem\\crb\\ScanTable.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_Ver.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_Ver.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_Ver.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_Ver.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_ADC.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_ADC.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\oem\\crb\\Oem_ADC.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\oem\\crb\\Oem_ADC.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\ACPI.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\ACPI.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\ACPI.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\ACPI.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\DIO.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\DIO.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\DIO.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\DIO.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\DMA.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\DMA.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\DMA.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\DMA.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\EMI.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\EMI.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\EMI.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\EMI.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\eRPMC.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\eRPMC.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\eRPMC.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\eRPMC.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\ESPI_MAFS.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\ESPI_MAFS.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\ESPI_MAFS.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\ESPI_MAFS.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\ESPI_OOB.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\ESPI_OOB.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\ESPI_OOB.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\ESPI_OOB.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\ESPI_SAFS.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\ESPI_SAFS.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\ESPI_SAFS.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\ESPI_SAFS.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\GPIO.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\GPIO.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\GPIO.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\GPIO.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\I2C.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\I2C.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\I2C.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\I2C.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\KBC.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\KBC.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\KBC.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\KBC.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\KBM.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\KBM.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\KBM.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\KBM.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\LED.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\LED.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\LED.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\LED.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\MBX.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\MBX.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\MBX.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\MBX.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\MONOTONIC_COUNTER.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\MONOTONIC_COUNTER.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\MONOTONIC_COUNTER.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\MONOTONIC_COUNTER.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\P80P81.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\P80P81.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\P80P81.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\P80P81.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\PECI.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\PECI.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\PECI.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\PECI.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\PerVW.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\PerVW.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\PerVW.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\PerVW.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\PMPORT0.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\PMPORT0.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\PMPORT0.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\PMPORT0.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\PMPORT1.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\PMPORT1.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\PMPORT1.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\PMPORT1.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\PMPORT2.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\PMPORT2.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\PMPORT2.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\PMPORT2.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\PMPORT3.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\PMPORT3.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\PMPORT3.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\PMPORT3.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\PS2.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\PS2.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\PS2.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\PS2.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\PWM.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\PWM.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\PWM.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\PWM.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\SPI.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\SPI.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\SPI.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\SPI.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\SPIC.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\SPIC.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\SPIC.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\SPIC.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\SYSTEM.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\SYSTEM.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\SYSTEM.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\SYSTEM.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\TACHO.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\TACHO.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\TACHO.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\TACHO.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\TIMER.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\TIMER.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\TIMER.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\TIMER.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\UART.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\UART.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\UART.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\UART.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\WDT.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\WDT.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\core\\WDT.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\core\\WDT.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\nvic.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\nvic.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\nvic.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\nvic.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\system_RTS5911.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\system_RTS5911.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\system_RTS5911.c",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\system_RTS5911.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\startup_RTS5911.S.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\startup_RTS5911.S",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\src\\chip\\rts5911\\startup_RTS5911.S",
+  "output": "CMakeFiles\\rts5911.dir\\src\\chip\\rts5911\\startup_RTS5911.S.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\Crypto\\AES\\Aes_Dma.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\AES\\Aes_Dma.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\AES\\Aes_Dma.c",
+  "output": "CMakeFiles\\rts5911.dir\\Crypto\\AES\\Aes_Dma.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\Crypto\\AES\\AES_Slave.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\AES\\AES_Slave.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\AES\\AES_Slave.c",
+  "output": "CMakeFiles\\rts5911.dir\\Crypto\\AES\\AES_Slave.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\Crypto\\AES\\RTK_dmac.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\AES\\RTK_dmac.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\AES\\RTK_dmac.c",
+  "output": "CMakeFiles\\rts5911.dir\\Crypto\\AES\\RTK_dmac.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\Crypto\\HMAC\\md.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\HMAC\\md.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\HMAC\\md.c",
+  "output": "CMakeFiles\\rts5911.dir\\Crypto\\HMAC\\md.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\Crypto\\SHA2\\Lalu_SHA2.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA2\\Lalu_SHA2.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA2\\Lalu_SHA2.c",
+  "output": "CMakeFiles\\rts5911.dir\\Crypto\\SHA2\\Lalu_SHA2.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\Crypto\\SHA2\\Sha256_api.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA2\\Sha256_api.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA2\\Sha256_api.c",
+  "output": "CMakeFiles\\rts5911.dir\\Crypto\\SHA2\\Sha256_api.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\Crypto\\SHA2\\Sha512_api.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA2\\Sha512_api.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA2\\Sha512_api.c",
+  "output": "CMakeFiles\\rts5911.dir\\Crypto\\SHA2\\Sha512_api.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\Crypto\\SHA3\\keccak.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA3\\keccak.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA3\\keccak.c",
+  "output": "CMakeFiles\\rts5911.dir\\Crypto\\SHA3\\keccak.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\Crypto\\SHA3\\Lalu_SHA3.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA3\\Lalu_SHA3.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA3\\Lalu_SHA3.c",
+  "output": "CMakeFiles\\rts5911.dir\\Crypto\\SHA3\\Lalu_SHA3.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\Crypto\\SHA3\\Sha3.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA3\\Sha3.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA3\\Sha3.c",
+  "output": "CMakeFiles\\rts5911.dir\\Crypto\\SHA3\\Sha3.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o CMakeFiles\\rts5911.dir\\Crypto\\SHA3\\shake.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA3\\shake.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA3\\shake.c",
+  "output": "CMakeFiles\\rts5911.dir\\Crypto\\SHA3\\shake.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o Crypto\\CMakeFiles\\crypto.dir\\AES\\Aes_Dma.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\AES\\Aes_Dma.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\AES\\Aes_Dma.c",
+  "output": "Crypto\\CMakeFiles\\crypto.dir\\AES\\Aes_Dma.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o Crypto\\CMakeFiles\\crypto.dir\\AES\\AES_Slave.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\AES\\AES_Slave.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\AES\\AES_Slave.c",
+  "output": "Crypto\\CMakeFiles\\crypto.dir\\AES\\AES_Slave.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o Crypto\\CMakeFiles\\crypto.dir\\AES\\RTK_dmac.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\AES\\RTK_dmac.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\AES\\RTK_dmac.c",
+  "output": "Crypto\\CMakeFiles\\crypto.dir\\AES\\RTK_dmac.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o Crypto\\CMakeFiles\\crypto.dir\\HMAC\\md.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\HMAC\\md.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\HMAC\\md.c",
+  "output": "Crypto\\CMakeFiles\\crypto.dir\\HMAC\\md.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o Crypto\\CMakeFiles\\crypto.dir\\SHA2\\Lalu_SHA2.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA2\\Lalu_SHA2.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA2\\Lalu_SHA2.c",
+  "output": "Crypto\\CMakeFiles\\crypto.dir\\SHA2\\Lalu_SHA2.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o Crypto\\CMakeFiles\\crypto.dir\\SHA2\\Sha256_api.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA2\\Sha256_api.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA2\\Sha256_api.c",
+  "output": "Crypto\\CMakeFiles\\crypto.dir\\SHA2\\Sha256_api.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o Crypto\\CMakeFiles\\crypto.dir\\SHA2\\Sha512_api.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA2\\Sha512_api.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA2\\Sha512_api.c",
+  "output": "Crypto\\CMakeFiles\\crypto.dir\\SHA2\\Sha512_api.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o Crypto\\CMakeFiles\\crypto.dir\\SHA3\\keccak.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA3\\keccak.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA3\\keccak.c",
+  "output": "Crypto\\CMakeFiles\\crypto.dir\\SHA3\\keccak.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o Crypto\\CMakeFiles\\crypto.dir\\SHA3\\Lalu_SHA3.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA3\\Lalu_SHA3.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA3\\Lalu_SHA3.c",
+  "output": "Crypto\\CMakeFiles\\crypto.dir\\SHA3\\Lalu_SHA3.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o Crypto\\CMakeFiles\\crypto.dir\\SHA3\\Sha3.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA3\\Sha3.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA3\\Sha3.c",
+  "output": "Crypto\\CMakeFiles\\crypto.dir\\SHA3\\Sha3.c.obj"
+},
+{
+  "directory": "D:/work/Customer/GB-X6LVH-GCC-20240621-V301/build",
+  "command": "D:\\work\\GCC\\asdk-10.2.0\\mingw32\\newlib\\bin\\arm-none-eabi-gcc-10.2.0.exe -DRTE_Compiler_IO_STDOUT -DRTE_Compiler_IO_STDOUT_User -D__RTS5911__ -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include -ID:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include -g -std=gnu11 -mcpu=real-m300 -march=armv8-m.main -mfloat-abi=hard -mfpu=fpv5-sp-d16 -mthumb -mlittle-endian -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -O0 -g3 -ggdb -o Crypto\\CMakeFiles\\crypto.dir\\SHA3\\shake.c.obj -c D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA3\\shake.c",
+  "file": "D:\\work\\Customer\\GB-X6LVH-GCC-20240621-V301\\Crypto\\SHA3\\shake.c",
+  "output": "Crypto\\CMakeFiles\\crypto.dir\\SHA3\\shake.c.obj"
+}
+]

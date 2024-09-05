@@ -13,6 +13,90 @@
         "rtk_include.h": "c",
         "stdio.h": "c",
         "adc.h": "c",
-        "project.h": "c"
+        "project.h": "c",
+        "oem_ver.h": "c"
     }
+}
+
+"editor.tokenColorCustomizations": {
+    "textMateRules": [
+        {
+            "scope": "emphasis",
+            "settings": {
+                "fontStyle": "italic"
+            }
+        },
+        {
+            "scope": "strong",
+            "settings": {
+                "fontStyle": "bold"
+            }
+        },
+        {
+            "scope": "meta.diff.header",
+            "settings": {
+                "foreground": "#000080"
+            }
+        },
+        {
+            "scope": "comment",
+            "settings": {
+                "foreground": "#008000"
+            }
+        },
+        {
+            "scope": "constant.numeric",
+            "settings": {
+                "foreground": "#0000ff"
+            }
+        },
+        {
+            "scope": "constant.language",
+            "settings": {
+                "foreground": "#0000ff"
+            }
+        },
+        {
+            "scope": "string",
+            "settings": {
+                "foreground": "#a31515"
+            }
+        },
+        {
+            "scope": "variable",
+            "settings": {
+                "foreground": "#800080"
+            }
+        },
+        {
+            "scope": "keyword",
+            "settings": {
+                "foreground": "#0000ff"
+            }
+        },
+        {
+            "scope": "storage.type",
+            "settings": {
+                "foreground": "#0000ff"
+            }
+        },
+        {
+"scope": "entity.name.type",
+            "settings": {
+                "foreground": "#00008b"
+            }
+        },
+        {
+"scope": "entity.name.function",
+            "settings": {
+                "foreground": "#008000"
+            }
+        },
+        {
+            "scope": "invalid",
+            "settings": {
+                "background": "#ff0000"
+            }
+        }
+    ]
 }

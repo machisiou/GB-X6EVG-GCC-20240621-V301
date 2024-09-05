@@ -34,7 +34,7 @@ extern void InitDevice(void);
 #define EC_SYS_PWROK_HIGH()		GPIO_Write(125,1)
 #define EC_SYS_PWROK_LOW()		GPIO_Write(125,0)
 
-#define IMVP_VR_READY()			GPIO_Read(117)
+#define IMVP_VR_READY			GPIO_Read(117)
 
 #define EC_BKLOUT               GPIO->GCR_b[84].OUTCTRL
 
@@ -45,6 +45,8 @@ extern void InitDevice(void);
 #define VCCIO_PWRGD()			1//GPIO_Read(1)
 
 #define RSMRST_L                GPIO->GCR_b[86].OUTCTRL
+
+#define IS_PCH_RSMRST_HI()      GPIO_Read(86)
 
 #define EC_CLR_LATCH            GPIO->GCR_b[87].OUTCTRL
 
@@ -74,6 +76,7 @@ extern void InitDevice(void);
 #define EC_3A                   GPIO->GCR_b[0].OUTCTRL 
 
 #define PD_ADAPTER_IN			GPIO_Read(81)		//GPI7 PD_ADAPTER_IN
+#define PD_ADAPTER_IN2          GPIO_Read(2)		//GPB6 PD_ADAPTER_IN
 
 #define EC_AMP_MUTE_L           GPIO->GCR_b[18].OUTCTRL
 
@@ -89,6 +92,7 @@ extern void InitDevice(void);
 #define EC_BKLOUT_LOW			GPIO_Write(84,0)
 
 #define LID_L					GPIO_Read(123)	//GPC4 GPIO123
+#define IS_LID_SW_CLOSE()       (GPIO_Read(123)==1)
 
 #define HPD_EC_L				GPIO_Read(104)	//GPH5 GPIO104
 
@@ -122,6 +126,8 @@ extern void InitDevice(void);
 
 #define BAT_FULL_L              GPIO->GCR_b[29].OUTCTRL
 
+#define DEBUG_CARD_L            GPIO_Read(60)
+
 #endif
 
 
@@ -143,16 +149,118 @@ extern void InitDevice(void);
 //-----------------------------------------------------------------------------
 // System status define
 //-----------------------------------------------------------------------------
-//#define SysPowState         SystemState
-#define SystemIsS0          SysPowState==SYSTEM_S0
-#define SystemIsS3          SysPowState==SYSTEM_S3
-#define SystemIsS4          SysPowState==SYSTEM_S4
+#define SysPowState         SystemState
+#define SystemIsS0          SystemState==SYSTEM_S0
+#define SystemIsS3          SystemState==SYSTEM_S3
+#define SystemIsS4          SystemState==SYSTEM_S4
 
-#define SystemNotS0         SysPowState!=SYSTEM_S0
-#define SystemNotS3         SysPowState!=SYSTEM_S3
-#define SystemNotS4         SysPowState!=SYSTEM_S4
+#define SystemNotS0         SystemState!=SYSTEM_S0
+#define SystemNotS3         SystemState!=SYSTEM_S3
+#define SystemNotS4         SystemState!=SYSTEM_S4
 
 #define SLP_S4_L GetSlp_S4
 #define SLP_S3_L GetSlp_S3
+
+
+
+//-----------------------------------------------------------------------------
+// Define
+//-----------------------------------------------------------------------------
+#define	SYSTEM_S0			0x10
+#define	SYSTEM_S3			0x33
+#define	SYSTEM_S4			0x44
+#define	SYSTEM_S4_S0		0x01
+#define	SYSTEM_S3_S0		0x02
+#define	SYSTEM_S0_S3		0x03
+#define	SYSTEM_S0_S4		0x04
+#define	SYSTEM_EC_WDTRST	0x0F
+
+//-----------------------------------------------------------------------------
+// Shutdown cause
+//-----------------------------------------------------------------------------
+#define SC_S0SLPOff		    0x01	// System shutdown by S3/S4/S5 Off
+#define SC_S3S4SLPOff		0x02	// System shutdown by S3/S4/S5 fail Off
+#define SC_4SEC		        0x03	// System shutdown by power button 4 sec overwrite
+#define SC_CPUHOT		    0x04	// System shutdown by CPU too hot to shutdown
+#define SC_HWPGSx_S0Off		0x05	// System shutdown by HWPG Fail in Sx_S0 power sequence
+#define SC_HWPS0Off		    0x06	// System shutdown by HWPG Fail in S0
+#define SC_PowerOnWatchDog  0x07    // System shutdown by Power on WDT
+
+#define SC_EC_0x0000        0xEC    // EC code reset
+#define SC_ExtWatchDog      0xFF    // external watch-dog
+#define SC_IntWatchDog      0xFE    // internal watch-dog
+#define SC_ECColdBoot       0xFC    // EC VSTBY or WRST reset
+
+
+//-----------------------------------------------------------------------------
+// Function prototype
+//-----------------------------------------------------------------------------
+extern void CheckPowerState(void);
+extern void Oem_TriggerS3S0(void);
+extern void Oem_TriggerS4S0(void);
+extern void Oem_TriggerS5S0(void);
+extern void Oem_S4S0Sequence(void);
+extern void Oem_S3S0Sequence(void);
+
+extern void EnterDeepSleep(void);
+extern BYTE CheckEnterDeepSleep(void);
+
+extern void MoniterHWPG(void);
+extern void Oem_SysPowerContrl(void);
+extern void Oem_TriggerS0S3(BYTE causecode);
+extern void Oem_TriggerS0S4(BYTE causecode);
+extern void Oem_S0S3Sequence(void);
+extern void Oem_S0S4Sequence(void);
+extern void CheckResetSource(void);
+
+extern void S4_S0Variable(void);
+extern void S3_S0Variable(void);
+extern void S0_S4Variable(void);
+extern void S0_S3Variable(void);
+
+extern void CheckSLP_S3(void);
+extern void CheckSLP_S4(void);
+extern void PulseSBPowerButton(void);
+extern void CheckSBPowerButton(void);
+
+static void InitPWM(void); //981004-121122-A
+///static void InitDevice(void); //981004-121122-A
+extern void InitLVDS(void); //981004-130124-A
+extern BYTE KBbclCtrl(BYTE Level); 
+extern void INIT_TM1650(void); //981004-180712-A
+extern void EC_ACK_eSPI_Reset(void);
+
+typedef struct PowerSEQ
+{
+    FUNCT_PTR_B_V	func;         // Do step function
+    WORD          delay;        // delay time (ms) 
+    BYTE          checkstatus;	// step function is check pin status (EX: slp_s3 HWPG ...)
+} sPowerSEQ;
+
+//981004-200721-A-S
+/*-----------------------------------------------------------------------------
+ * ModernStandby Calling Prototype
+ *---------------------------------------------------------------------------*/
+#define _EC_GENERAL_IDLE        0x80
+#define _EC_ATHENA_IDLE         0x81
+#define _EC_MODERN_STANDBY      0x82
+#define _EC_POWER_DOWN_IDLE     0x83
+
+extern void InitEntry_DeepSleep(void);
+extern void InitExit_DeepSleep(void);
+extern void CheckCanGo_AthenaIdle(void);
+extern void CheckCanGo_ModernStandby(void);
+extern void InitEntry_AthenaIdle(void);
+extern void InitExit_AthenaIdle(void);
+extern void InitEntry_ModernStandby(void);
+extern void InitExit_ModernStandby(void);
+extern void InitWake_ModernStandby(void);
+extern void InitSleep_ModernStandby(void);
+extern void Hook_ModernStandbyService(void);
+extern void Hook_ModernStandbyService1ms(void);
+extern void SET_ExitMS(BYTE ExitCode, BYTE ExitTsec);
+//981004-200721-A-E
+
+ extern void service_eSPI_handshake(void);
 
 #endif

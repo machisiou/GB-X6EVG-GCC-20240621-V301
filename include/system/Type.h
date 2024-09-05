@@ -48,6 +48,14 @@
 #define IS_BIT_CLR(a,b)	((a&b)==0)
 #define DW2B(a,b)		((a>>b)&0x000000FFUL)
 
+#define BYTE uint8_t
+#define XBYTE uint8_t
+#define WORD uint16_t
+//#define xdata uint8_t
+#define LWORD uint32_t
+typedef	unsigned int	UINT32;
+#define FIELD UINT32
+
 typedef enum _Protocol_Status {
 	FAIL = 0,
 	SUCCESS,
@@ -71,4 +79,8 @@ typedef enum _Protocol_Status {
 #define bit bool
 #define ECQEvent(a,b) QeventSend(a)
 #define	Delay1MS(a) _Delay_1ms(a)
+
+
+typedef void (*FUNCT_PTR_V_V)(void);
+typedef BYTE (code *FUNCT_PTR_B_V)(void);
 #endif
