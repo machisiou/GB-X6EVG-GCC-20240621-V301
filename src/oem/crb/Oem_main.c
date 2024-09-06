@@ -33,6 +33,16 @@ void oem_1ms_service(void)
 		}
 	}
 
+    if (xEC_CMDR > 0)
+	//if (IS_MASK_SET(POWER_FLAG5, modern_stby)) //0x205 bit1	
+    {
+        Hook_Intel_Cmd();
+    }
+    #if MailBoxRWECRam
+    HandleMailBox();
+    #endif
+
+
 	static uint8_t i =0;
 	Oem_SysPowerContrl();
 	if(i<10)
@@ -49,6 +59,15 @@ void oem_1ms_service(void)
     }
 	ESPI->EVSTS_b.IDX7CHG = 1;
 
+    if (!SLP_S3_L)
+	{
+		BT_EN = 0;
+	    //WLAN_EN = 0; 	
+	}
+	//981004-220408-A-E	
+		
+	CLEAR_MASK(EC_Flag4, old_99w); //981004-231025-A not support old battery
+
 
 }
 
@@ -62,12 +81,33 @@ void oem_5ms_service(void)
 		CRBS5toS0();
 	}
 #endif
+
+
+	if (xAPP_PD_EnterUpdate > 0x00) //981004-220208-A
+    {
+		//SET_MASK(EC_Flag5, TI_PD_Flash); //EC RAM 0x389 BIT6
+        service_app_update_ti_pd();
+    }
 }
 /******************************************************************************/
 /** 10ms A service routine
 *******************************************************************************/
 void oem_10msA_service(void)
 {
+
+    #if BAT1FuncSupport
+    Battey1ControlCenter();
+    #endif
+
+    if (IS_MASK_SET(POWER_FLAG2, sci_on)) //981004-240424-A-S
+    {
+        if (IS_MASK_SET(POWER_FLAG13, all_sys_pwrgd_off)) //0x213 bit2
+        {
+            ALL_SYS_PWRGD = 0;
+            CLEAR_MASK(POWER_FLAG13, all_sys_pwrgd_off);
+        }
+    }	//981004-240424-A-E
+
 }
 
 /******************************************************************************/
@@ -75,6 +115,7 @@ void oem_10msA_service(void)
 *******************************************************************************/
 void oem_10msB_service(void)
 {
+     CheckSBPowerButton();
 }
 
 /******************************************************************************/
@@ -312,16 +353,16 @@ uint8_t Check_PORT80(void)
 				Last_P81HDR = Port81_Get_Data();
 				Last_P80HDR = Port80_Get_Data();
 				led =(uint8_t)(Last_P80HDR<<4)|(Last_P80HDR>>4); //981004-200812-A
-				I2C_SMBusModProtocol(4,SendByte,0x48,0,test_val,0);	 		
+				I2C_SMBusModProtocol(4,SendByte,0x48,1,test_val,0);	 		
 				I2C_WR_BUFFER[0] = LED7s_TABLE[led & 0x0F]; //981004-200812-M
-				I2C_SMBusModProtocol(4,SendByte,0x68,0,I2C_WR_BUFFER,0);
+				I2C_SMBusModProtocol(4,SendByte,0x68,1,I2C_WR_BUFFER,0);
 				I2C_WR_BUFFER[0] = LED7s_TABLE[(led >> 4) & 0x0F]; //981004-200812-M
-				I2C_SMBusModProtocol(4,SendByte,0x6A,0,I2C_WR_BUFFER,0);
+				I2C_SMBusModProtocol(4,SendByte,0x6A,1,I2C_WR_BUFFER,0);
 				led = (uint8_t)(Last_P81HDR<<4)|(Last_P81HDR>>4); //981004-200812-A
 				I2C_WR_BUFFER[0] = LED7s_TABLE[led & 0x0F]; //981004-200812-M		
-				I2C_SMBusModProtocol(4,SendByte,0x6C,0,I2C_WR_BUFFER,0);
+				I2C_SMBusModProtocol(4,SendByte,0x6C,1,I2C_WR_BUFFER,0);
 				I2C_WR_BUFFER[0] = LED7s_TABLE[(led >> 4) & 0x0F]; //981004-200812-M 		
-				I2C_SMBusModProtocol(4,SendByte,0x6E,0,I2C_WR_BUFFER,0);
+				I2C_SMBusModProtocol(4,SendByte,0x6E,1,I2C_WR_BUFFER,0);
 				
 			}
 		

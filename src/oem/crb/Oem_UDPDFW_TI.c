@@ -5,6 +5,7 @@
  *---------------------------------------------------------------------------*/
 /* TI PD */
 #define TI6599x_ADDR1                       0x40
+#define TI6599x_ADDR2                       0x42 //981004-240617-A (USB4 65994BF => Second PD adapter)
 #define UCSI_SUPPORT						1
 #define SUPPORT_TI_FW_UPD  			 		1
 #define SUPPORT_TI_PD_APP_UPDATE			1 //981004-220208-A
@@ -269,6 +270,126 @@ uint8_t I2C_Protocol_SMART_AMP(uint8_t Channel, uint8_t Addr, uint8_t WDatCnt, u
 	}
 	return SUCCESS;
 }
+
+/******************************************************************************/
+/** I2C protocol
+ * Channel - I2C Channel 0~7
+ * Addr - SMBus Device Address(8 bits)
+ * WDatCnt - Write Data Count
+ * RDatCnt - Write Data Count
+ * WDatBuf - The Data write to Slave device
+ * RDatBuf - The Data read from Slave device
+ * return None
+*******************************************************************************/
+uint8_t I2C_Protocol_PD2(uint8_t Channel, uint8_t Addr, uint8_t WDatCnt, uint8_t RDatCnt, uint8_t *WDatBuf, uint8_t *RDatBuf)
+{
+	uint8_t i;
+	I2C_Type* Ptr;
+	Ptr = (I2C_Type*)((uint32_t)I2C0_BASE + (uint32_t)(Channel * 0x200UL));
+
+	Ptr->TAR = (uint8_t)(Addr >> 1);								/* Setup target address */
+	Ptr->ENABLE = 0x00000001;										/* Enable I2C engine */
+	if(WDatCnt != 0) {
+		for (i = 0; i < (WDatCnt - 1); i++) {						/* Push data */
+			Ptr->DATACMD = (uint32_t)WDatBuf[i];
+			while(1) {
+				if((Ptr->RAWINTSTAT & 0x00000050) == 0x00000010)
+					break;
+				else if(I2C_Timeout_Handler(Ptr)) {
+					Ptr->ENABLE = 0x00000000;
+					return FAIL;
+				}
+			}
+		}
+
+		if(RDatCnt == 0) {
+			Ptr->DATACMD = (uint32_t)(WDatBuf[i] | (0x01 << 9));	/* Push last data with stop */
+			while(1) {
+				if((Ptr->RAWINTSTAT & 0x00000050) == 0x00000010)
+					break;
+				else if(I2C_Timeout_Handler(Ptr)) {
+					Ptr->ENABLE = 0x00000000;
+					return FAIL;
+				}
+			}
+			while((Ptr->STATUS & 0x00000020) != 0);					/* Wait until idle */
+		}
+		else {
+			Ptr->DATACMD = (uint32_t)WDatBuf[i];
+			while(1) {
+				if((Ptr->RAWINTSTAT & 0x00000050) == 0x00000010)
+					break;
+				else if(I2C_Timeout_Handler(Ptr)) {
+					Ptr->ENABLE = 0x00000000;
+					return FAIL;
+				}
+			}
+		}
+	}
+
+	if(RDatCnt == 0) {
+		Ptr->ENABLE = 0x00000000;									/* Disable I2C engine */
+		}
+	else {
+		//Ptr->DATACMD_b.CMD = 1;									/* read */
+		if(RDatCnt == 0xFF)
+		{
+			*RDatBuf = Ptr->DATACMD_b.DATA;
+			for(i=0;i<*RDatBuf-1;i++) {
+			Ptr->DATACMD_b.CMD = 1;									/* read */
+
+			while(1) {												/* Check if IC_RX_FULL */
+				if((Ptr->RAWINTSTAT & 0x00000514) == 0x00000514) {
+					break;
+				}
+				else if(I2C_Timeout_Handler(Ptr)) {
+					Ptr->ENABLE = 0x00000000;
+					return FAIL;
+				}
+			}
+
+			*(RDatBuf+i+1) = Ptr->DATACMD_b.DATA;
+		}	
+		}
+		else
+		{
+			for(i=0;i<RDatCnt-1;i++) {
+			Ptr->DATACMD_b.CMD = 1;									/* read */
+
+			while(1) {												/* Check if IC_RX_FULL */
+				if((Ptr->RAWINTSTAT & 0x00000514) == 0x00000514) {
+					break;
+				}
+				else if(I2C_Timeout_Handler(Ptr)) {
+					Ptr->ENABLE = 0x00000000;
+					return FAIL;
+				}
+			}
+
+			*(RDatBuf+i+1) = Ptr->DATACMD_b.DATA;
+		}	
+		}
+
+		
+		Ptr->DATACMD = ((uint32_t) 0x03 << 8);						/* Read+Stop (uint8_t N) */
+
+		while(1) {													/* Check if IC_RX_FULL */
+			if((Ptr->RAWINTSTAT & 0x00000514) == 0x00000514) {
+				break;
+			}
+			else if(I2C_Timeout_Handler(Ptr)) {
+				Ptr->ENABLE = 0x00000000;
+				return FAIL;
+			}
+		}
+
+		*(RDatBuf+i+1) = Ptr->DATACMD_b.DATA;
+		while((Ptr->STATUS & 0x00000020) != 0);	
+		Ptr->ENABLE = 0x00000000;									/* ic_enable = 0 */
+	}
+	return SUCCESS;
+}
+
 /*-----------------------------------------------------------------------------
  * @subroutine - pd_ti_send_4cc
  * @function - pd_ti_send_4cc
@@ -293,12 +414,44 @@ uint8_t pd_ti_send_4cc(uint8_t Index4cc)
     //                        &xUCSI_I2C_RD_BUFF[0],
     //                        0))
 
-    if(I2C_Protocol(3,TI6599x_ADDR1,6,0,xUCSI_I2C_WR_BUFF,NULL))    
+    if(I2C_Protocol_PD(3,TI6599x_ADDR1,6,0,xUCSI_I2C_WR_BUFF,NULL))    
     {
         return SUCCESS;
     }
     return FAIL;
 }
+
+/*-----------------------------------------------------------------------------
+ * @subroutine - pd_ti_send_4cc
+ * @function - pd_ti_send_4cc
+ * @Upstream - By Call
+ * @input    -
+ * @return   -
+ * @note     -
+ */
+uint8_t pd_ti_send_4cc2(uint8_t Index4cc)
+{
+    /* Set Host Block Data uint8_t Register by Write uint8_tcnt. */
+    xUCSI_I2C_WR_BUFF[0] = _TI_PD_4CC_TBLs[Index4cc].ccmd;
+    xUCSI_I2C_WR_BUFF[1] = _TI_PD_4CC_TBLs[Index4cc].bcnt;
+    xUCSI_I2C_WR_BUFF[2] = _TI_PD_4CC_TBLs[Index4cc].cch1;
+    xUCSI_I2C_WR_BUFF[3] = _TI_PD_4CC_TBLs[Index4cc].cch2;
+    xUCSI_I2C_WR_BUFF[4] = _TI_PD_4CC_TBLs[Index4cc].cch3;
+    xUCSI_I2C_WR_BUFF[5] = _TI_PD_4CC_TBLs[Index4cc].cch4;
+    // if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+    //                        &xUCSI_I2C_WR_BUFF[0],
+    //                        6,
+    //                        0,
+    //                        &xUCSI_I2C_RD_BUFF[0],
+    //                        0))
+
+    if(I2C_Protocol_PD2(4,TI6599x_ADDR2,6,0,xUCSI_I2C_WR_BUFF,NULL))    
+    {
+        return SUCCESS;
+    }
+    return FAIL;
+}
+
 /*-----------------------------------------------------------------------------
  * @subroutine - pd_i2c_buffer_clear
  * @function - pd_i2c_buffer_clear
@@ -315,6 +468,9 @@ void pd_i2c_buffer_clear(void)
         xUCSI_I2C_RD_BUFF[i] = 0;
     }
 }
+
+
+
 /*-----------------------------------------------------------------------------
  * @subroutine - pd1_ti_HandleErroe
  * @function - pd1_ti_HandleErroe
@@ -354,11 +510,32 @@ void pd_ti_clear_event(uint8_t *Var)
     //                        0,
     //                        &xUCSI_I2C_RD_BUFF[0],
     //                        0))
-    if(I2C_Protocol(3,TI6599x_ADDR1,13,0,xUCSI_I2C_WR_BUFF,NULL))
+    if(I2C_Protocol_PD(3,TI6599x_ADDR1,13,0,xUCSI_I2C_WR_BUFF,NULL))
     {
         
     }
 }
+
+
+//981004-240617-A-S
+void pd_ti_clear_event2(XBYTE *Var)
+{
+	BYTE Count;
+    pd_i2c_buffer_clear();
+    xUCSI_I2C_WR_BUFF[0] = 0x18;  //INT_CLEAR1
+    xUCSI_I2C_WR_BUFF[1] = 0x0B;  //Byte count = 11
+   	for (Count = 0; Count < 11; Count++ )
+   	{
+   		xUCSI_I2C_WR_BUFF[Count+2] = *Var;
+   		Var++;
+   	}
+
+    if (I2C_Protocol_PD2(4,TI6599x_ADDR2,13,0,xUCSI_I2C_WR_BUFF,NULL))
+    {
+        ;
+    }
+}
+//981004-240617-A-E
 
 /*-----------------------------------------------------------------------------
  * @subroutine - pd_ti_check_Cmd1Complete
@@ -379,7 +556,7 @@ uint8_t pd_ti_check_Cmd1Complete(void)
     //                       0,
     //                       &xUCSI_I2C_RD_BUFF[0],
     //                       0xFF))
-	if(I2C_Protocol(3,TI6599x_ADDR1,1,0,xUCSI_I2C_WR_BUFF,NULL))
+	if(I2C_Protocol_PD(3,TI6599x_ADDR1,1,0,xUCSI_I2C_WR_BUFF,NULL))
     {
     	for (Count = 0; Count<11 ; Count++)
     	{
@@ -396,6 +573,45 @@ uint8_t pd_ti_check_Cmd1Complete(void)
     return FAIL;
 }
 
+
+//981004-240617-A-S
+/*-----------------------------------------------------------------------------
+ * @subroutine - pd_ti_check_Cmd1Complete
+ * @function - pd_ti_check_Cmd1Complete
+ * @Upstream - By Call
+ * @input    -
+ * @return   -
+ * @note     -
+ */
+BYTE pd_ti_check_Cmd1Complete2(void)
+{
+	BYTE Count;
+    xUCSI_I2C_RD_BUFF[4] = 0x00;
+    xUCSI_I2C_WR_BUFF[0] = _TIPD_INT_EVENT1;    //0x14
+    // if (TI_PD_WrToRdStream2(TI6599x_ADDR1,
+    //                        &xUCSI_I2C_WR_BUFF[0],
+    //                        1,
+    //                        0,
+    //                        &xUCSI_I2C_RD_BUFF[0],
+    //                        0xFF))
+	if(I2C_Protocol_PD2(4,TI6599x_ADDR2,1,0,xUCSI_I2C_WR_BUFF,NULL))
+    {
+    	for (Count = 0; Count<11 ; Count++)
+    	{
+    		xTIPD1_EVENT[Count] = xUCSI_I2C_RD_BUFF[Count+1];
+    	}
+
+        pd_ti_clear_event2(&xTIPD1_EVENT[0]);
+
+        if (xTIPD1_EVENT[3] & F_Cmd1Complete)  //BYTE#4.6-Cmd1Complete
+        {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+//981004-240617-A-E
+
 /*-----------------------------------------------------------------------------
  * @subroutine - pd_ti_check_readyforpatch
  * @function - pd_ti_check_readyforpatch
@@ -404,9 +620,9 @@ uint8_t pd_ti_check_Cmd1Complete(void)
  * @return   -
  * @note     -
  */
-uint8_t pd_ti_check_readyforpatch(void)
+BYTE pd_ti_check_readyforpatch(void)
 {
-	uint8_t Count;
+	BYTE Count;
 //	SCLKTS_D = 0x13;							//SMBUS 0x12:100KHz,0x13:400KHz //981004-220615-R
     xUCSI_I2C_RD_BUFF[4] = 0x00;
     xUCSI_I2C_WR_BUFF[0] = _TIPD_INT_EVENT1;    //0x14
@@ -416,7 +632,7 @@ uint8_t pd_ti_check_readyforpatch(void)
     //                        0,
     //                        &xUCSI_I2C_RD_BUFF[0],
     //                        0xFF))
-    if(I2C_Protocol(3,TI6599x_ADDR1,1,0xFF,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
+	if(I2C_Protocol_PD(3,TI6599x_ADDR1,1,0,xUCSI_I2C_WR_BUFF,NULL))
     {
     	for (Count = 0; Count<11 ; Count++)
     	{
@@ -425,13 +641,44 @@ uint8_t pd_ti_check_readyforpatch(void)
 
         //pd_ti_clear_event(&xTIPD1_EVENT[0]);
 
-        if (xTIPD1_EVENT[10] & F_ReadyForPatch)  //uint8_t#11.1-ReadyForPatch
+        if (xTIPD1_EVENT[10] & F_ReadyForPatch)  //BYTE#11.1-ReadyForPatch
         {
-            return SUCCESS;
+            return TRUE;
         }
     }
-    return FAIL;
+    return FALSE;
 }
+
+BYTE pd_ti_check_readyforpatch2(void)
+{
+	BYTE Count;
+//	SCLKTS_B = 0x13;							//SMBUS 0x12:100KHz,0x13:400KHz //981004-220615-R
+    xUCSI_I2C_RD_BUFF[4] = 0x00;
+    xUCSI_I2C_WR_BUFF[0] = _TIPD_INT_EVENT1;    //0x14
+    // if (TI_PD_WrToRdStream2(TI6599x_ADDR1,
+    //                        &xUCSI_I2C_WR_BUFF[0],
+    //                        1,
+    //                        0,
+    //                        &xUCSI_I2C_RD_BUFF[0],
+    //                        0xFF))
+	if(I2C_Protocol_PD2(4,TI6599x_ADDR2,1,0,xUCSI_I2C_WR_BUFF,NULL))
+    {
+    	for (Count = 0; Count<11 ; Count++)
+    	{
+    		xTIPD1_EVENT[Count] = xUCSI_I2C_RD_BUFF[Count+1];
+    	}
+
+        //pd_ti_clear_event(&xTIPD1_EVENT[0]);
+
+        if (xTIPD1_EVENT[10] & F_ReadyForPatch)  //BYTE#11.1-ReadyForPatch
+        {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+
 /*-----------------------------------------------------------------------------
  * @subroutine - pd_ti_check_readyforpatch
  * @function - pd_ti_check_readyforpatch
@@ -451,7 +698,7 @@ uint8_t pd_ti_check_patchloaded(void)
     //                        0,
     //                        &xUCSI_I2C_RD_BUFF[0],
     //                        0xFF))
-    if(I2C_Protocol(3,TI6599x_ADDR1,1,0xFF,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
+    if(I2C_Protocol_PD(3,TI6599x_ADDR1,1,0xFF,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
     {
     	for (Count = 0; Count<11 ; Count++)
     	{
@@ -467,6 +714,35 @@ uint8_t pd_ti_check_patchloaded(void)
     }
     return FAIL;
 }
+
+BYTE pd_ti_check_patchloaded2(void)
+{
+	BYTE Count;
+    xUCSI_I2C_RD_BUFF[4] = 0x00;
+    xUCSI_I2C_WR_BUFF[0] = _TIPD_INT_EVENT1;    //0x14
+    // if (TI_PD_WrToRdStream2(TI6599x_ADDR1,
+    //                        &xUCSI_I2C_WR_BUFF[0],
+    //                        1,
+    //                        0,
+    //                        &xUCSI_I2C_RD_BUFF[0],
+    //                        0xFF))
+	if(I2C_Protocol_PD2(4,TI6599x_ADDR2,1,0xFF,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
+    {
+    	for (Count = 0; Count<11 ; Count++)
+    	{
+    		xTIPD1_EVENT[Count] = xUCSI_I2C_RD_BUFF[Count+1];
+    	}
+
+        //pd_ti_clear_event(&xTIPD1_EVENT[0]);
+
+        if (xTIPD1_EVENT[10] & F_PatchLoaded)  //BYTE#11.0-PatchLoaded
+        {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
 /*-----------------------------------------------------------------------------
  * @subroutine - pd1_ti_check_ptch_mode
  * @function - pd1_ti_check_ptch_mode
@@ -478,12 +754,13 @@ uint8_t pd_ti_check_patchloaded(void)
 uint8_t pd1_ti_check_ptch_mode(void)
 {
     xUCSI_I2C_WR_BUFF[0] = _TIPD_MODE;
-    if (TI_PD_WrToRdStream(TI6599x_ADDR1,
-                           &xUCSI_I2C_WR_BUFF[0],
-                           1,
-                           0,
-                           &xUCSI_I2C_RD_BUFF[0],
-                           5))
+    // if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+    //                        &xUCSI_I2C_WR_BUFF[0],
+    //                        1,
+    //                        0,
+    //                        &xUCSI_I2C_RD_BUFF[0],
+    //                        5))
+	if(I2C_Protocol_PD(3,TI6599x_ADDR1,1,0x05,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
     {
         //xTIPD1_i2c_error = 0;
         if (xUCSI_I2C_RD_BUFF[1] == 'P')
@@ -499,6 +776,41 @@ uint8_t pd1_ti_check_ptch_mode(void)
     }
     return SUCCESS;
 }
+
+/*-----------------------------------------------------------------------------
+ * @subroutine - pd1_ti_check_ptch_mode
+ * @function - pd1_ti_check_ptch_mode
+ * @Upstream - By Call
+ * @input    -
+ * @return   -
+ * @note     -
+ */
+uint8_t pd1_ti_check_ptch_mode2(void)
+{
+    xUCSI_I2C_WR_BUFF[0] = _TIPD_MODE;
+    // if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+    //                        &xUCSI_I2C_WR_BUFF[0],
+    //                        1,
+    //                        0,
+    //                        &xUCSI_I2C_RD_BUFF[0],
+    //                        5))
+	if(I2C_Protocol_PD2(4,TI6599x_ADDR2,1,0x05,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
+    {
+        //xTIPD1_i2c_error = 0;
+        if (xUCSI_I2C_RD_BUFF[1] == 'P')
+        {
+            return SUCCESS;
+        }
+    }
+    else
+    {
+    	return FAIL;
+        //xTIPD1_i2c_error++;
+        //xTIPD1_service_delay = 100;
+    }
+    return SUCCESS;
+}
+
 /*-----------------------------------------------------------------------------
  * @subroutine - pd1_ti_check_ptch_mode
  * @function - pd1_ti_check_ptch_mode
@@ -516,7 +828,7 @@ uint8_t pd1_ti_check_app_mode(void)
     //                        0,
     //                        &xUCSI_I2C_RD_BUFF[0],
     //                        5))
-    if(I2C_Protocol(3,TI6599x_ADDR1,1,5,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
+    if(I2C_Protocol_PD(3,TI6599x_ADDR1,1,5,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
     {
         //xTIPD1_i2c_error = 0;
         if (xUCSI_I2C_RD_BUFF[1] == 'A')
@@ -531,6 +843,40 @@ uint8_t pd1_ti_check_app_mode(void)
     }
     return FAIL;
 }
+
+/*-----------------------------------------------------------------------------
+ * @subroutine - pd1_ti_check_ptch_mode
+ * @function - pd1_ti_check_ptch_mode
+ * @Upstream - By Call
+ * @input    -
+ * @return   -
+ * @note     -
+ */
+uint8_t pd1_ti_check_app_mode2(void)
+{
+    xUCSI_I2C_WR_BUFF[0] = _TIPD_MODE;
+    // if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+    //                        &xUCSI_I2C_WR_BUFF[0],
+    //                        1,
+    //                        0,
+    //                        &xUCSI_I2C_RD_BUFF[0],
+    //                        5))
+    if(I2C_Protocol_PD2(4,TI6599x_ADDR2,1,5,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
+    {
+        //xTIPD1_i2c_error = 0;
+        if (xUCSI_I2C_RD_BUFF[1] == 'A')
+        {
+            return SUCCESS;
+        }
+    }
+    else
+    {
+    	return FAIL;
+
+    }
+    return FAIL;
+}
+
 /*-----------------------------------------------------------------------------
  * @subroutine - pd_ti_check_CMD1
  * @function - pd_ti_check_CMD1
@@ -548,7 +894,7 @@ uint8_t pd_ti_check_CMD1(void)
     //                        0,
     //                        &xUCSI_I2C_RD_BUFF[0],
     //                        5))
-    if(I2C_Protocol(3,TI6599x_ADDR1,1,5,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
+    if(I2C_Protocol_PD(3,TI6599x_ADDR1,1,5,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
     {
         //xTIPD1_i2c_error = 0;
         if (xUCSI_I2C_RD_BUFF[1] == '!')
@@ -576,6 +922,45 @@ uint8_t pd_ti_check_CMD1(void)
         //xTIPD1_service_delay = 100;
    // return FAIL;
 }
+
+uint8_t pd_ti_check_CMD2(void)
+{
+	xUCSI_I2C_WR_BUFF[0] = 0x08;	//CMD1
+    // if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+    //                        &xUCSI_I2C_WR_BUFF[0],
+    //                        1,
+    //                        0,
+    //                        &xUCSI_I2C_RD_BUFF[0],
+    //                        5))
+    if(I2C_Protocol_PD2(4,TI6599x_ADDR2,1,5,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
+    {
+        //xTIPD1_i2c_error = 0;
+        if (xUCSI_I2C_RD_BUFF[1] == '!')
+        {
+        	if (xTIFW_Step == 0x02)		// Handling "pbms"
+        	{
+        		pd1_ti_HandleErroe();
+        	}
+        	else if (xTIFW_Step == 0x04)		// Handling "pbmc"
+        	{
+        		xTIFW_Step = 0xFF;		// Go to write "pbme"
+				ENABLE_PD_Step = 0;
+        	}
+            return FAIL;
+        }
+        if (xUCSI_I2C_RD_BUFF[1] == 0)
+        {
+        	return SUCCESS;
+        }
+        return FAIL;
+    }
+    else
+    	return FAIL;
+        //xTIPD1_i2c_error++;
+        //xTIPD1_service_delay = 100;
+   // return FAIL;
+}
+
 /*-----------------------------------------------------------------------------
  * @subroutine - pd1_ti_Write_pbms
  * @function - pd1_ti_Write_pbms
@@ -633,7 +1018,76 @@ void pd1_ti_Write_pbms(void)
 //	                         	0,
 //	                         	&xUCSI_I2C_RD_BUFF[0],
 //	                          	0xFF))
-		if(I2C_Protocol(3,TI6599x_ADDR1,1,0,xUCSI_I2C_WR_BUFF,NULL))
+		if(I2C_Protocol(3,TI6599x_ADDR1,1,0xFF,xUCSI_I2C_WR_BUFF,NULL))
+		{
+			;
+		}
+		ENABLE_PD_Step++;
+		return;
+	}
+	if (ENABLE_PD_Step == 4)
+    {
+	    if (xUCSI_I2C_RD_BUFF[1] == 0)	// only check the first uint8_t
+	    {
+			xTIFW_Step++;
+			ENABLE_PD_Step = 0;
+			return;
+		}
+		pd1_ti_HandleErroe();
+		return;
+	}
+}
+
+void pd1_ti_Write_pbms2(void)
+{
+	if (ENABLE_PD_Step == 0)
+    {
+		pd_i2c_buffer_clear();
+		xUCSI_I2C_WR_BUFF[0] = 0x09;  //DATA1
+		xUCSI_I2C_WR_BUFF[1] = 0x06;  //uint8_t count
+		xUCSI_I2C_WR_BUFF[2] = xTIFW_Bin_Size;  
+		xUCSI_I2C_WR_BUFF[3] = xTIFW_Bin_Size>>8;
+		xUCSI_I2C_WR_BUFF[4] = 0x00;  
+		xUCSI_I2C_WR_BUFF[5] = 0x00;
+		xUCSI_I2C_WR_BUFF[6] = 0x08;  //Address
+		xUCSI_I2C_WR_BUFF[7] = 0x1E;  //Timeout value 30*100ms=3sec
+        if(I2C_Protocol_PD2(4,TI6599x_ADDR2,8,0,xUCSI_I2C_WR_BUFF,NULL))
+		// if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+		// 						&xUCSI_I2C_WR_BUFF[0],
+	    //                     	8,
+	    //                     	0,
+	    //                     	&xUCSI_I2C_RD_BUFF[0],
+	    //                   		0))
+		{
+			ENABLE_PD_Step++;
+		}
+	    return;
+	}
+	if (ENABLE_PD_Step == 1)
+    {
+		pd_ti_send_4cc2(_4CC_PBMs);
+		ENABLE_PD_Step++;
+		return;
+	}
+	if (ENABLE_PD_Step == 2)
+    {
+	  	if ( pd_ti_check_CMD2())
+	 	{
+	 		ENABLE_PD_Step++;
+	 		return;
+		}
+	}
+	if (ENABLE_PD_Step == 3)
+    {
+        // Raymond need to guess uint8_t count val
+		xUCSI_I2C_WR_BUFF[0] = 0x09;  //DATA1
+//		if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+//								&xUCSI_I2C_WR_BUFF[0],
+//	                        	1,
+//	                         	0,
+//	                         	&xUCSI_I2C_RD_BUFF[0],
+//	                          	0xFF))
+		if(I2C_Protocol_PD2(4,TI6599x_ADDR2,1,0xFF,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
 		{
 			;
 		}
@@ -673,12 +1127,13 @@ uint8_t pd1_ti_flash_patch_data(void)
     {
         ///(_TIPD_ADDH, _TIPD_ADDM, _TIPD_ADDL, SPI_selection_internal, 32, &xUCSI_I2C_WR_BUFF[0]);
 	
-        if (TI_PD_WrToRdStream(0x10,
-								&xUCSI_I2C_WR_BUFF[0],
-	                        	32,
-	                         	0,
-	                         	&xUCSI_I2C_RD_BUFF[0],
-	                          	0))
+        // if (TI_PD_WrToRdStream(0x10,
+		// 						&xUCSI_I2C_WR_BUFF[0],
+	    //                     	32,
+	    //                      	0,
+	    //                      	&xUCSI_I2C_RD_BUFF[0],
+	    //                       	0))
+		if(I2C_Protocol_PD(3,TI6599x_ADDR1,32,0,xUCSI_I2C_WR_BUFF,NULL))
 	    {
 	    	_TIPD_ADDL += 32;
 	    	if(_TIPD_ADDL == 0x00)
@@ -691,6 +1146,39 @@ uint8_t pd1_ti_flash_patch_data(void)
     xTIFW_Step++;
     return SUCCESS;
 }
+
+uint8_t pd1_ti_flash_patch_data2(void)
+{
+    uint16_t addrcnt;
+    uint16_t Bin_Cnt;
+    uint8_t _TIPD_ADDH = 0x01;
+    uint8_t _TIPD_ADDM = 0xC0;
+    uint8_t _TIPD_ADDL = 0x00;
+    Bin_Cnt = xTIFW_Bin_Size /32;
+    for (addrcnt = 0; addrcnt<Bin_Cnt; addrcnt++) 
+    {
+        ///(_TIPD_ADDH, _TIPD_ADDM, _TIPD_ADDL, SPI_selection_internal, 32, &xUCSI_I2C_WR_BUFF[0]);
+	
+        // if (TI_PD_WrToRdStream(0x10,
+		// 						&xUCSI_I2C_WR_BUFF[0],
+	    //                     	32,
+	    //                      	0,
+	    //                      	&xUCSI_I2C_RD_BUFF[0],
+	    //                       	0))
+		if(I2C_Protocol_PD2(4,TI6599x_ADDR2,32,0,xUCSI_I2C_WR_BUFF,NULL))
+	    {
+	    	_TIPD_ADDL += 32;
+	    	if(_TIPD_ADDL == 0x00)
+	    	{
+	    		_TIPD_ADDM++;
+	    	}
+	    }
+        //Delay1MS(5);
+    }
+    xTIFW_Step++;
+    return SUCCESS;
+}
+
 /*-----------------------------------------------------------------------------
  * @subroutine - pd1_ti_Write_pbmc
  * @function - pd1_ti_Write_pbmc
@@ -719,12 +1207,13 @@ void pd1_ti_Write_pbmc(void)
 	if (ENABLE_PD_Step == 2)
     {
 		xUCSI_I2C_WR_BUFF[0] = 0x09;  //DATA1
-		if (TI_PD_WrToRdStream(TI6599x_ADDR1,
-								&xUCSI_I2C_WR_BUFF[0],
-	                        	1,
-	                         	0,
-	                         	&xUCSI_I2C_RD_BUFF[0],
-	                          	0xFF))
+		// if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+		// 						&xUCSI_I2C_WR_BUFF[0],
+	    //                     	1,
+	    //                      	0,
+	    //                      	&xUCSI_I2C_RD_BUFF[0],
+	    //                       	0xFF))
+		if(I2C_Protocol_PD(3,TI6599x_ADDR1,1,0xFF,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
 		{
 			;
 		}
@@ -744,6 +1233,54 @@ void pd1_ti_Write_pbmc(void)
 		return;
 	}
 }
+
+void pd1_ti_Write_pbmc2(void)
+{
+	uint8_t Count;
+	if (ENABLE_PD_Step == 0)
+    {
+		pd_ti_send_4cc2(_4CC_PBMc);
+		ENABLE_PD_Step++;
+		return;
+	}
+	if (ENABLE_PD_Step == 1)
+    {
+		if ( pd_ti_check_CMD2())
+	 	{
+	 		ENABLE_PD_Step++;
+	 		return;
+		}
+	}
+	if (ENABLE_PD_Step == 2)
+    {
+		xUCSI_I2C_WR_BUFF[0] = 0x09;  //DATA1
+		// if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+		// 						&xUCSI_I2C_WR_BUFF[0],
+	    //                     	1,
+	    //                      	0,
+	    //                      	&xUCSI_I2C_RD_BUFF[0],
+	    //                       	0xFF))
+		if(I2C_Protocol_PD2(4,TI6599x_ADDR2,1,0xFF,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
+		{
+			;
+		}
+		ENABLE_PD_Step++;
+		return;
+	}
+	if (ENABLE_PD_Step == 3)
+    {
+    	if (xUCSI_I2C_RD_BUFF[1] == 0)	// only check the first uint8_t
+	    {
+			xTIFW_Step++;
+			ENABLE_PD_Step = 0;
+			return;
+		}
+		xTIFW_Step = 0;
+		ENABLE_PD_Step = 0;
+		return;
+	}
+}
+
 /*-----------------------------------------------------------------------------
  * @subroutine - pd1_ti_Write_pbme
  * @function - pd1_ti_Write_pbmc
@@ -764,12 +1301,13 @@ void pd1_ti_Write_pbme(void)
 	if (ENABLE_PD_Step == 1)
     {
 		xUCSI_I2C_WR_BUFF[0] = 0x09;  //DATA1
-		if (TI_PD_WrToRdStream(TI6599x_ADDR1,
-								&xUCSI_I2C_WR_BUFF[0],
-	                        	1,
-	                         	0,
-	                         	&xUCSI_I2C_RD_BUFF[0],
-	                          	0xFF))
+		// if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+		// 						&xUCSI_I2C_WR_BUFF[0],
+	    //                     	1,
+	    //                      	0,
+	    //                      	&xUCSI_I2C_RD_BUFF[0],
+	    //                       	0xFF))
+		if(I2C_Protocol_PD(3,TI6599x_ADDR1,1,0xFF,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
 		{
 			;
 		}
@@ -782,6 +1320,39 @@ void pd1_ti_Write_pbme(void)
 		return;
 	}
 }
+
+void pd1_ti_Write_pbme2(void)
+{
+	uint8_t Count;
+	if (ENABLE_PD_Step == 0)
+    {
+		pd_ti_send_4cc2(_4CC_PBMe);
+		ENABLE_PD_Step++;
+		return;
+	}
+	if (ENABLE_PD_Step == 1)
+    {
+		xUCSI_I2C_WR_BUFF[0] = 0x09;  //DATA1
+		// if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+		// 						&xUCSI_I2C_WR_BUFF[0],
+	    //                     	1,
+	    //                      	0,
+	    //                      	&xUCSI_I2C_RD_BUFF[0],
+	    //                       	0xFF))
+		if(I2C_Protocol_PD2(4,TI6599x_ADDR2,1,0xFF,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
+		{
+			;
+		}
+		ENABLE_PD_Step++;
+		return;
+	}
+	if (ENABLE_PD_Step == 2)
+    {
+    	pd1_ti_HandleErroe();
+		return;
+	}
+}
+
 /*-----------------------------------------------------------------------------
  * @subroutine - pd1_ti_check_version
  * @function - pd1_ti_check_version
@@ -870,6 +1441,88 @@ uint8_t pd1_ti_check_version(void)
     //981004-211206-A-E	
     return SUCCESS;
 }
+
+uint8_t pd1_ti_check_version2(void)
+{
+	uint8_t Count;
+	//981004-220310-R-S for not reading TI chip correctly
+	#if 0
+	uint8_t Version[8];
+	
+	ECIndirectFastRead(0x01, 0xC0, 0xA6, SPI_selection_internal, 8, &Version[0]);    
+	
+    xUCSI_I2C_WR_BUFF[0] = _TIPD_OUID; //981004-220208-M
+    if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+                           &xUCSI_I2C_WR_BUFF[0],
+                           1,
+                           0,
+                           &xUCSI_I2C_RD_BUFF[0],
+                           9))
+    {
+        for (Count = 0; Count<8 ; Count++)
+    	{
+    		xTIFW_Custuse[Count] = xUCSI_I2C_RD_BUFF[Count+1];
+    		if(xTIFW_Custuse[Count] != Version[Count] )
+    		{
+    			xTIFW_Step = 0;
+				ENABLE_PD_Step = 0;
+				return FAIL;
+    		}
+    	}
+    }
+    else
+    {
+    	return FAIL;
+    }
+	#endif
+	//981004-220310-R-E
+	
+    xUCSI_I2C_WR_BUFF[0] = _TIPD_VERSION;
+    // if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+    //                        &xUCSI_I2C_WR_BUFF[0],
+    //                        1,
+    //                        0,
+    //                        &xUCSI_I2C_RD_BUFF[0],
+    //                        5))
+	if(I2C_Protocol_PD2(4,TI6599x_ADDR2,1,5,&xUCSI_I2C_WR_BUFF[0],&xUCSI_I2C_RD_BUFF[0]))
+    {
+        for (Count = 0; Count<4 ; Count++)
+    	{
+    		xTIFW_Version[Count] = xUCSI_I2C_RD_BUFF[Count+1];			
+			PD_FW_Ver = xUCSI_I2C_RD_BUFF[2]; //981004-211206-A //0X2B9 , 02 =>AC , 04 =>AD , 06 =>AE			
+    	}
+    }
+    else
+    {		
+    	return FAIL; //981004-210524-R
+    }
+    //981004-211206-A-S
+	#if 1
+	pd_i2c_buffer_clear();
+    xUCSI_I2C_WR_BUFF[0] = 0x0D;
+    // if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+    //                        &xUCSI_I2C_WR_BUFF[0],
+    //                        1,
+    //                        0,
+    //                        &xUCSI_I2C_RD_BUFF[0],
+    //                        5))
+	if(I2C_Protocol_PD2(4,TI6599x_ADDR2,1,5,&xUCSI_I2C_WR_BUFF[0],&xUCSI_I2C_RD_BUFF[0]))
+    {
+        for (Count = 0; Count<4 ; Count++)
+    	{
+    		xTIFW_Version[Count] = xUCSI_I2C_RD_BUFF[Count+1];			
+			PD_FW_Ver2 = xUCSI_I2C_RD_BUFF[1]; //0X2BA(BIT4) , 00 =>65994 , 10=>65993			
+    	}
+    }
+    else
+    {
+    	//return FAIL;
+    }
+    #endif	
+    //981004-211206-A-E	
+    return SUCCESS;
+}
+
 #if SUPPORT_TI_FW_UPD
 /*-----------------------------------------------------------------------------
  * @subroutine - TI_FirmwareUpdate
@@ -959,7 +1612,10 @@ void pd_ti_get_active_PDO(void)
         return;
     }
 	#endif
-	
+	xTIPD1_pd_mV = 0;
+    xTIPD1_pd_mA = 0;
+    xTIPD1_pd_watt = 0;
+
     xUCSI_I2C_WR_BUFF[0] = _TIPD_ACTIVE_CONTRACT_PDO; //0x34	
     // if (TI_PD_WrToRdStream(TI6599x_ADDR1,             //Address 0x40
     //                        &xUCSI_I2C_WR_BUFF[0],
@@ -967,7 +1623,7 @@ void pd_ti_get_active_PDO(void)
     //                        0,
     //                        &xUCSI_I2C_RD_BUFF[0x10],
     //                        7))
-    if(I2C_Protocol(3,TI6599x_ADDR1,6,0,xUCSI_I2C_WR_BUFF,NULL))
+    if(I2C_Protocol_PD(3,TI6599x_ADDR1,1,7,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
     {
         //xTIPD1_i2c_error = 0;		
         ITempW01 = ((xUCSI_I2C_RD_BUFF[0x12] & 0x03) * 256) +
@@ -990,6 +1646,56 @@ void pd_ti_get_active_PDO(void)
 	
 
 }
+
+void pd_ti_get_active_PDO2(void)
+{
+	 //uint16_t ITempW02; 	 
+    /* Check AC_IN(AC_OK) make sure PD power or AC in system */
+	#if 0
+    if (IL_AC_IN)   /* [0]:AC_IN or PD_IN  [1]: No AC & No PD */
+    {
+        xTIPD1_pd_mV = 0;
+        xTIPD1_pd_mA = 0;
+        xTIPD1_pd_watt = 0;
+        xTIPD1_poll_pdo_delay = 2;   /* Quick Polling */
+        return;
+    }
+	#endif
+	xTIPD1_pd_mV = 0;
+    xTIPD1_pd_mA = 0;
+    xTIPD1_pd_watt = 0;
+
+    xUCSI_I2C_WR_BUFF[0] = _TIPD_ACTIVE_CONTRACT_PDO; //0x34	
+    // if (TI_PD_WrToRdStream(TI6599x_ADDR1,             //Address 0x40
+    //                        &xUCSI_I2C_WR_BUFF[0],
+    //                        1,
+    //                        0,
+    //                        &xUCSI_I2C_RD_BUFF[0x10],
+    //                        7))
+    if(I2C_Protocol_PD2(4,TI6599x_ADDR2,1,7,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
+    {
+        //xTIPD1_i2c_error = 0;		
+        ITempW01 = ((xUCSI_I2C_RD_BUFF[0x12] & 0x03) * 256) +
+                   xUCSI_I2C_RD_BUFF[0x11];
+        xTIPD1_pd_mA = (uint8_t)(ITempW01 * 10);
+
+        ITempB04 = (xUCSI_I2C_RD_BUFF[0x13] >> 2) & 0x03;
+        ITempB05 = (uint8_t)((xUCSI_I2C_RD_BUFF[0x12] >> 2) +
+                   (xUCSI_I2C_RD_BUFF[0x13] << 6));
+        ITempW02 = ((ITempB04 * 256) + ITempB05) & 0x03FF;
+        xTIPD1_pd_mV = (uint8_t)(ITempW02 * 50);
+        ITempW02 = ITempW02 / 10;
+        xTIPD1_pd_watt = (uint8_t)((ITempW01 * ITempW02) / 200);
+        //xTIPD1_poll_pdo_delay = 20;  /* Slowdown polling speed */
+    }
+	else
+	{
+       ;
+    }
+	
+
+}
+
 //-----------------------------------------------------------------------------
 
 void Enable_pd_adapter(void)
@@ -1046,7 +1752,7 @@ void Enable_pd_adapter(void)
 //                               0,
 //                               &xUCSI_I2C_RD_BUFF[0],
 //                               2))
-		if(I2C_Protocol(3,TI6599x_ADDR1,3,0,xUCSI_I2C_WR_BUFF,NULL))
+		if(I2C_Protocol(3,TI6599x_ADDR1,1,2,xUCSI_I2C_WR_BUFF,NULL))
         {
 			;
         }
@@ -1075,11 +1781,106 @@ void Enable_pd_adapter(void)
 	//while(1);
     #endif    
 }
+
+void Enable_pd_adapter2(void)
+{
+	
+    #if 1	
+    if (ENABLE_PD_Step == 0)
+    {
+        pd_i2c_buffer_clear();
+        xUCSI_I2C_WR_BUFF[0] = 0x09;  //DATA1
+        xUCSI_I2C_WR_BUFF[1] = 0x01;  //uint8_t count
+        xUCSI_I2C_WR_BUFF[2] = 0x02;  //PP3 (PP_EXT1)		
+
+//        if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+//                               &xUCSI_I2C_WR_BUFF[0],
+//                               3,
+//                               0,
+//                               &xUCSI_I2C_RD_BUFF[0],
+//                               0))
+		if(I2C_Protocol_PD2(4,TI6599x_ADDR2,3,0,xUCSI_I2C_WR_BUFF,NULL))
+        {
+			;
+        }
+        ENABLE_PD_Step++;
+        //return;
+         _Delay_1ms(50);		
+    }
+    if (ENABLE_PD_Step == 1)
+    {
+        pd_ti_send_4cc2(_4CC_SRDY);
+        ENABLE_PD_Step++;		
+		//return;
+        _Delay_1ms(50);
+    }
+    if (ENABLE_PD_Step == 2)
+    {
+        if (pd_ti_check_Cmd1Complete2())
+        {
+            ENABLE_PD_Step++;            			
+        }		
+        //if (ucsi_cmd_ppm_timeout())
+        //{
+            //ENABLE_PD_Step = 99;
+        //}
+        //return;
+		 _Delay_1ms(50);
+    }
+    if (ENABLE_PD_Step == 3)
+    {
+		xUCSI_I2C_WR_BUFF[0] = 0x08;  //CMD1
+//        if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+//                               &xUCSI_I2C_WR_BUFF[0],
+//                               1,
+//                               0,
+//                               &xUCSI_I2C_RD_BUFF[0],
+//                               2))
+		if(I2C_Protocol_PD2(4,TI6599x_ADDR2,1,2,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
+        {
+			;
+        }
+				
+		_Delay_1ms(50);
+        xUCSI_I2C_WR_BUFF[0] = 0x09;  //DATA1
+//        if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+//                               &xUCSI_I2C_WR_BUFF[0],
+//                               1,
+//                               0,
+//                               &xUCSI_I2C_RD_BUFF[0],
+//                               2))
+		if(I2C_Protocol_PD2(4,TI6599x_ADDR2,1,2,xUCSI_I2C_WR_BUFF,xUCSI_I2C_RD_BUFF))
+        {
+			;
+        }
+		else
+		{
+           ; 
+        }	
+		//test0A = xUCSI_I2C_RD_BUFF[1];
+        ENABLE_PD_Step++;
+        //return;
+    }    
+    ENABLE_PD_Step = 0;
+	//while(1);
+    #endif    
+}
+
 void Disable_pd_adapter(void)
 {	 
      pd_ti_send_4cc(_4CC_SRYR);
 	 _Delay_1ms(20);	 
 	 if (pd_ti_check_Cmd1Complete())
+     {
+		; 
+     }     
+}	
+
+void Disable_pd_adapter2(void)
+{	 
+     pd_ti_send_4cc2(_4CC_SRYR);
+	 _Delay_1ms(20);	 
+	 if (pd_ti_check_Cmd1Complete2())
      {
 		; 
      }     
@@ -1091,6 +1892,11 @@ void TI_PD_Warm_reset(void)
      pd_ti_send_4cc(_4CC_Gaid);	 
 }
 //981004-211102-A-E		
+
+void TI_PD_Warm_reset2(void)
+{	 
+     pd_ti_send_4cc2(_4CC_Gaid);	 
+}
 
 #if 0
 void TBT_Reconnet(void)
@@ -1237,6 +2043,29 @@ void TI_FW_CHECK(void)
     //                       &xUCSI_I2C_RD_BUFF[0],
     //                       9))
 	if(I2C_Protocol_PD(3,TI6599x_ADDR1,1,9,&xUCSI_I2C_WR_BUFF[0],&xUCSI_I2C_RD_BUFF[0]))
+    {
+        for (Count = 0; Count< 8 ; Count++)
+    	{
+    		xPORT_FW_VER[Count] = xUCSI_I2C_RD_BUFF[Count+1];           		
+    	}
+    }    
+	TI_FW_Ver = xPORT_FW_VER[0];
+    TI_FW_Model = xPORT_FW_VER[1];    	
+}
+
+void TI_FW_CHECK2(void)
+{
+    uint8_t Count;
+   
+	pd_i2c_buffer_clear(); 	
+    xUCSI_I2C_WR_BUFF[0] = _TIPD_OUID; //0x06 //981004-220208-M
+    //if (TI_PD_WrToRdStream(TI6599x_ADDR1,
+    //                       &xUCSI_I2C_WR_BUFF[0],
+    //                       1,
+    //                       0,
+    //                       &xUCSI_I2C_RD_BUFF[0],
+    //                       9))
+	if(I2C_Protocol_PD2(4,TI6599x_ADDR2,1,9,&xUCSI_I2C_WR_BUFF[0],&xUCSI_I2C_RD_BUFF[0]))
     {
         for (Count = 0; Count< 8 ; Count++)
     	{
@@ -2208,6 +3037,7 @@ void Read_Ti_SmartAmp(void)
             {
 				;
 			}
+			AMP_XOR = SPIBuffer[5]; //XOR => 0XB2 //EC RAM 0x4AE
 			_Delay_1ms(10);//Delay1MS(10);
 			SPIBuffer[6] = 0x7E;           
             //if (I2C_CH5_WrToRdStream(_TISMAMP_ADDR,
@@ -2219,7 +3049,8 @@ void Read_Ti_SmartAmp(void)
 			if(I2C_Protocol_SMART_AMP(3,_TISMAMP_ADDR,1,1,&SPIBuffer[6],&SPIBuffer[7]))
 								  {
 									;
-								  } 
+								  }
+			AMP_CRC = SPIBuffer[7]; //CRC => 0X1E //EC RAM 0x4AF  
 #if 0								  
 			Delay1MS(10);
 			SPIBuffer[4] = 0x71;           

@@ -47,6 +47,7 @@
 #define _TIPD_ACTIVE_CONTRACT_RDO   0x35
 #define _TIPD_POWER_STATUS          0x3F
 #define _TIPD_PD_STATUS             0x40
+#define _TIPD_DATA_CONTROL          0x50 //981004-220830-A
 #define _TIPD_DATA_STATUS           0x5F
 #define _TIPD_CCn_PIN_STATE         0x69
 
@@ -137,19 +138,26 @@ extern uint8_t TI_PD_WrToRdStream(uint8_t I2C_Addr, uint8_t *Var, uint8_t Count,
                             uint8_t *Var2, uint8_t Count2);
 
 extern void pd_ti_get_active_PDO(void); //981004-210118-A
-extern void Enable_pd_adapter(void); //981004-210118-A							
+extern void pd_ti_get_active_PDO2(void);
+extern void Enable_pd_adapter(void); //981004-210118-A
+extern void Enable_pd_adapter2(void); //981004-210118-A								
 extern void Disable_pd_adapter(void); //981004-210118-A
+extern void Disable_pd_adapter2(void); //981004-210118-A
 extern uint8_t pd1_ti_check_version(void); //981004-210611-A
+extern uint8_t pd1_ti_check_version2(void); //981004-210611-A
 extern void TI_PD_Warm_reset(void); //981004-211102-A
+extern void TI_PD_Warm_reset2(void); //981004-211102-A
 //extern void TBT_Reconnet(void);
 //extern void TBT_Reconnet2(void);
 extern void TI_FW_CHECK(void); //981004-211119-A
+extern void TI_FW_CHECK2(void); //981004-211119-A
 //extern void S0_STATUS(void); //981004-211215-A
 //extern void S4_STATUS(void); //981004-211215-A
 extern void service_app_update_ti_pd(void); //981004-220208-A
 extern uint8_t pd_ti_send_4cc(uint8_t Index4cc);
 extern const sTi4ccStruct _TI_PD_4CC_TBLs[];
 extern uint8_t I2C_Protocol_PD(uint8_t Channel, uint8_t Addr, uint8_t WDatCnt, uint8_t RDatCnt, uint8_t *WDatBuf, uint8_t *RDatBuf);
+extern uint8_t I2C_Protocol_PD2(uint8_t Channel, uint8_t Addr, uint8_t WDatCnt, uint8_t RDatCnt, uint8_t *WDatBuf, uint8_t *RDatBuf);
 extern void pd1_ti_HandleErroe(void);
 extern void pd_ti_clear_event(uint8_t *Var);
 extern uint8_t pd_ti_check_Cmd1Complete(void);
@@ -158,6 +166,13 @@ extern uint8_t pd_ti_check_patchloaded(void);
 extern uint8_t pd1_ti_check_ptch_mode(void);
 extern uint8_t pd1_ti_check_app_mode(void);
 extern uint8_t pd_ti_check_CMD1(void);
+
+extern uint8_t pd_ti_check_Cmd1Complete2(void);
+extern uint8_t pd_ti_check_readyforpatch2(void);
+extern uint8_t pd_ti_check_patchloaded2(void);
+extern uint8_t pd1_ti_check_ptch_mode2(void);
+extern uint8_t pd1_ti_check_app_mode2(void);
+extern uint8_t pd_ti_check_CMD2(void);
 
 extern uint8_t I2C_Protocol_SMART_AMP(uint8_t Channel, uint8_t Addr, uint8_t WDatCnt, uint8_t RDatCnt, uint8_t *WDatBuf, uint8_t *RDatBuf);
 extern void Clear_Ti_SmartAmp(void);

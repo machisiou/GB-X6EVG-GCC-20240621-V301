@@ -655,7 +655,8 @@ XBYTE g_ECPowerDownModeTest               _at_ (ECPowerDownCtrl+0x05);
 //extern ACPI_AREA uint8_t POWER_FLAG13;			// 0x0D
 #define adjustfan2           BIT0 
 #define fixBattery           BIT1 //Fix Battery no charge when shipmode wakeup.60.8w "Model :  
-#define adjustfan4           BIT2 
+//#define adjustfan4           BIT2 //981004-231019-R
+#define all_sys_pwrgd_off    BIT2  
 #define Flash_ME_ON          BIT3 
 #define GPU_temp_80          BIT4 //981004-190419-A
 #define GPU_temp_85          BIT5 //981004-190419-A
@@ -1269,6 +1270,9 @@ XBYTE g_ECPowerDownModeTest               _at_ (ECPowerDownCtrl+0x05);
 //981004-221123-A-E
 #define BATCAP75				(*((uint16_t *)(OEMRAM4+0x00A8))) //981004-230510-A
 #define BATCAP70				(*((uint16_t *)(OEMRAM4+0x00AA))) //981004-230510-A
+
+#define AMP_XOR                 (*((uint8_t *)(OEMRAM4+0x00AE))) 
+#define AMP_CRC                 (*((uint8_t *)(OEMRAM4+0x00AF))) 
 
 //981004-220510-A-E
 //981004-210617-A-E 
