@@ -5,7 +5,7 @@
 #include "oem/crb/Oem_timer.h"
 #include "system/peripheral.h"
 #include "system/interrupt.h"
-
+void Initial_GPIO();
 // 32-2 10us delay(10us)
 // 32-3 ACPI burst (2ms)
 // 32-4 SBMus time-out (26ms)

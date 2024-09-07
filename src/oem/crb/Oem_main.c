@@ -141,7 +141,22 @@ void oem_100msA_service(void)
 	{
 		Check_PORT80();
 	}
-		
+
+	if (IS_MASK_SET(POWER_FLAG3, power_on_patch))
+	{
+		Power_on_patch_cnt++;
+		if (Power_on_patch_cnt >= 2)
+		{
+			RSMRST_L = 0;
+           /// if (ECHIPVER >= _CHIP_EX) //981004-231214-A
+            {    
+            ///    SET_MASK(ESGCTRL2, F_ESPIIPG);
+            } 
+			Power_on_patch_cnt =0;
+			CLEAR_MASK(POWER_FLAG3, power_on_patch);//203 bit1
+		}
+    }
+
 }
 
 /******************************************************************************/
@@ -163,6 +178,24 @@ void oem_100msC_service(void)
 *******************************************************************************/
 void oem_500msA_service(void)
 {
+    #if ECSleepModeSupport
+   /// if(CheckEnterDeepSleep())
+   /// {
+	///    EnterDeepSleep();
+   /// }
+    #endif			
+	
+	//981004-171102-A-S 
+	#if 1
+	if (IS_MASK_CLEAR(POWER_FLAG9, rtc_wake_support)) //EC RAM 209 bit 4
+    {	 
+        if (IS_MASK_CLEAR(POWER_FLAG6, BIOS_flash_ok)) 
+		{
+            Check_Adapter();
+        } 			
+    }
+	#endif
+    //981004-171102-A-E	
 }
 
 /******************************************************************************/
@@ -177,6 +210,50 @@ void oem_500msB_service(void)
 *******************************************************************************/
 void oem_1SA_service(void)
 {
+
+#if SmartFanSupport
+    if(SystemIsS0)
+    {
+        CheckFanRPM1();
+    }
+    #endif
+    if(IS_MASK_SET(POWER_FLAG13, fixBattery))//981004-150525-A Fix Battery no charge when shipmode wakeup.60.8w "Model : GAG-K40" 
+    {	
+		Fix_Battery_Abnormal();//981004-150525-A Fix Battery no charge when shipmode wakeup.60.8w "Model : GAG-K40"
+	}
+    PollingBatteryData();
+	if (IS_MASK_SET(POWER_FLAG1, power_on) && IS_MASK_SET(POWER_FLAG2, SLP_S3_ON)) //981004-121225-M
+    {	    
+       bGetThermalData();            
+       vMoniterTemprature();
+	   vFanControl2(); //For X5X8 NV 970 + X5Y8 NV 980  
+       //981004-170419-M-E 	   
+    } 
+    else if (!SLP_S3_L) //981004-221003-A	
+	{
+       DCR0 = 0x00;
+       DCR3 = 0x00;	   
+	   //FanRPM3 = 0x00; //981004-220928-R
+	   //FanRPM4 = 0x00; //981004-220928-R
+	   //bRWSMBus(SMbusCh1, SMbusWB, NCT7802YAddr, FANCTRL1, &FanRPM3 ,  SMBus_NoPEC); //981004-220928-R		  
+       //bRWSMBus(SMbusCh1, SMbusWB, NCT7802YAddr, FANCTRL2, &FanRPM4 ,  SMBus_NoPEC); //981004-220928-R
+    }
+	    		
+	//981004-180712-R-S
+	#if 1
+	if(IS_MASK_SET(POWER_FLAG13, HDA_SDO_BIOS))  
+    {
+        ME_CNT++;
+        if(ME_CNT==5)
+		{	
+            SysPowState = SYSTEM_S4_S0;
+		}	
+                        
+        if(ME_CNT >6)        
+            ME_CNT = 6;
+    }
+	#endif
+
 }
 
 /******************************************************************************/
