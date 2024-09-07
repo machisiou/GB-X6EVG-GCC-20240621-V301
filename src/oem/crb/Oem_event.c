@@ -1241,7 +1241,8 @@ void PSWPressed(void)
     PSW_COUNTER = T_PSWOFF;		        // initialize counter	
     switch (SystemState)    
     {
-		case SYSTEM_G3:		
+		case SYSTEM_G3:
+        case SYSTEM_S4:		
         case SYSTEM_S5 :
             PSW_COUNTER = T_PSWOFF;		    // initialize counter
             EC_3A = 1;

@@ -1346,7 +1346,7 @@ void S0_S4Variable(void)
        BAT_CHGCURR = 0x0001; //0.256A //981004-230731-M from 0x8002	   
        SET_MASK(POWER_FLAG8, check_pd_ac_chg2); //EC RAM 0x208 bit1		 
     } 
-	//RSMRST_L = 0;
+	RSMRST_L = 0;
 	//981004-210312-R-S
 	#if 0
 	if (IS_MASK_CLEAR(POWER_FLAG2, sci_on))
@@ -1641,7 +1641,7 @@ void Oem_S4S0Sequence(void)
 	//981004-231212-A-S
 	Clear_Ti_SmartAmp();
     Delay1MS(10); 
-	Init_Ti_SmartAmp(); 
+	//Init_Ti_SmartAmp(); 
 	Delay1MS(255);
 	Read_Ti_SmartAmp();
     //981004-231212-A-E

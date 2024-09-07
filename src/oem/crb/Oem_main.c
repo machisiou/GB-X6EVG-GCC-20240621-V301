@@ -52,12 +52,12 @@ void oem_1ms_service(void)
 	else
 	{i=0;}
 
-	if(IS_BIT_SET(ESPI->EVIDX7, IDX7_HOST_RST_WARN)) {
-		VW_Set_Index(0x06, 0x8F);
-        while(IS_BIT_SET(ESPI->EVIDX7, IDX7_HOST_RST_WARN)) {}
-		VW_Set_Index(0x06, 0x87);
-    }
-	ESPI->EVSTS_b.IDX7CHG = 1;
+	// if(IS_BIT_SET(ESPI->EVIDX7, IDX7_HOST_RST_WARN)) {
+	// 	VW_Set_Index(0x06, 0x8F);
+    //     while(IS_BIT_SET(ESPI->EVIDX7, IDX7_HOST_RST_WARN)) {}
+	// 	VW_Set_Index(0x06, 0x87);
+    // }
+	// ESPI->EVSTS_b.IDX7CHG = 1;
 
     if (!SLP_S3_L)
 	{
@@ -86,7 +86,7 @@ void oem_5ms_service(void)
 	if (xAPP_PD_EnterUpdate > 0x00) //981004-220208-A
     {
 		//SET_MASK(EC_Flag5, TI_PD_Flash); //EC RAM 0x389 BIT6
-        service_app_update_ti_pd();
+        //service_app_update_ti_pd();
     }
 }
 /******************************************************************************/
@@ -199,6 +199,25 @@ void oem_1min_service(void)
 void Oem_init(void)
 {
 	Initial_GPIO();
+    Port80_Enalbe_Threshold(1,0);
+    Port81_Enalbe_Threshold(1,0);
+
+    LED7s_TABLE[0] = 0x3F;
+    LED7s_TABLE[1] = 0x06;
+    LED7s_TABLE[2] = 0x5B;
+    LED7s_TABLE[3] = 0x4F;
+    LED7s_TABLE[4] = 0x66;
+    LED7s_TABLE[5] = 0x6D;
+    LED7s_TABLE[6] = 0x7D;
+    LED7s_TABLE[7] = 0x07;
+    LED7s_TABLE[8] = 0x7F;
+    LED7s_TABLE[9] = 0x6F;
+    LED7s_TABLE[10] = 0x77;
+    LED7s_TABLE[11] = 0x7C;
+    LED7s_TABLE[12] = 0x39;
+    LED7s_TABLE[13] = 0x5E;
+    LED7s_TABLE[14] = 0x79;
+    LED7s_TABLE[15] = 0x71;
 	//BAT_STATUS2 = 55;
 	// ~23.7Khz fan
 	PWM_Reset(Pwm00);
@@ -238,6 +257,7 @@ void Oem_init(void)
 
 	I2C_Initial(0,0,0,0);
 	I2C_Initial(1,0,0,0);
+    I2C_Initial(3,0,0,0);
 	I2C_Initial(4,0,0,0);
 	
 	//uint8_t OEMRAM00;

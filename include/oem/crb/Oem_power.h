@@ -56,7 +56,7 @@ extern void InitDevice(void);
 
 #define dGPU_HOLD_EC_RST_L      GPIO->GCR_b[105].OUTCTRL
 
-#define AC_IN_L 				GPIO_Read(16)
+#define AC_IN_L 				GPIO_Read(80)
 
 #define H_PROCHOT_L             GPIO->GCR_b[28].OUTCTRL
 
