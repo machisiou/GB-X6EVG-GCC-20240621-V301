@@ -1,5 +1,3 @@
-#include "hal/adc.h"
-#include "chip/rts5911/RTS5911.h"
 #include "RTK_Include.h"
 /******************************************************************************/
 /** Enable ADC conversion done interrupt

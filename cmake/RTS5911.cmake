@@ -96,6 +96,7 @@ set(RTK_SRC
     ${CMAKE_SOURCE_DIR}/src/chip/rts5911/core/TIMER.c
     ${CMAKE_SOURCE_DIR}/src/chip/rts5911/core/UART.c
     ${CMAKE_SOURCE_DIR}/src/chip/rts5911/core/WDT.c
+    ${CMAKE_SOURCE_DIR}/src/chip/rts5911/core/adc.c
     ${CMAKE_SOURCE_DIR}/src/chip/rts5911/nvic.c
     ${CMAKE_SOURCE_DIR}/src/chip/rts5911/system_RTS5911.c
     ${CMAKE_SOURCE_DIR}/src/chip/rts5911/startup_RTS5911.S

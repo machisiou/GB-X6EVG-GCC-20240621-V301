@@ -147,6 +147,27 @@ uint8_t timer324_SMBus26ms_Setting(void)
 }
 
 /******************************************************************************/
+/** Use timer4 for SMBus 26ms timeout
+ * Clock source 25MHz, divider is 8
+ * 3.125Mhz => 0.32us, 0.32us*81=25.92ms
+ * code setting time about 120us
+ * return SUCCESS
+*******************************************************************************/
+uint8_t timer324_PECI30ms_Setting(void)
+{
+	TIME32_Type T5;
+
+	T5.Tmr_Num = TIMER5;
+	T5.LoadCount = 94;
+	T5.Mode = One_Shut;
+	T5.MASK_INT = disable;
+	T5.OnOff = 0;
+	TIMER32_Config(&T5);
+
+	return SUCCESS;
+}
+
+/******************************************************************************/
 /** touch to count 26ms time-out
  * return SUCCESS
 *******************************************************************************/
@@ -157,10 +178,34 @@ uint8_t SMBus26ms_touch(void)
 }
 
 /******************************************************************************/
+/** touch to count 30ms time-out
+ * return SUCCESS
+*******************************************************************************/
+uint8_t PECI30ms_touch(void)
+{
+	TIMER32_Enable(TIMER4, enable);
+	return SUCCESS;
+}
+
+/******************************************************************************/
 /** touch to count 26ms time-out
  * return SUCCESS
 *******************************************************************************/
 uint8_t SMBus26ms_check(void)
+{
+	if(TIMER32_Read_Intsts(TIMER4)) {
+		TIMER32_Enable(TIMER4, disable);
+		TIMER32_Clear_Intsts(TIMER4);
+		return SUCCESS;
+	}
+	return FAIL;
+}
+
+/******************************************************************************/
+/** touch to count 30ms time-out
+ * return SUCCESS
+*******************************************************************************/
+uint8_t PECI30ms_check(void)
 {
 	if(TIMER32_Read_Intsts(TIMER4)) {
 		TIMER32_Enable(TIMER4, disable);
