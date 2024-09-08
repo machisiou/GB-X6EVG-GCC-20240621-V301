@@ -11,7 +11,7 @@
 #ifdef SupportMTLCRB
 #include "oem/crb/CRB.h"
 #endif
-
+uint8_t OOB_PECI_GetTemp(uint8_t*);
 /******************************************************************************/
 /** 1ms service routine
  * if necessary, don't use this service
@@ -210,7 +210,14 @@ void oem_500msB_service(void)
 *******************************************************************************/
 void oem_1SA_service(void)
 {
-
+    uint8_t temp = 0;
+    uint16_t temp2 = 0;
+    if(SystemIsS0)
+    {
+      PECI_Get_Temp(0x30,&temp2);
+      OOB_PECI_GetTemp(&temp);
+    }
+    
 #if SmartFanSupport
     if(SystemIsS0)
     {

@@ -339,11 +339,15 @@ static void system_init(void)
 	// ----- PS2 power -----
 	SYS_CLKPWR_PS2(enable);
 
+	// ----- PECI power -----
+	SYS_CLKPWR_PECI(enable);
+
 	// ----- I2C power -----
 	SYS_CLKPWR_I2CAUTO(enable);
-	Sys_I2cClkPwrEnable(I2C0_UNIT, enable, 0,0);
-	Sys_I2cClkPwrEnable(I2C1_UNIT, enable, 0,0);
-	Sys_I2cClkPwrEnable(I2C4_UNIT, enable, 0,0);
+	Sys_I2cClkPwrEnable(I2C0_UNIT, enable, 1,1);
+	Sys_I2cClkPwrEnable(I2C1_UNIT, enable, 1,0);
+	Sys_I2cClkPwrEnable(I2C4_UNIT, enable, 1,0);
+	Sys_I2cClkPwrEnable(I2C5_UNIT, enable, 1,0);
 
 	// ----- TACH power -----
 	SYS_CLKPWR_TACHO0(enable);

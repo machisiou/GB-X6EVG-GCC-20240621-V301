@@ -2054,8 +2054,8 @@ void bGetThermalData(void)
 		
     ReadCPUTemp(); //To Get PECI_CPU_temp
 	
-	MBX_CPU_TEMP = PECI_CPU_temp; //981004-190109-A
-	MBX_GPU_TEMP = GPU_TMPR;//981004-190109-A
+	//MBX_CPU_TEMP = PECI_CPU_temp; //981004-190109-A
+	//MBX_GPU_TEMP = GPU_TMPR;//981004-190109-A
 	
 	#if 0
     for (cnt=0; cnt<5; cnt++)			

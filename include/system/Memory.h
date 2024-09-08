@@ -1818,7 +1818,7 @@ extern uint8_t	DebugFan1RPMT;			// FanCtrlRAM+0x3F
 //**********************************
 // UCSI PPM Service Resources - Main Service Code Resources
 //**********************************
-#define UCSI_PPMBase                0x9100
+#define UCSI_PPMBase                0x20050E00//0x9100
 #define   xUCSI_ppm_step              (*((uint8_t *)(UCSI_PPMBase+0x0000))) //_at_ UCSI_PPMBase + 0x00;
 #define   xUCSI_init                  (*((uint8_t *)(UCSI_PPMBase+0x0001))) //_at_ UCSI_PPMBase + 0x01;
 #define   xUCSI_opm_cmd_ready         (*((uint8_t *)(UCSI_PPMBase+0x0002))) //_at_ UCSI_PPMBase + 0x02;
@@ -1828,7 +1828,7 @@ extern uint8_t	DebugFan1RPMT;			// FanCtrlRAM+0x3F
 //**********************************
 // ITE PD Flash Utility //981004-211015-A 
 //**********************************
-#define PDFU_MemBase                0x9160
+#define PDFU_MemBase               0x20050E10// 0x9160
 #define   xITEPD_FlashUtilityEnable   (*((uint8_t *)(PDFU_MemBase+0x0000))) //_at_ PDFU_MemBase + 0x00;
 #define   xITEPD_FlashUtilityCmd      (*((uint8_t *)(PDFU_MemBase+0x0001))) //_at_ PDFU_MemBase + 0x01;
 #define   xITEPD_FlashUtilityCmd2     (*((uint8_t *)(PDFU_MemBase+0x0002))) //_at_ PDFU_MemBase + 0x02;
@@ -1838,7 +1838,7 @@ extern uint8_t	DebugFan1RPMT;			// FanCtrlRAM+0x3F
 //**********************************
 // PD Port#1 Reg.Service Resources
 //**********************************
-#define ECPD1_MemBase               0x9170
+#define ECPD1_MemBase              0x20050E20 //0x9170
 #define   xPD1_i2c_addr              (*((uint8_t *)(ECPD1_MemBase+0x0000))) // _at_ ECPD1_MemBase + 0x00;
 #define   xPD1_i2c_error             (*((uint8_t *)(ECPD1_MemBase+0x0001))) // _at_ ECPD1_MemBase + 0x01;
 #define   xPD1_pd_mVoltage           (*((uint16_t *)(ECPD1_MemBase+0x0002))) // _at_ ECPD1_MemBase + 0x02;
@@ -1855,7 +1855,7 @@ extern uint8_t	DebugFan1RPMT;			// FanCtrlRAM+0x3F
 //**********************************
 // UCSI Port#2 Reg.Service Resources
 //**********************************
-#define ECPD2_MemBase             	0x91B0
+#define ECPD2_MemBase             	0x20050E40//0x91B0
 #define  xPD2_i2c_addr              (*((uint8_t *)(ECPD2_MemBase+0x0000))) // _at_ ECPD2_MemBase + 0x00;
 #define  xPD2_i2c_error             (*((uint8_t *)(ECPD2_MemBase+0x0001))) // _at_ ECPD2_MemBase + 0x01;
 #define  xPD2_pd_mVoltage           (*((uint16_t *)(ECPD2_MemBase+0x0002))) // _at_ ECPD2_MemBase + 0x02;

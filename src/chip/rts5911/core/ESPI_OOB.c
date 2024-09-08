@@ -18,23 +18,46 @@ void OOB_SetBuffer(uint8_t* WriteBuffer, uint8_t* ReadBuffer)
 *******************************************************************************/
 uint8_t OOB_Start_Head(uint8_t length)
 {
-	OOB_SetBuffer(OOB_OUT_BUF, OOB_IN_BUF);		//setting TX/RX buffer
-
-	length = length - 1;						//Tx Length
-	ESPI->EOTXLEN_b.LENGTH = length;			//set length
-
-	#if Support_ESPI_ERPMC
-	if(eRPMCFlag) {
-		OOBNum = 0;
-		return BUSY;
-	}else{
-		ESPI->EOTXCTRL_b.TXSTR |= 1;			//start OOB ch transmit
-	}
-	#else
-	ESPI->EOTXCTRL_b.TXSTR |= 1;				//start OOB ch transmit
-	#endif
-	return SUCCESS;
+    uint8_t passflag = 0;
+    uint32_t trycount = 0;
+    OOB_SetBuffer(OOB_OUT_BUF, OOB_IN_BUF); //setting TX/RX buffer
+ 
+    length = length - 1;                    //Tx Length
+    ESPI->EOTXLEN_b.LENGTH = length;        //set length
+ 
+    #if Support_ESPI_ERPMC
+    if (eRPMCFlag) {
+        OOBNum = 0;
+        return BUSY;
+    } else {
+        // ESPI->EOTXCTRL_b.TXSTR |= 1;         //start OOB ch transmit
+        __disable_irq();
+            ESPI->ELMSG = 0;
+ 
+            ESPI->ELCTRL = 1;
+            ESPI->EVTXDAT = 0x509;
+ 
+            while (ESPI->EVSTS_b.TXFULL);
+            ESPI->EVTXDAT = 0x509;
+            ESPI->EOTXCTRL = 1;
+        __enable_irq();
+    }
+    #else
+    // ESPI->EOTXCTRL_b.TXSTR |= 1;         //start OOB ch transmit
+    __disable_irq();
+        ESPI->ELMSG = 0;
+ 
+        ESPI->ELCTRL = 1;
+        ESPI->EVTXDAT = 0x509;
+ 
+        while (ESPI->EVSTS_b.TXFULL);
+        ESPI->EVTXDAT = 0x509;
+        ESPI->EOTXCTRL = 1;
+    __enable_irq();
+    #endif
+    return SUCCESS;
 }
+
 
 /******************************************************************************/
 /** get OOB return data
