@@ -238,7 +238,7 @@ static void system_init(void)
 
 	//using 12.5MHz
 	SYSTEM->SYSCLK_b.CLKSRC = 0;
-	SYSTEM->SYSCLK_b.DIV = 1;
+	SYSTEM->SYSCLK_b.DIV = 0;
 
 	/* 
 	* Set UART clock
@@ -344,10 +344,10 @@ static void system_init(void)
 
 	// ----- I2C power -----
 	SYS_CLKPWR_I2CAUTO(enable);
-	Sys_I2cClkPwrEnable(I2C0_UNIT, enable, 1,1);
-	Sys_I2cClkPwrEnable(I2C1_UNIT, enable, 1,0);
-	Sys_I2cClkPwrEnable(I2C4_UNIT, enable, 1,0);
-	Sys_I2cClkPwrEnable(I2C5_UNIT, enable, 1,0);
+	Sys_I2cClkPwrEnable(I2C0_UNIT, enable, 0,0);
+	Sys_I2cClkPwrEnable(I2C1_UNIT, enable, 0,0);
+	Sys_I2cClkPwrEnable(I2C4_UNIT, enable, 0,0);
+	Sys_I2cClkPwrEnable(I2C5_UNIT, enable, 0,0);
 
 	// ----- TACH power -----
 	SYS_CLKPWR_TACHO0(enable);

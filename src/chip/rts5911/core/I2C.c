@@ -104,14 +104,14 @@ void I2C_Initial(uint8_t Channel, uint8_t Frequency, uint8_t Mode, uint8_t SlvAd
 		Ptr->SDALOWTO = 0x0016E360;				/* Set time out as 30ms */
 		if (Frequency == _100KHz) {				/* 100KHz */
 			Ptr->CON_b.SPEED = 1;
-			Ptr->SCLHCNT = 0x000000DA;
-			Ptr->SCLLCNT = 0x000000FE;
-			Ptr->SPKLEN = 0x00000003;
-			Ptr->SDAHOLD = 0x00090009;
-//			Ptr->SCLHCNT = 0x000001D5;
-//			Ptr->SCLLCNT = 0x000001D0;
+//			Ptr->SCLHCNT = 0x000000DA;
+//			Ptr->SCLLCNT = 0x000000FE;
 //			Ptr->SPKLEN = 0x00000003;
-//			Ptr->SDAHOLD = 0x00050000;
+//			Ptr->SDAHOLD = 0x00090009;
+			Ptr->SCLHCNT = 0x000000D5;
+			Ptr->SCLLCNT = 0x00000100;
+			Ptr->SPKLEN = 0x00000003;
+			Ptr->SDAHOLD = 0x00070005;
 		}
 		else if (Frequency == _400KHz) {		/* 400KHz */
 			Ptr->CON_b.SPEED = 2;
@@ -475,22 +475,22 @@ uint8_t I2C_SMBusModProtocol(uint8_t Channel, uint8_t Protocol, uint8_t Addr, ui
 
 		Ptr->DATACMD = ((uint32_t) *WDatBuf & 0x000000FF);		/* Command */
 
-		SMBus26ms_touch();
+		//SMBus26ms_touch();
 		while(1) {
 			if((Ptr->RAWINTSTAT & 0x00000050) == 0x00000010)
 				break;
 			else if(I2C_Timeout_Handler(Ptr)) {
 				Ptr->ENABLE = 0x00000000;
 				//Fault_Record(0x00010211ul);
-				timer324_SMBus26ms_Setting();
+		//		timer324_SMBus26ms_Setting();
 				return FAIL;
 			}
 		}
-		timer324_SMBus26ms_Setting();
+		//timer324_SMBus26ms_Setting();
 
 		Ptr->DATACMD_b.CMD = 1;									/* read */
 
-		SMBus26ms_touch();
+		//SMBus26ms_touch();
 		while(1) {												/* Check if IC_RX_FULL */
 			if((Ptr->RAWINTSTAT & 0x00000514) == 0x00000514) {
 				break;
@@ -498,16 +498,16 @@ uint8_t I2C_SMBusModProtocol(uint8_t Channel, uint8_t Protocol, uint8_t Addr, ui
 			else if(I2C_Timeout_Handler(Ptr)) {
 				Ptr->ENABLE = 0x00000000;
 				//Fault_Record(0x00010212ul);
-				timer324_SMBus26ms_Setting();
+		//		timer324_SMBus26ms_Setting();
 				return FAIL;
 			}
 		}
-		timer324_SMBus26ms_Setting();
+		//timer324_SMBus26ms_Setting();
 
 		*RDatBuf = Ptr->DATACMD_b.DATA;
 		Ptr->DATACMD = ((uint32_t) 0x03 << 8);					/* Read+Stop */
 
-		SMBus26ms_touch();
+		//SMBus26ms_touch();
 		while(1) {												/* Check if IC_RX_FULL */
 			if((Ptr->RAWINTSTAT & 0x00000514) == 0x00000514) {
 				break;
@@ -515,7 +515,7 @@ uint8_t I2C_SMBusModProtocol(uint8_t Channel, uint8_t Protocol, uint8_t Addr, ui
 			else if(I2C_Timeout_Handler(Ptr)) {
 				Ptr->ENABLE = 0x00000000;
 				//Fault_Record(0x00010213ul);
-				timer324_SMBus26ms_Setting();
+		//		timer324_SMBus26ms_Setting();
 				return FAIL;
 			}
 		}
