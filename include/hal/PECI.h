@@ -97,7 +97,7 @@ extern int8_t TempConvert(uint8_t bLSB, uint8_t bMSB);
 
 extern void	PECI_Reset(void);
 extern void	PECI_Read_Bytes ( uint8_t read_data[], uint8_t num_bytes );
-extern void	PECI_Write_Command(uint8_t cmd_fifo[], uint8_t cmd_length);
+extern uint8_t	PECI_Write_Command(uint8_t cmd_fifo[], uint8_t cmd_length);
 extern uint8_t	PECI_Wait_Idle(void);
 extern uint8_t	PECI_Fcs_Check(uint8_t crc, uint8_t *data_blk_ptr, uint32_t length );
 extern int	PECI_Command(uint8_t header[], uint8_t headerLen, uint8_t readBuf[], uint8_t readLen);

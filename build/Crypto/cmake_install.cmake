@@ -1,4 +1,4 @@
-# Install script for directory: D:/work/Customer/GB-X6LVH-GCC-20240621-V301/Crypto
+# Install script for directory: D:/work/Customer/workspace/GB-X6LVH-GCC/GB-X6LVH-GCC-20240621-V301/Crypto
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,6 +34,6 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "D:/Program Files (x86)/GNU Tools Arm Embedded/9 2019-q4-major/bin/arm-none-eabi-objdump.exe")
+  set(CMAKE_OBJDUMP "D:/work/GCC/asdk-10.2.0/mingw32/newlib/bin/arm-none-eabi-objdump.exe")
 endif()
 
