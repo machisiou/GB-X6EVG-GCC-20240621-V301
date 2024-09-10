@@ -263,6 +263,29 @@ void PECI_ReadCPUTemp(void)
 
     }
 }
+
+// ----------------------------------------------------------------------------
+// The function of PECI3.0 Package temperature read
+// ----------------------------------------------------------------------------
+void PECI_ReadPkgTemperature(void)
+{
+    uint16_t pkgtemp;
+    uint8_t tempoffset;
+    if(PECI_Read_Pkg_Config(PECI_CPU_ADDR, 1, PECI_Index_PTR,0x00FF, PECIReadBuffer))
+    {
+        pkgtemp = (PECIReadBuffer[1]<<8)+PECIReadBuffer[0]; // MSB+LSB
+        pkgtemp = (~pkgtemp)+1;                             // 2's complement
+        tempoffset = pkgtemp>>6;                            // 1/64 degrees centigrade
+        if(tempoffset<=CPUTjmax)  // PECI thermal reading temperature readings are                
+        {                               // not reliable at temperatures above Tjmax
+            TPkg_temp = CPUTjmax-tempoffset;  // Save temperature
+        }
+    }
+    else
+    {
+        ;
+    }
+}
 #if 0
 // ----------------------------------------------------------------------------
 // Clear PECI turbo control variables

@@ -1,4 +1,4 @@
-set(ARM_RTK_TOOLCHAINS C:/asdk-10.2.0/mingw32/newlib/bin)
+set(ARM_RTK_TOOLCHAINS D:/Realtek/asdk-10.2.0/mingw32/newlib/bin)
 
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR arm)

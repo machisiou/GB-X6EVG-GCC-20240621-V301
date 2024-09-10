@@ -1,5 +1,5 @@
 #include "system/Memory.h"
-
+KERNEL_AREA uint8_t Service_OEM;
 KERNEL_AREA uint32_t TimeSlot;
 KERNEL_AREA uint32_t SERVICEflag;
 KERNEL_AREA uint8_t ECtime10;

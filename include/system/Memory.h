@@ -84,8 +84,14 @@ extern KERNEL_AREA uint32_t SERVICEflag;
 #define SERVICE_F_1ms		0x00800000
 #define SERVICE_F_PMIO2		0x00400000
 #define SERVICE_F_PMIO3		0x00200000
-#define SERVICE_F_OEM1		0x00000000
+#define SERVICE_F_OEM1		0x00100000
+#define SERVICE_F_OEM2		0x00080000
+#define SERVICE_F_OEM3		0x00040000
 
+extern KERNEL_AREA uint8_t Service_OEM;
+#define F_Service_OEM_3     BIT2
+#define F_Service_OEM_2     BIT1
+#define F_Service_OEM_1     BIT0
 extern KERNEL_AREA uint8_t ECtime10;
 extern KERNEL_AREA uint8_t ECtime100;
 extern KERNEL_AREA uint16_t ECtime1000;

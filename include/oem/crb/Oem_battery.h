@@ -125,6 +125,7 @@
 #define Thermal1_TR4	        0x03    // Thermal IC NCT760X reading TR4 //981004-221123-A
 #define Thermal1_TR5	        0x04    // Thermal IC NCT760X reading TR5
 #define Thermal1_TR6	        0x05    // Thermal IC NCT760X reading TR6
+#define Thermal1_TR7	        0x06    // Thermal IC NCT760X reading TR7 //981004-231220-A
 #define Thermal1_TR8	        0x07    // Thermal IC NCT760X reading TR8 //981004-221123-A
 #define Thermal1_Read	        0x0F    // Thermal IC NCT760X reading All
 #define Thermal1_Config	        0x10    // Thermal IC NCT760X Configure

@@ -659,6 +659,41 @@ static void idleEventHandler()
 	//System_EnterSleepMode();
 }
 
+static void OemService1Handler()
+{
+	if(IS_BIT_SET(SERVICEflag,SERVICE_F_OEM1))
+	{
+		__disable_irq();
+    	BIT_CLR(SERVICEflag,SERVICE_F_OEM1);
+    	__enable_irq();
+    	service_OEM_1();
+	}
+
+}
+
+static void OemService2Handler()
+{
+	if(IS_BIT_SET(SERVICEflag,SERVICE_F_OEM2))
+	{
+		__disable_irq();
+    	BIT_CLR(SERVICEflag,SERVICE_F_OEM2);
+    	__enable_irq();
+    	service_OEM_2();
+	}
+
+}
+
+static void OemService3Handler()
+{
+	if(IS_BIT_SET(SERVICEflag,SERVICE_F_OEM3))
+	{
+		__disable_irq();
+    	BIT_CLR(SERVICEflag,SERVICE_F_OEM3);
+    	__enable_irq();
+    	service_OEM_3();
+	}
+
+}
 static void(* const services[33])(void) = {
     ERPMCEventHandler, 				// 0
     ACPIEventHandler,				// 1
@@ -671,9 +706,9 @@ static void(* const services[33])(void) = {
     Timer1MsEventHandler,			// 8
     PMIO2EventHandler,				// 9
     PMIO3EventHandler,				// 10
-    idleEventHandler,               // 11
-    idleEventHandler,               // 12
-    idleEventHandler,               // 13
+    OemService1Handler,               // 11
+    OemService2Handler,               // 12
+    OemService3Handler,               // 13
     idleEventHandler,               // 14
     idleEventHandler,               // 15
     idleEventHandler,               // 16

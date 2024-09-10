@@ -82,11 +82,9 @@ extern void InitDevice(void);
 
 #define BAT_IN_L				GPIO_Read(113)
 
-#define EDP_GPU_SEL_HIGH		GPIO_Write(103,1)		//GPH4 GPIO103
-#define EDP_GPU_SEL_LOW			GPIO_Write(103,0)
+#define EDP_GPU_SEL		        GPIO->GCR_b[103].OUTCTRL        //GPH4 GPIO103
 
-#define DDS_MUX_CNTL_HIGH		GPIO_Write(13,1)	//GPD4 GPIO013
-#define DDS_MUX_CNTL_LOW		GPIO_Write(13,0)
+#define DDS_MUX_CNTL		    GPIO->GCR_b[13].OUTCTRL	        //GPD4 GPIO013
 
 #define EC_BKLOUT_HIGH			GPIO_Write(84,1)//GPJ1 GPIO84
 #define EC_BKLOUT_LOW			GPIO_Write(84,0)
@@ -127,6 +125,16 @@ extern void InitDevice(void);
 #define BAT_FULL_L              GPIO->GCR_b[29].OUTCTRL
 
 #define DEBUG_CARD_L            GPIO_Read(60)
+
+#define SET_GPO_KSO6_HI()      GPIO_Set_IO(47,0); GPIO_Write(47,1)
+#define SET_GPO_KSO6_LO()      GPIO_Set_IO(47,0); GPIO_Write(47,0)
+#define SET_GPO_KSO12_HI()      GPIO_Set_IO(56,0); GPIO_Write(56,1)
+#define SET_GPO_KSO12_LO()      GPIO_Set_IO(56,0); GPIO_Write(56,0)
+#define SET_GPO_KSO13_HI()      GPIO_Set_IO(57,0); GPIO_Write(57,1)
+#define SET_GPO_KSO13_LO()      GPIO_Set_IO(57,0); GPIO_Write(57,0)
+
+
+
 
 #endif
 

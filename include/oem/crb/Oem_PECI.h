@@ -50,4 +50,6 @@ extern void PECI_SendBufferData(void);
 //-----------------------------------------------------------------------------
 #define PECI_CPU_Tjmax      100
 #define PECI_Read_TjmaxTO   10      // Re-try to read CPU Tjmax via PECI
+
+#define PECI_CPU_ADDR       0x30
 #endif

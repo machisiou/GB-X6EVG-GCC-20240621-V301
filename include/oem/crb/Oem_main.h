@@ -50,6 +50,12 @@ extern void GETRPM1(void);
 extern void INIT_TM1650(void);
 extern uint8_t Check_PORT80(void);
 extern void PD_Adapter_setting(void);
+#define Only_Timer1msEvent  0x01
+#define All_TimerEvent      0x00
+#define Normal_MainService  0xFF
 
-
+extern void service_OEM_1(void);
+extern void service_OEM_2(void);
+extern void service_OEM_3(void);
+extern void service_OEM_4(void);
 #endif
