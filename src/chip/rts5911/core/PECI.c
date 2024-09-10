@@ -137,6 +137,18 @@ uint8_t PECI_Fcs_Check(uint8_t crc, uint8_t *data_blk_ptr, uint32_t length )
 	return crc;
 }
 
+uint8_t check_for_30m_timeout(void)
+{
+	PECI30ms_touch();
+
+	if(PECI30ms_check())
+	{
+
+	}
+
+
+}
+
 /******************************************************************************/
 /* Write command
   * cmd_fifo[] - buffer
@@ -152,7 +164,30 @@ void PECI_Write_Command(uint8_t cmd_fifo[], uint8_t cmd_length)
 	{
 		PECI->TX_b.DATA = cmd_fifo[i++];
 	}
+	while (1)
+	{
+		if(check_for_30m_timeout()) //30ms
+		{
+    		// Set transmit enable to start transmission of message
+			PECI->CTRL_b.TXEN = 1;
+			// Wait for  idle state
+			while(!CHECK_PECI_BUSY());
 
+			// Clear the BOF and EOF_
+			PECI->STS0_b.BOFSTS = 1;
+			PECI->STS0_b.EOFSTS = 1;
+
+    		// Set transmit enable to start transmission of message
+			PECI->CTRL_b.TXEN = 1;
+
+			// Wait for EOF_ (End Of Frame)
+			while(PECI->STS0_b.EOFSTS);
+			// Wait for the bus to go idle
+			while(!CHECK_PECI_BUSY());	
+		}
+	}
+	
+	
 	// Wait for  idle state
 	while(!CHECK_PECI_BUSY());
 

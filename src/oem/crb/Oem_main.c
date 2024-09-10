@@ -1,12 +1,4 @@
-#include "system/Type.h"
-#include "system/Memory.h"
-#include "hal/KBM.h"
-#include "system/peripheral.h"
-#include "oem/crb/Oem_gpio.h"
-#include "oem/crb/Oem_main.h"
-#include "oem/crb/Oem_scan.h"
-#include "oem/crb/Oem_timer.h"
-#include "chip/rts5911/RTS5911.h"
+
 #include "RTK_Include.h"
 #ifdef SupportMTLCRB
 #include "oem/crb/CRB.h"
@@ -82,11 +74,32 @@ void oem_5ms_service(void)
 	}
 #endif
 
+#if SUPPORT_PD_CHIP_ITE //981004-210831-A    
+	//service_ucsi_ite();
+#endif
+    #if ADCFuncSupport  
+	ScanADCFixChannel();
+    #endif
 
+	#ifdef PECI_Support
+    ///PECI_PowerCtrlCenter(); //Stress Tool
+    #endif
+
+    #ifdef PMC3_Support
+    if(SystemIsS0)
+    {
+        PECI_SendBufferData();
+    }
+    #endif
+
+    #if ACPI_QEventPending
+    Get_PendingECQEvent();
+    #endif
+    
 	if (xAPP_PD_EnterUpdate > 0x00) //981004-220208-A
     {
 		//SET_MASK(EC_Flag5, TI_PD_Flash); //EC RAM 0x389 BIT6
-        //service_app_update_ti_pd();
+        service_app_update_ti_pd();
     }
 }
 /******************************************************************************/
@@ -94,19 +107,109 @@ void oem_5ms_service(void)
 *******************************************************************************/
 void oem_10msA_service(void)
 {
+    #if ADCFuncSupport 
+    ScanADCDyChannel1();
+    #endif
 
     #if BAT1FuncSupport
     Battey1ControlCenter();
     #endif
 
-    if (IS_MASK_SET(POWER_FLAG2, sci_on)) //981004-240424-A-S
-    {
-        if (IS_MASK_SET(POWER_FLAG13, all_sys_pwrgd_off)) //0x213 bit2
+    #ifdef ECPowerDownModeSupport
+    ECPowerDownModeManager();
+    #endif
+	
+	
+	
+    //981004-200923-R-S No need to skip reading GPU temperature
+	#if 0
+    if ((IS_MASK_SET(POWER_FLAG2, sci_on)) && (IS_MASK_CLEAR(POWER_FLAG1, enter_S3))) 
+    {  
+        if (IS_MASK_CLEAR(POWER_FLAG8, no_GPU_smbus)) //EC RAM 208 BIT 4	
         {
-            ALL_SYS_PWRGD = 0;
-            CLEAR_MASK(POWER_FLAG13, all_sys_pwrgd_off);
+            CLEAR_MASK(POWER_FLAG7, no_smbus_start); //EC RAM 207 BIT 6		
+            (bRWSMBus(SMbusChB, SMbusRB, GPUThermalAddr2, RLTS, &GPU_TMPR, SMBus_NoPEC));                         
         }
-    }	//981004-240424-A-E
+        else
+        {   
+            SET_MASK(POWER_FLAG7, no_smbus_start); //EC RAM 207 BIT 6
+        }  		
+    }
+	#endif
+    //981004-210104-A-S
+	#if 0 
+    if( IS_MASK_CLEAR(xTIFW_States,F_TIFW_Finish))
+    {
+    	TI_FirmwareUpdate();		
+    }
+	#endif
+	
+    //981004-220726-A-S	
+	#if 0
+	//if (IS_MASK_CLEAR(POWER_FLAG1, enter_S3))
+	//if ((IS_MASK_SET(POWER_FLAG2, sci_on)) && (IS_MASK_CLEAR(POWER_FLAG1, enter_S3)))	
+	if (IS_MASK_CLEAR(POWER_FLAG12, EC_modern_stby)) //981004-230830-A      					
+	{
+        if (IS_MASK_SET(POWER_FLAG8, DDS_reset)) //0x208 bit4 
+		{
+			DDS_PANEL_RST = 1; //GPIO H3			
+		}
+        else
+        {
+            DDS_PANEL_RST = 0; //GPIO H3			
+        }	
+    }   
+    		
+	if (IS_MASK_CLEAR(POWER_FLAG7, GPU_switch)) //EC RAM 0x207 bit 1 
+	{
+        //EC adjust brightness		
+        DDS_PWM_SWITCH = 0; //GPIO D3 //981004-231218-M to support HDR brightness control
+		EDP_GPU_SEL = 0; //Intel GPU (SG Mode) //GPIO H4 
+        DDS_MUX_CNTL = 0; //Intel GPU (SG Mode) brightness //GPIO D4
+		//981004-220106-M-S
+        if (DDS_PWM_Value >= 23)
+        {			
+            DCR7 = DDS_PWM_Value * 1.8; //0x2AC //981004-220707-M from 1.8 (2.3)		
+		}
+        else
+        {
+			DCR7 = DDS_PWM_Value + 18;  //981004-220707-M from +18 (36)		
+		}			
+	    
+		#if 0
+        if (DCR7 == 0)
+	    {          
+	      DCR7 = 2; 
+	    }
+        #endif
+		//981004-220106-M-E		
+    }
+    else
+    {
+		//NV driver adjust brightness		
+        DDS_PWM_SWITCH = 0; //GPIO D3 
+		EDP_GPU_SEL = 1;   //GPIO H4 
+        DDS_MUX_CNTL = 1; //GPIO D4
+		if (DDS_PWM_Value >= 18) //981004-220707-M from 18
+        {			
+            DCR7 = DDS_PWM_Value * 1.8; //0x2AC //981004-220707-M from 1.8		
+		}
+        else
+        {
+			DCR7 = DDS_PWM_Value + 18;  //981004-220707-M from +18			
+		}			
+    }    
+    #endif
+	
+	if (IS_MASK_SET(POWER_FLAG2, sci_on)) //981004-240424-A-S
+	{
+		if (IS_MASK_SET(POWER_FLAG13, all_sys_pwrgd_off)) //0x213 bit2
+		{
+			ALL_SYS_PWRGD = 0;
+			CLEAR_MASK(POWER_FLAG13, all_sys_pwrgd_off);
+		}
+	}	//981004-240424-A-E
+
 
 }
 
@@ -115,7 +218,18 @@ void oem_10msA_service(void)
 *******************************************************************************/
 void oem_10msB_service(void)
 {
-     CheckSBPowerButton();
+    CheckSBPowerButton();
+    #if ADCFuncSupport 
+    //ScanADCDyChannel2();
+	;
+    #endif
+
+#if 1 //SUPPORT_APP_UPDFW_MODULE //981004-211015-A-S   
+    if (xITEPD_FlashUtilityEnable > 0)
+    {
+        ///ITE_PD_FlashUtility();
+    }
+#endif  
 }
 
 /******************************************************************************/
@@ -171,6 +285,28 @@ void oem_100msB_service(void)
 *******************************************************************************/
 void oem_100msC_service(void)
 {
+    #if SmartFanSupport
+    if(SystemIsS0)
+    {
+        FanManager();
+    }
+    #endif
+    //981004-210401-A-S	
+	if (IS_MASK_SET(POWER_FLAG3, power_on_patch))
+	{
+		Power_on_patch_cnt++;
+		if (Power_on_patch_cnt >= 2)
+		{
+			RSMRST_L = 0;
+            ///if (ECHIPVER >= _CHIP_EX) //981004-231214-A
+            {    
+               /// SET_MASK(ESGCTRL2, F_ESPIIPG);
+            } 
+			Power_on_patch_cnt =0;
+			CLEAR_MASK(POWER_FLAG3, power_on_patch);//203 bit1
+		}
+    }
+    //981004-210401-A-E       
 }
 
 /******************************************************************************/
