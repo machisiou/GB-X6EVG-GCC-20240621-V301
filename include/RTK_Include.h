@@ -78,6 +78,7 @@
 #include "oem\crb\Oem_UDPDFW_TI.h"
 #include "oem\crb\Oem_Ver.h"
 #include "oem\crb\RTK_I2C.h"
+#include "oem\crb\Oem_Smbus.h"
 
 #include "system\ACPI_Command.h"
 #include "system\Debug.h"

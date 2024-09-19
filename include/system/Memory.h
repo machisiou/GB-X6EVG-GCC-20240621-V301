@@ -701,10 +701,10 @@ XBYTE g_ECPowerDownModeTest               _at_ (ECPowerDownCtrl+0x05);
 
 #define Learn_mode_CNT3 (*((uint16_t *)(OEMRAM3+0x003C))) 
 #define Learn_mode_CNT5 (*((uint16_t *)(OEMRAM3+0x003E))) 
-// extern uint16_t	BAT_CV1; //(OEMRAM3+0x30)//981004-160822-A
-// extern uint16_t	BAT_CV2; //(OEMRAM3+0x32)//981004-160822-A
-// extern uint16_t	BAT_CV3; //(OEMRAM3+0x34)//981004-160822-A
-// extern uint16_t	BAT_CV4; //(OEMRAM3+0x36)//981004-160822-A
+#define	BAT_CV1         (*((uint16_t *)(OEMRAM3+0x0034))) //(OEMRAM3+0x30)//981004-160822-A
+#define	BAT_CV2         (*((uint16_t *)(OEMRAM3+0x0036))) //(OEMRAM3+0x32)//981004-160822-A
+#define	BAT_CV3         (*((uint16_t *)(OEMRAM3+0x0040)))//(OEMRAM3+0x34)//981004-160822-A
+#define	BAT_CV4         (*((uint8_t *)(OEMRAM3+0x0042)))//(OEMRAM3+0x36)//981004-160822-A
 //extern uint8_t    RTD3_EN_CNT; //(OEMRAM3+0x38) //981004-190612-R
 //extern uint8_t    LPCRST_L_OUT_CNT; //(OEMRAM3+0x39) //981004-190612-R
 #define PD_60W             BIT0
@@ -838,7 +838,7 @@ XBYTE g_ECPowerDownModeTest               _at_ (ECPowerDownCtrl+0x05);
 #define BAT1_FCcap_H		(*((uint8_t *)(OEMRAM3+0x006D)))           //(OEMRAM3+0x6D)  Battery 1
 #define BAT1_CC_L			(*((uint8_t *)(OEMRAM3+0x006E)))    	        //(OEMRAM3+0x6E)  Battery 1	
 #define BAT1_CC_H			(*((uint8_t *)(OEMRAM3+0x006F)))   	        //(OEMRAM3+0x6F)  Battery 1	
-#define BAT1_CV_L			(*((uint8_t *)(OEMRAM3+0x0070))    	        //(OEMRAM3+0x70)  Battery 1
+#define BAT1_CV_L			(*((uint8_t *)(OEMRAM3+0x0070)))    	        //(OEMRAM3+0x70)  Battery 1
 #define BAT1_CV_H			(*((uint8_t *)(OEMRAM3+0x0071)))   	        //(OEMRAM3+0x71)  Battery 1
 
 #define BAT1_ALARM1			(*((uint16t *)(OEMRAM3+0x0072)))            //(OEMRAM3+0x72)  Battery 1
@@ -1808,6 +1808,80 @@ extern uint8_t	DebugFan1RPMT;			// FanCtrlRAM+0x3F
 //	0xE00-0xEFF   OEM RAM E  //RAMDEBUG
 //-------------------------------------------------------------------------------
 //*******************************************************************************
+#define SMBUS_RAM 0x20051000
+/*
+ * SMBUS ch #1 control flag
+ */
+#define u8SMBus1_Flag2          (*((uint8_t *)(SMBUS_RAM+0x00)))
+#define F_Bat_Max_Error         BIT0
+#define F_Bat_Date			    BIT1
+#define F_Bat_Spec              BIT2    /* Specification */
+#define F_Bat_Chem              BIT3    /* Chemistry */
+#define F_Bat_Dev_Name          BIT4
+#define F_Bat_CT_Label          BIT5
+#define F_Bat_Mfg_Name          BIT6
+
+#define u8SMBus1_Flag3          (*((uint8_t *)(SMBUS_RAM+0x01)))
+#define F_Bat_Curr	            BIT0    /* Current */
+#define F_Bat_Volt		        BIT1    /* Voltage */
+#define F_Bat_Temp	            BIT2    /* Termperature */
+#define F_Bat_Status	        BIT3
+#define F_Bat_Chg_Curr		    BIT4
+#define F_Bat_Chg_Volt		    BIT5
+#define F_Bat_Dsg_Curr		    BIT6
+#define F_Bat_Dsg_Volt		    BIT7
+
+#define u8SMBus1_Flag4          (*((uint8_t *)(SMBUS_RAM+0x02)))
+#define F_Bat_Full_Cap          BIT0
+#define F_Bat_RSOC	            BIT1
+#define F_Bat_Rem_Cap	        BIT2    /* Remaining Capacity */
+#define F_Bat_Cycle_Count	    BIT3
+#define F_Bat_Cell1_Volt	    BIT4
+#define F_Bat_Cell2_Volt	    BIT5
+#define F_Bat_Cell3_Volt	    BIT6
+#define F_Bat_Cell4_Volt	    BIT7
+
+#define u8SMBus1_Flag5          (*((uint8_t *)(SMBUS_RAM+0x04)))
+#define F_I2C_Test0             BIT0
+#define F_I2C_Test1             BIT1
+#define F_I2C_Test2             BIT2
+#define F_I2C_Test3	            BIT3
+#define F_I2C_Test4             BIT4
+#define F_I2C_Test5             BIT5
+#define F_I2C_Test6             BIT6
+#define F_I2C_Test7	            BIT7
+
+#define u8SMBus_Select          (*((uint8_t *)(SMBUS_RAM+0x05)))
+#define u8SMBus0_InUsing        (*((uint8_t *)(SMBUS_RAM+0x54)))
+#define u8SMBus1_InUsing        (*((uint8_t *)(SMBUS_RAM+0x55)))
+#define u8SMBus2_InUsing        (*((uint8_t *)(SMBUS_RAM+0x56)))
+#define u8SMBus3_InUsing        (*((uint8_t *)(SMBUS_RAM+0x57)))
+
+#define u8SMBus0_Counter        (*((uint8_t *)(SMBUS_RAM+0x58)))
+#define u8SMBus1_Counter        (*((uint8_t *)(SMBUS_RAM+0x59)))
+#define u8SMBus2_Counter        (*((uint8_t *)(SMBUS_RAM+0x5A)))
+#define u8SMBus3_Counter        (*((uint8_t *)(SMBUS_RAM+0x5B)))
+
+#define u8SMBus0_Index          (*((uint8_t *)(SMBUS_RAM+0x5C)))
+#define u8SMBus1_Index          (*((uint8_t *)(SMBUS_RAM+0x5D)))
+#define u8SMBus2_Index          (*((uint8_t *)(SMBUS_RAM+0x5E)))
+#define u8SMBus3_Index          (*((uint8_t *)(SMBUS_RAM+0x5F)))
+
+
+#define u8Service_SMBus0          (*((uint8_t *)(SMBUS_RAM+0x60)))
+#define u8Service_SMBus1          (*((uint8_t *)(SMBUS_RAM+0x61)))
+#define u8Service_SMBus2          (*((uint8_t *)(SMBUS_RAM+0x62)))
+#define u8Service_SMBus3          (*((uint8_t *)(SMBUS_RAM+0x63)))
+
+#define u8SMBus0_TableSize       (*((uint8_t *)(SMBUS_RAM+0x64)))
+#define u8SMBus1_TableSize       (*((uint8_t *)(SMBUS_RAM+0x65)))
+#define u8SMBus2_TableSize       (*((uint8_t *)(SMBUS_RAM+0x66)))
+#define u8SMBus3_TableSize       (*((uint8_t *)(SMBUS_RAM+0x67)))
+
+#define u8I2C0_Wr_Len           (*((uint8_t *)(SMBUS_RAM+0x70)))
+#define u8I2C1_Wr_Len           (*((uint8_t *)(SMBUS_RAM+0x71)))
+#define u8I2C2_Wr_Len           (*((uint8_t *)(SMBUS_RAM+0x72)))
+#define u8I2C3_Wr_Len           (*((uint8_t *)(SMBUS_RAM+0x73)))
 
 //*******************************************************************************
 //-------------------------------------------------------------------------------
@@ -1889,16 +1963,16 @@ extern uint8_t	DebugFan1RPMT;			// FanCtrlRAM+0x3F
 //extern uint8_t    MBX_EC_TEST_VER;
 //extern ECBRAM uint8_t RESERVED_BRAM00[16];        //  0x00        _at_ BRAM_MemBase+0x10;
 //981004-190109-M-S
-#define MBX_CPU_TEMP            (*((uint8_t *)(40005000+0x0010)))
-#define MBX_GPU_TEMP            (*((uint8_t *)(40005000+0x0011)))
+#define MBX_CPU_TEMP            (*((uint32_t *)(40005000+0x0010)))
+#define MBX_GPU_TEMP            (*((uint32_t *)(40005000+0x0014)))
 
-#define MBX_CPU_FAN_FLAG        (*((uint8_t *)(40005000+0x0012)))
-#define MBX_CPU_FAN_RPMH        (*((uint8_t *)(40005000+0x0013)))
-#define MBX_CPU_FAN_RPML        (*((uint8_t *)(40005000+0x0014)))
+#define MBX_CPU_FAN_FLAG        (*((uint32_t *)(40005000+0x0018)))
+#define MBX_CPU_FAN_RPMH        (*((uint32_t *)(40005000+0x001C)))
+#define MBX_CPU_FAN_RPML        (*((uint32_t *)(40005000+0x0020)))
 
-#define MBX_GPU_FAN_FLAG        (*((uint8_t *)(40005000+0x0015)))
-#define MBX_GPU_FAN_RPMH        (*((uint8_t *)(40005000+0x0016)))
-#define MBX_GPU_FAN_RPML        (*((uint8_t *)(40005000+0x0017)))
+#define MBX_GPU_FAN_FLAG        (*((uint32_t *)(40005000+0x0024)))
+#define MBX_GPU_FAN_RPMH        (*((uint32_t *)(40005000+0x0028)))
+#define MBX_GPU_FAN_RPML        (*((uint32_t *)(40005000+0x002C)))
 
 #if 0
 extern uint8_t    MBX_EC_DEV_CMD;

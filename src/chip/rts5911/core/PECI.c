@@ -193,7 +193,7 @@ uint8_t PECI_Write_Command(uint8_t cmd_fifo[], uint8_t cmd_length)
 			while(PECI->STS0_b.EOFSTS);
 			// Wait for the bus to go idle
 			///while(!CHECK_PECI_BUSY());
-			return TRUE;	
+			break;	
 		}
 		return FAIL;
 	}
@@ -213,6 +213,8 @@ uint8_t PECI_Write_Command(uint8_t cmd_fifo[], uint8_t cmd_length)
 	while(PECI->STS0_b.EOFSTS);
 	// Wait for the bus to go idle
 	while(!CHECK_PECI_BUSY());
+
+	return TRUE;
 }
 
 /******************************************************************************/
@@ -238,7 +240,8 @@ int PECI_Command(uint8_t header[], uint8_t headerLen, uint8_t readBuf[], uint8_t
 	{
 		do_reset_on_error = 1;
 
-		PECI_Write_Command (header, headerLen);
+		if(!PECI_Write_Command (header, headerLen)) // if fail
+		break;
 
 		PECI_Read_Bytes(readBuf, readLen);
 		client_first_fcs = readBuf[0];

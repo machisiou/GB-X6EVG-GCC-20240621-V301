@@ -1311,9 +1311,9 @@ void Battery1In(void)
     {
        //  return;
     }	
-    ConfigBatIn();
-	ConfigCharger();
-    ProcessCharge();
+   // ConfigBatIn();
+	//ConfigCharger();
+   // ProcessCharge();
 
     if (IS_BIT_SET(POWER_FLAG2, sci_on))
        // ECQEvent(SCI_BATIN, SCIMode_ACPI_SMBus);

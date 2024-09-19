@@ -218,6 +218,7 @@ void oem_10msA_service(void)
 *******************************************************************************/
 void oem_10msB_service(void)
 {
+    SMBusMgr();
     CheckSBPowerButton();
     #if ADCFuncSupport 
     //ScanADCDyChannel2();
@@ -253,7 +254,7 @@ void oem_100msA_service(void)
 {
 	 if ((SystemIsS3)) //981004-200724-A
         //F_Service_OEM_3 = 1;
-        BIT_SET(SERVICEflag,SERVICE_F_OEM3);    
+        ///BIT_SET(SERVICEflag,SERVICE_F_OEM3);    
 	if (SystemIsS0)
 	{
 		Check_PORT80();
@@ -440,6 +441,8 @@ void oem_500msA_service(void)
 *******************************************************************************/
 void oem_500msB_service(void)
 {
+    #if 0
+
        BYTE cnt = 0; //981004-141014-A	 
     //981004-141014-A-S
 
@@ -564,6 +567,7 @@ void oem_500msB_service(void)
 			CLEAR_MASK(POWER_FLAG3, ship_mode); //981004-220901-A
 		}
 	}
+    #endif
 }
 
 /******************************************************************************/
@@ -571,6 +575,7 @@ void oem_500msB_service(void)
 *******************************************************************************/
 void oem_1SA_service(void)
 {
+    #if 0
     uint8_t temp = 0;
     uint16_t temp2 = 0;
     if(SystemIsS0)
@@ -931,8 +936,8 @@ void oem_1SA_service(void)
 			WTDP2 = NVSETPL1 * 1.25;
 		}		
 	}	
-	PECI_WritePowerLimit1(); //981004-210115-A	    
-	PECI_WritePowerLimit2(WTDP2); //981004-210115-A
+	//PECI_WritePowerLimit1(); //981004-210115-A	    
+	//PECI_WritePowerLimit2(WTDP2); //981004-210115-A
 	//981004-151001-A-S
 	if (IS_MASK_SET(POWER_FLAG2, sci_on) && (IS_MASK_CLEAR(POWER_FLAG1, enter_S3)))
         {		
@@ -943,7 +948,7 @@ void oem_1SA_service(void)
     //981004-210115-A-S	
 	if (Check_Power_Unit == 0)
 	{
-        Check_Power_Unit = PECI_ReadPowerUnit();
+        //Check_Power_Unit = PECI_ReadPowerUnit();
     }
     //981004-210115-A-E
 	
@@ -2024,7 +2029,7 @@ void oem_1SA_service(void)
 
     }
     //992022-140904-A-E patch for Qevent can't be received when Windows logo
-
+#endif
 }
 
 /******************************************************************************/
@@ -2032,6 +2037,7 @@ void oem_1SA_service(void)
 *******************************************************************************/
 void oem_1SB_service(void)
 {
+    #if 0
     ProcessCharge();
 
     	//981004-200923-A-S //Step charging
@@ -2373,15 +2379,15 @@ void oem_1SB_service(void)
 	}   
 	
 	//981004-190109-A-S
-	MBX_CPU_FAN_FLAG = 1;
-	MBX_CPU_FAN_RPMH = RPM1 >> 8;
-	MBX_CPU_FAN_RPML = RPM1;
-	MBX_CPU_FAN_FLAG = 0;
+	// MBX_CPU_FAN_FLAG = (uint32_t)1;
+	// MBX_CPU_FAN_RPMH = (uint32_t)(RPM1 >> 8);
+	// MBX_CPU_FAN_RPML = (uint32_t)RPM1;
+	// MBX_CPU_FAN_FLAG = (uint32_t)0;
 	
-	MBX_GPU_FAN_FLAG = 1;
-	MBX_GPU_FAN_RPMH = RPM2 >> 8;
-	MBX_GPU_FAN_RPML = RPM2;
-	MBX_GPU_FAN_FLAG = 0;
+	// MBX_GPU_FAN_FLAG = (uint32_t)1;
+	// MBX_GPU_FAN_RPMH = (uint32_t)(RPM2 >> 8);
+	// MBX_GPU_FAN_RPML = (uint32_t)RPM2;
+	// MBX_GPU_FAN_FLAG = (uint32_t)0;
 	//981004-190109-A-E
 	
     #if GetSysTempSupport
@@ -2941,6 +2947,9 @@ void oem_1SB_service(void)
         }
         
     }
+    #endif
+
+	u8SMBus1_Flag4 |= F_Bat_Cell1_Volt+F_Bat_Cell2_Volt+F_Bat_Cell3_Volt+F_Bat_Cell4_Volt;
 }
 
 /******************************************************************************/

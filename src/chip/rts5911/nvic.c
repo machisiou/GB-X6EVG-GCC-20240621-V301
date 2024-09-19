@@ -5334,7 +5334,8 @@ void HSPI_Handler (void)
 //
 void I2C0_Handler(void)
 {
-
+	u8Service_SMBus0 = 1;
+	I2C0_DisableIRQ();
 }
 
 //

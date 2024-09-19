@@ -1,0 +1,289 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "Crypto/libcrypto.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_compile_options",
+			"target_compile_definitions",
+			"target_include_directories",
+			"target_sources"
+		],
+		"files" : 
+		[
+			"Crypto/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 3,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 58,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 52,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 40,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 44,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 38,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-std=gnu11"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-mcpu=real-m300"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-march=armv8-m.main"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-mfloat-abi=hard"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-mfpu=fpv5-sp-d16"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-mthumb"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-mlittle-endian"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-fmessage-length=0"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-fsigned-char"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-ffunction-sections"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-fdata-sections"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-O0"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-g3"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-ggdb"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 3,
+					"define" : "RTE_Compiler_IO_STDOUT"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "RTE_Compiler_IO_STDOUT_User"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "__RTS5911__"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 4,
+					"path" : "D:/work/Customer/RTK_TEST version/GB_SMBUS/GB-X6LVH-GCC-20240621-V301/Crypto"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "D:/work/Customer/RTK_TEST version/GB_SMBUS/GB-X6LVH-GCC-20240621-V301/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "D:/work/Customer/RTK_TEST version/GB_SMBUS/GB-X6LVH-GCC-20240621-V301/Crypto/AES/Include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "D:/work/Customer/RTK_TEST version/GB_SMBUS/GB-X6LVH-GCC-20240621-V301/Crypto/HMAC"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "D:/work/Customer/RTK_TEST version/GB_SMBUS/GB-X6LVH-GCC-20240621-V301/Crypto/SHA2/Include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "D:/work/Customer/RTK_TEST version/GB_SMBUS/GB-X6LVH-GCC-20240621-V301/Crypto/SHA3/Include"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10
+			]
+		}
+	],
+	"id" : "crypto::@19a331d84d25578597fc",
+	"name" : "crypto",
+	"nameOnDisk" : "libcrypto.a",
+	"paths" : 
+	{
+		"build" : "Crypto",
+		"source" : "Crypto"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "Crypto/AES/Aes_Dma.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "Crypto/AES/AES_Slave.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "Crypto/AES/RTK_dmac.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "Crypto/HMAC/md.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "Crypto/SHA2/Lalu_SHA2.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "Crypto/SHA2/Sha256_api.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "Crypto/SHA2/Sha512_api.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "Crypto/SHA3/keccak.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "Crypto/SHA3/Lalu_SHA3.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "Crypto/SHA3/Sha3.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "Crypto/SHA3/shake.c",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

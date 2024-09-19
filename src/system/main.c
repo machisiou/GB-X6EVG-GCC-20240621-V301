@@ -142,6 +142,8 @@ int main(void)
 	X6LVH_EC_VER = SET_EC_VER;          //0x02; // Location : 26B)(OEM_PROJECT.H)
     RELEASE_TYPE = SET_RELEASE_TYPE;    //0x02; // (Location : 263)(OEM_PROJECT.H)
 	//EC_3A = 1;
+	I2C0_EnableIRQ();
+	CheckSMBusTableSize();
 	while(1) {
 		Main_Service();
 	}
@@ -346,6 +348,7 @@ static void system_init(void)
 	SYS_CLKPWR_I2CAUTO(enable);
 	Sys_I2cClkPwrEnable(I2C0_UNIT, enable, 0,0);
 	Sys_I2cClkPwrEnable(I2C1_UNIT, enable, 0,0);
+	Sys_I2cClkPwrEnable(I2C3_UNIT, enable, 0,0);
 	Sys_I2cClkPwrEnable(I2C4_UNIT, enable, 0,0);
 	Sys_I2cClkPwrEnable(I2C5_UNIT, enable, 0,0);
 
@@ -706,9 +709,9 @@ static void(* const services[33])(void) = {
     Timer1MsEventHandler,			// 8
     PMIO2EventHandler,				// 9
     PMIO3EventHandler,				// 10
-    OemService1Handler,               // 11
-    OemService2Handler,               // 12
-    OemService3Handler,               // 13
+    idleEventHandler,               // 11
+    idleEventHandler,               // 12
+    idleEventHandler,               // 13
     idleEventHandler,               // 14
     idleEventHandler,               // 15
     idleEventHandler,               // 16
@@ -744,6 +747,7 @@ static void Main_Service(void)
 #endif
 
     services[__CLZ(SERVICEflag)]();
+	SMBusDataHandle();
 }
 
 static void Service_1ms(void)

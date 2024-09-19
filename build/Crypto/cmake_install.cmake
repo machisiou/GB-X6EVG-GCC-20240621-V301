@@ -1,4 +1,4 @@
-# Install script for directory: D:/work/Customer/workspace/GB-X6LVH-GCC/GB-X6LVH-GCC-20240621-V301/Crypto
+# Install script for directory: D:/work/Customer/RTK_TEST version/GB_SMBUS/GB-X6LVH-GCC-20240621-V301/Crypto
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

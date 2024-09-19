@@ -11,11 +11,11 @@
 #define SMbusChD    0x03    // SMbus channel D index 
 #define SMbusChE    0x04    // SMbus channel E index //981004-220614-A
 
-#define SMbusCh0	0x00	// SMbus channel A index
-#define SMbusCh1	0x01	// SMbus channel B index
-#define SMbusCh2    0x02    // SMbus channel C index 
-#define SMbusCh3    0x03    // SMbus channel D index 
-#define SMbusCh4    0x04    // SMbus channel E index //981004-220614-A
+//#define SMbusCh0	0x00	// SMbus channel A index
+#define SMbusCh1	0x00	// SMbus channel B index
+#define SMbusCh2    0x01    // SMbus channel C index 
+#define SMbusCh3    0x02    // SMbus channel D index 
+#define SMbusCh4    0x03    // SMbus channel E index //981004-220614-A
 
 #define	SMbusWQ     QuickCommandWr	// Write Quick command
 #define	SMbusRQ     QuickCommandRd	// Read Quick command

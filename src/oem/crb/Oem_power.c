@@ -2387,12 +2387,18 @@ void InitDevice(void)
 	//981004-210705-A-S
 	#if 1
     LSCTRL = 0x02; //Active mode (EC RAM : 0x28F) 	
-    (bRWSMBus(SMbusChB, SMbusWB, LightSensorAddr, CONTROL, &LSCTRL, SMBus_NoPEC)); 
+    //(bRWSMBus(SMbusChB, SMbusWB, LightSensorAddr, CONTROL, &LSCTRL, SMBus_NoPEC));
+    SMBUS_RW_B(SMbusChB, WriteByte, LightSensorAddr, CONTROL, &LSCTRL); 
     Delay1MS(10);
-    (bRWSMBus(SMbusChB, SMbusRB, LightSensorAddr, DATAREAD_L, &LS_DATA_L, SMBus_NoPEC));
-	(bRWSMBus(SMbusChB, SMbusRB, LightSensorAddr, DATAREAD_M, &LS_DATA_M, SMBus_NoPEC));    
-	(bRWSMBus(SMbusChB, SMbusRB, LightSensorAddr, DATAREAD_H, &LS_DATA_H, SMBus_NoPEC));
-	(bRWSMBus(SMbusChB, SMbusRB, LightSensorAddr, CONTROL, &LSCTRL, SMBus_NoPEC)); //981004-210705-A
+    // (bRWSMBus(SMbusChB, SMbusRB, LightSensorAddr, DATAREAD_L, &LS_DATA_L, SMBus_NoPEC));
+	// (bRWSMBus(SMbusChB, SMbusRB, LightSensorAddr, DATAREAD_M, &LS_DATA_M, SMBus_NoPEC));    
+	// (bRWSMBus(SMbusChB, SMbusRB, LightSensorAddr, DATAREAD_H, &LS_DATA_H, SMBus_NoPEC));
+	// (bRWSMBus(SMbusChB, SMbusRB, LightSensorAddr, CONTROL, &LSCTRL, SMBus_NoPEC)); //981004-210705-A
+
+    SMBUS_RW_B(SMbusChB, ReadByte, LightSensorAddr, DATAREAD_L, &LS_DATA_L);
+    SMBUS_RW_B(SMbusChB, ReadByte, LightSensorAddr, DATAREAD_M, &LS_DATA_M);
+    SMBUS_RW_B(SMbusChB, ReadByte, LightSensorAddr, DATAREAD_H, &LS_DATA_H);
+    SMBUS_RW_B(SMbusChB, ReadByte, LightSensorAddr, CONTROL, &LSCTRL);
     Lux_TEMP = ((LS_DATA_H<<16) | (LS_DATA_M<<8) | (LS_DATA_L)); //981004-210705-M	
 	#endif
     //981004-210705-A-S
@@ -2409,13 +2415,15 @@ void InitDevice(void)
 	//Mode_SEL = 0x6A; //REG : 0x22 =>  Thermistor mode //981004-220803-M from 0x0A
     //bRWSMBus(SMbusCh1, SMbusWB, NCT7802YAddr, NCT_MODE_SEL, &Mode_SEL ,  SMBus_NoPEC);
 	BAT_OPTION3 = 0x4402; //981004-221013-M from 0x4412 to adjust ACDET deglitch time to 150ms//BQ24780s to enable Boost mode
-    bRWSMBus(SMbusCh1, SMbusWW, Charger_Addr, CHGCmd_Option3, (uint8_t*)&BAT_OPTION3 ,  SMBus_NoPEC); //981004-220803-A
-	
+    //bRWSMBus(SMbusCh1, SMbusWW, Charger_Addr, CHGCmd_Option3, (uint8_t*)&BAT_OPTION3 ,  SMBus_NoPEC); //981004-220803-A
+	SMBUS_RW_W(SMbusCh1, SMbusWW, Charger_Addr, CHGCmd_Option3, &BAT_OPTION3);
 	//981004-231108-A-S
 	NCT7601_CH1_On = 0xFF;
-	bRWSMBus(SMbusCh1, SMbusWB, Thermal1_Addr, Thermal1_CH1_Enable, &NCT7601_CH1_On , SMBus_NoPEC); //Thermal IC NCT7601Y    
+	//bRWSMBus(SMbusCh1, SMbusWB, Thermal1_Addr, Thermal1_CH1_Enable, &NCT7601_CH1_On , SMBus_NoPEC); //Thermal IC NCT7601Y 
+     SMBUS_RW_B(SMbusCh1, SMbusWB, Thermal1_Addr, Thermal1_CH1_Enable, &NCT7601_CH1_On);  
 	NCT7601_Start = 0x01;
-    bRWSMBus(SMbusCh1, SMbusWB, Thermal1_Addr, Thermal1_Config, &NCT7601_Start , SMBus_NoPEC); //Thermal IC NCT7601Y
+    //bRWSMBus(SMbusCh1, SMbusWB, Thermal1_Addr, Thermal1_Config, &NCT7601_Start , SMBus_NoPEC); //Thermal IC NCT7601Y
+    SMBUS_RW_B(SMbusCh1, SMbusWB, Thermal1_Addr, Thermal1_Config, &NCT7601_Start);
 	//981004-231108-A-E
 	
 	///SET_GPO_KSO7_HI(); //SET_MASK(KSOL, BIT7) //981004-221111-A

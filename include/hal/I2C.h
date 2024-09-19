@@ -51,6 +51,7 @@ extern uint8_t I2C_Slave_ByteWrite (uint8_t Channel, uint8_t *WDatBuf);
 extern void I2C_Slave_2_Variables_Reset(void);
 extern void I2C_Reset_Handler_Isr(uint8_t Channel);
 extern uint8_t I2C_Timeout_Handler(I2C_Type* Ptr);
+extern uint8_t I2C_Timeout_Process(uint8_t channel); 
 extern uint8_t I2C_ProtocolFIFO_W(uint8_t Channel, uint8_t Addr, uint8_t WDatCnt, uint8_t *WDatBuf);
 extern uint8_t I2C_ProtocolFIFO_R(uint8_t Channel, uint8_t Addr, uint8_t RDatCnt, uint8_t *RDatBuf);
 extern uint8_t SMBUS_RW_W(uint8_t Channel, uint8_t Protocol, uint8_t Addr ,uint8_t Cmd,uint16_t *var);
@@ -59,5 +60,16 @@ extern uint8_t SMBUS_RW_BLK(uint8_t Channel, uint8_t Protocol, uint8_t Addr ,uin
 extern uint8_t bRWSMBus(uint8_t Channel, uint8_t Protocol, uint8_t Addr ,uint8_t Cmd,uint8_t *var, uint8_t PECSupport);
 extern uint8_t bWSMBusBlock(uint8_t Channel, uint8_t Protocol, uint8_t Addr ,uint8_t Cmd,uint8_t *var, uint8_t PECSupport);
 extern uint8_t bRSMBusBlock(uint8_t Channel, uint8_t Protocol, uint8_t Addr ,uint8_t Cmd,uint8_t *var, uint8_t PECSupport);
+
+typedef struct SMBusStruct
+{
+	volatile uint32_t	*SMBusCTL	;	 
+	volatile uint32_t	*SMBusADR	;
+	volatile uint32_t	*SMBusDCMD	;
+	volatile uint32_t	*SMBusSTA	;
+	volatile uint32_t	*SMBusEN    ;
+} sSMBus;
+
+extern sSMBus code asSMBus[];
 
 #endif

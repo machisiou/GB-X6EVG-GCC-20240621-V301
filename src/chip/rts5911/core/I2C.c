@@ -13,6 +13,19 @@ FUNCT_PTR_V_V g_i2c_slave_2_stop_condition_hook_func;
 FUNCT_PTR_V_V g_i2c_slave_2_stop_condition_hook_func_addr2;
 FUNCT_PTR_V_V g_i2c_slave_2_timeout_hook_func;
 
+//----------------------------------------------------------------------------
+// Read/write SMbus byte/word function	
+//----------------------------------------------------------------------------
+sSMBus code asSMBus[]=
+{	// control	//slaveaddr //cmd	//status	//data0  //data1
+    {   &I2C0->CON, &I2C0->TAR , &I2C0->DATACMD,&I2C0->RAWINTSTAT, &I2C0->ENABLE},
+    // { &HOCTL_B, &TRASLA_B, &HOCMD_B, &HOSTA_B, &D0REG_B, &D1REG_B, &HOBDB_B, &IER1, &ISR1, Int_SMBUS1, &PECERC_B},
+    // { &HOCTL_C, &TRASLA_C, &HOCMD_C, &HOSTA_C, &D0REG_C, &D1REG_C, &HOBDB_C, &IER2, &ISR2, Int_SMBUS2, &PECERC_C},
+    // { &HOCTL_D, &TRASLA_D, &HOCMD_D, &HOSTA_D, &D0REG_D, &D1REG_D, &HOBDB_D, &IER0, &ISR0, Int_SMBUS3, &PECERC_D},
+    // { &HOCTL_E, &TRASLA_E, &HOCMD_E, &HOSTA_E, &D0REG_E, &D1REG_E, &HOBDB_E, &IER20, &ISR20, Int_SMBUS4, &PECERC_E}, //981004-220614-A
+    // { &HOCTL_F, &TRASLA_F, &HOCMD_F, &HOSTA_F, &D0REG_F, &D1REG_F, &HOBDB_F, &IER20, &ISR20, Int_SMBUS5, &PECERC_F}, //981004-220614-A	
+};
+
  /******************************************************************************/
  /** I2C channel 2 Slave Variables reset
   * return None
@@ -470,6 +483,7 @@ uint8_t I2C_SMBusModProtocol(uint8_t Channel, uint8_t Protocol, uint8_t Addr, ui
 		Ptr->ENABLE = 0x00000000;								/* ic_enable = 0 */
 	}
 	else if(Protocol == ReadWord) {
+		Ptr->RXTL = 0x00;
 		Ptr->TAR = (uint32_t)Addr >> 1;							/* Address */
 		Ptr->ENABLE = 0x00000001;								/* ic_enable = 1 */
 
@@ -477,7 +491,7 @@ uint8_t I2C_SMBusModProtocol(uint8_t Channel, uint8_t Protocol, uint8_t Addr, ui
 
 		//SMBus26ms_touch();
 		while(1) {
-			if((Ptr->RAWINTSTAT & 0x00000050) == 0x00000010)
+			if((Ptr->RAWINTSTAT & 0x00000010) == 0x00000010)
 				break;
 			else if(I2C_Timeout_Handler(Ptr)) {
 				Ptr->ENABLE = 0x00000000;
@@ -491,25 +505,25 @@ uint8_t I2C_SMBusModProtocol(uint8_t Channel, uint8_t Protocol, uint8_t Addr, ui
 		Ptr->DATACMD_b.CMD = 1;									/* read */
 
 		//SMBus26ms_touch();
-		while(1) {												/* Check if IC_RX_FULL */
-			if((Ptr->RAWINTSTAT & 0x00000514) == 0x00000514) {
-				break;
-			}
-			else if(I2C_Timeout_Handler(Ptr)) {
-				Ptr->ENABLE = 0x00000000;
-				//Fault_Record(0x00010212ul);
-		//		timer324_SMBus26ms_Setting();
-				return FAIL;
-			}
-		}
+		// while(1) {												/* Check if IC_RX_FULL */
+		// 	if((Ptr->RAWINTSTAT & 0x00000004) == 0x00000004) {
+		// 		break;
+		// 	}
+		// 	else if(I2C_Timeout_Handler(Ptr)) {
+		// 		Ptr->ENABLE = 0x00000000;
+		// 		//Fault_Record(0x00010212ul);
+		// //		timer324_SMBus26ms_Setting();
+		// 		return FAIL;
+		// 	}
+		// }
 		//timer324_SMBus26ms_Setting();
 
-		*RDatBuf = Ptr->DATACMD_b.DATA;
+
 		Ptr->DATACMD = ((uint32_t) 0x03 << 8);					/* Read+Stop */
 
 		//SMBus26ms_touch();
 		while(1) {												/* Check if IC_RX_FULL */
-			if((Ptr->RAWINTSTAT & 0x00000514) == 0x00000514) {
+			if((Ptr->RAWINTSTAT & 0x00000004) == 0x00000004) {
 				break;
 			}
 			else if(I2C_Timeout_Handler(Ptr)) {
@@ -519,19 +533,20 @@ uint8_t I2C_SMBusModProtocol(uint8_t Channel, uint8_t Protocol, uint8_t Addr, ui
 				return FAIL;
 			}
 		}
-
+		*RDatBuf = Ptr->DATACMD_b.DATA;
 		*(RDatBuf+1) = Ptr->DATACMD_b.DATA;
-		while (1)
-		{
-			if(SMBus26ms_check()){
-				Ptr->ENABLE = 0x00000000;
-				//Fault_Record(0x00010214ul);
-				timer324_SMBus26ms_Setting();
-				return FAIL;
-			}
-			if (((Ptr->STATUS & 0x00000020) == 0))
-				break;
-		}
+
+		// while (1)
+		// {
+		// 	if(SMBus26ms_check()){
+		// 		Ptr->ENABLE = 0x00000000;
+		// 		//Fault_Record(0x00010214ul);
+		// 		timer324_SMBus26ms_Setting();
+		// 		return FAIL;
+		// 	}
+		// 	if (((Ptr->STATUS & 0x00000020) == 0))
+		// 		break;
+		// }
 		// while((Ptr->STATUS & 0x00000020) != 0);
 		Ptr->ENABLE = 0x00000000;								/* ic_enable = 0 */
 	}
@@ -946,6 +961,42 @@ uint8_t I2C_Timeout_Handler(I2C_Type* Ptr)
 	}	
 }
 
+uint8_t I2C_Timeout_Process(uint8_t Channel)
+{
+	uint32_t i;
+	I2C_Type* Ptr;
+	Ptr = (I2C_Type*)((uint32_t)I2C0_BASE + (uint32_t)(Channel * 0x200UL));
+	if(Ptr->TXABRTSRC_b.SDASTUCKLOW) {								/* Check if SMBus DAT time out occur */
+		Ptr->ENABLE_b.SMBCLKRST = 1;								/* Reset SMBClk to reset device */
+		// while(Ptr->ENABLE_b.SMBCLKRST);								/* Finish Reset will clear */
+		i = Ptr->CLRTXABRT;											/* Read to clear TX ABORT*/
+		return 1;
+	}
+	else if(Ptr->RAWINTSTAT_b.SCLSTUCKLOW) {
+		Ptr->ENABLE_b.ABORT = 1;									/* Abort Tranfer */
+		// while(Ptr->ENABLE_b.ABORT);									/* Finish Abort will clear */
+		return 1;
+	}
+	else if(Ptr->TXABRTSRC_b.ADDR7BNACK) {
+		i = Ptr->CLRTXABRT;										/* Read to clear TX ABORT*/
+		return 1;
+	}
+	else if((Ptr->RAWINTSTAT & 0x00000240) == 0x00000240) {		/* Check if TX ABORT and Detect stop */
+		return 1;
+	}
+	else if(!(Ptr->STATUS_b.MSTACTIVITY) && !(Ptr->RAWINTSTAT_b.TXEMPTY)) {
+		return 1;
+	}
+	else if(SMBus26ms_check()){
+		Ptr->ENABLE_b.ABORT = 1;
+		_Delay_1ms(1);
+		return 1;
+	}
+	else{
+		//printf(" Waiting time\n");
+		return 0;
+	}	
+}
 /******************************************************************************/
 /** I2C protocol W
  * Channel - I2C Channel 0~7
